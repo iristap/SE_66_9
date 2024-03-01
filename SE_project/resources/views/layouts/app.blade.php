@@ -48,8 +48,24 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif --}}
-                        @else
-                            <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
+                        @else 
+                            <li>
+                            @adminRole
+                                    <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
+                            @endadminRole
+                            </li>
+                            <li>
+                            @userRole
+                                <a class="nav-link" href="#">userRole</a>
+                            @enduserRole
+                            </li>
+                            <li>
+                            @parcelRole
+                                <a class="nav-link" href="#">parcelRole</a> 
+                            @endparcelRole
+                            </li>    
+                                
+                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
