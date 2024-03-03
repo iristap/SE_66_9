@@ -65,8 +65,13 @@
                                 <a class="nav-link" href="#">parcelRole</a> 
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             @endparcelRole
-                            </li>    
-                                
+                            </li>
+                            <li>
+                            @technicianRole
+                                <a class="nav-link" href="#">technicianRole</a> 
+                                {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
+                            </li>
+                            @endtechnicianRole    
                             
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

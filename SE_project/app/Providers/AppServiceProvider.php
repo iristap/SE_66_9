@@ -30,5 +30,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('parcelRole', function () {
             return Auth::user()->roles()->where('role_id', 3)->exists();
         });
+        Blade::if('technicianRole', function () {
+            return Auth::user()->roles()->where('role_id', 4)->exists();
+        });
     }
 }
