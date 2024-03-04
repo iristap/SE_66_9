@@ -35,6 +35,12 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" name="surname" value="{{ $user->surname }}" class="form-control" placeholder="Surname">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Email:</strong>
                 <input type="text" name="email" value="{{ $user->email }}" class="form-control" placeholder="Email">
             </div>

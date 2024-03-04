@@ -30,7 +30,10 @@
             <label for="name">Name:</label>
             <input type="text" name="name" class="form-control" placeholder="Enter name">
         </div>
-
+        <div>
+            <label for="surname">Surname:</label>
+            <input type="text" name="surname" class="form-control" placeholder="Enter surname">
+        </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" name="email" class="form-control" placeholder="Enter email">

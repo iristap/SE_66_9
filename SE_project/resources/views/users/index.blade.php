@@ -29,7 +29,7 @@
  @foreach ($data as $key => $user)
   <tr>
     <td>{{ ++$i }}</td>
-    <td>{{ $user->name }}</td>
+    <td>{{ $user->name }} {{ $user->surname}}</td>
     <td>{{ $user->email }}</td>
     <td>
       @foreach($user->roles as $role)

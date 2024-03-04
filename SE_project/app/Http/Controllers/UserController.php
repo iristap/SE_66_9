@@ -35,6 +35,7 @@ class UserController extends Controller
 {
     $request->validate([
         'name' => 'required|string|max:255',
+        'surname' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|string|min:8',
         'roles' => 'required|array', // ตรวจสอบว่ามีการเลือก role ในแบบฟอร์มหรือไม่
@@ -44,6 +45,7 @@ class UserController extends Controller
     // สร้างผู้ใช้ใหม่
     $user = User::create([
         'name' => $request->name,
+        'surname' => $request->surname,
         'email' => $request->email,
         'password' => Hash::make($request->password),
     ]);
@@ -72,6 +74,7 @@ class UserController extends Controller
 {
     $this->validate($request, [
         'name' => 'required',
+        'surname' => 'required',
         'email' => 'required|email|unique:users,email,'.$id,
         'roles' => 'required|array',
         'roles.*' => 'exists:roles,id', // ตรวจสอบว่า role ที่ส่งมามีอยู่จริงในฐานข้อมูลหรือไม่
@@ -83,6 +86,7 @@ class UserController extends Controller
     // อัปเดตข้อมูลที่เป็นพื้นฐานของผู้ใช้งาน
     $user->update([
         'name' => $request->name,
+        'surname' => $request->surname,
         'email' => $request->email,
     ]);
 
