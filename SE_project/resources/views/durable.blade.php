@@ -39,23 +39,9 @@
                                 <td>$durableItem->status </td>
                                 </tr>";
                             }
-                        
-                            
-
                     echo   "</tbody>";
                     echo "</table>";
                     ?>
-                    <!-- @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }} -->
-                    <!-- <button align="right" >SUBMIT</button> -->
-
-
-                    <!-- <div style="width:100%;text-align:right;"><input type="button" value="BACK" class="btn btn-info"></div> -->
                 </div>
             </div>
         </div>
