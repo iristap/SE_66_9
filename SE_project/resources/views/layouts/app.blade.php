@@ -60,8 +60,13 @@
                             </li>
                             <li>
                             @parcelRole
-                                <a class="nav-link" href="#">parcelRole</a> 
+                                <!-- <a class="nav-link" href="#">parcelRole</a>  -->
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('durable') }}">{{ __('Durable Articles') }}</a>
+                                </li>
+                                
                             @endparcelRole
                             </li>
                             <li>

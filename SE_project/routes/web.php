@@ -30,5 +30,5 @@ Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 
-
+Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable');
 
