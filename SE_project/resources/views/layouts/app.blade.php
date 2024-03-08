@@ -71,8 +71,8 @@
                             </li>
                             <li>
                             @technicianRole
-                                <a class="nav-link" href="#">technicianRole</a> 
-                                {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('repair') }}">{{ __('Repair') }}</a>
                             </li>
                             @endtechnicianRole    
                             

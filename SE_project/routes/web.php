@@ -32,3 +32,4 @@ Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->na
 
 Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable');
 
+Route::get('/repair', [App\Http\Controllers\RepairController::class, 'index'])->name('repair');
