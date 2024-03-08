@@ -32,3 +32,6 @@ Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->na
 
 Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable');
 
+## Stock Routes
+Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->name('stocks.index');
+Route::get('/stocks/{id}', [App\Http\Controllers\StockController::class, 'show'])->name('stocks.show');

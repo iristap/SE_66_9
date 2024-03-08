@@ -47,30 +47,38 @@
                                 </li>
                             @endif --}}
                         @else 
-                            <li>
+                            
                             @adminRole
-                                    <a class="nav-link" href="{{ route('users.index') }}">Manage Users</a>
+                            <li>
+                                <a class="nav-link" href="{{ route('users.index') }}">จัดการผู้ใช้งาน</a>
+                            </li>
                             @endadminRole
-                            </li>
-                            <li>
+                           
+                            
                             @userRole
-                                <a class="nav-link" href="#">userRole</a> 
-                                {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
-                            @enduserRole
-                            </li>
                             <li>
+                                <a class="nav-link" href="#">userRole</a>
+                                {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
+                            </li>
+                            @enduserRole
+                            
+                            
                             @parcelRole
+                            <li>
                                 <!-- <a class="nav-link" href="#">parcelRole</a>  -->
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('durable') }}">{{ __('Durable Articles') }}</a>
-                                </li>
-                                
-                            @endparcelRole
+                                <a class="nav-link" href="{{ route('durable') }}">{{ __('Durable Articles') }}</a>
                             </li>
                             <li>
+                                <a class="nav-link" href="{{ route('stocks.index') }}">เติมสต็อก(เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ)</a>
+                                {{-- (เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ) --}}
+                            </li>
+                                
+                            @endparcelRole
+                            
+                            
                             @technicianRole
+                            <li>
                                 <a class="nav-link" href="#">technicianRole</a> 
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             </li>
