@@ -1,0 +1,2 @@
+drop database se_g9
+create database se_g9
