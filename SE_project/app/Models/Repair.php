@@ -18,7 +18,6 @@ class Repair {
     protected $fillable = [
            'no', 
            'durable_articles_id',
-            'durable_articles_name',
             'inspector_name',
             'status',
             'detail',

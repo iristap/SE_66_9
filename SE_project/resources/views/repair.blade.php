@@ -36,7 +36,7 @@
                                 echo "<tr>
                                 <td> $repairItem->no </td>
                                 <td> $repairItem->durable_articles_id </td>
-                                <td> $repairItem->durable_articles_name </td>
+                                <td> $repairItem->name </td>
                                 <td> $repairItem->inspector_name </td>
                                 <td> $repairItem->status </td>
                                 <td> $repairItem->detail </td>
