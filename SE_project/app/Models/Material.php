@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Material extends Model
 {
@@ -14,4 +15,8 @@ class Material extends Model
  * @var string
  */
     protected $table = 'material';
+    public static function getAll()
+    {
+        return $material=DB::table('material')->get();
+    }
 }

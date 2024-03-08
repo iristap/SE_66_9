@@ -71,9 +71,14 @@
                             </li>
                             <li>
                                 <a class="nav-link" href="{{ route('stocks.index') }}">เติมสต็อก(เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ)</a>
+
                                 {{-- (เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ) --}}
                             </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('material') }}">{{ __('Material') }}</a>
                                 
+                                {{-- (เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ) --}}
+                            </li>
                             @endparcelRole
                             
                             

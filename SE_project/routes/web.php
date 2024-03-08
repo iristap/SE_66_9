@@ -30,8 +30,9 @@ Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 
+## parcel Routes
 Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable');
-
+Route::get('/material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material');
 ## Stock Routes
 Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->name('stocks.index');
 Route::get('/stocks/{id}', [App\Http\Controllers\StockController::class, 'show'])->name('stocks.show');
