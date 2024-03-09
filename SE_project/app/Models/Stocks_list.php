@@ -11,6 +11,6 @@ class Stocks_list extends Model
     
     public function material()
     {
-        return $this->belongsTo(Material::class, 'material_id', 'material_id');
+        return $this->belongsTo(Material::class, 'id_material', 'material_id');
     }
 }
