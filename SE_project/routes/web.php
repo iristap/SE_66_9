@@ -34,6 +34,7 @@ Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->na
 Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable.index');
 Route::delete('/durable/{id}', [DurableController::class, 'destroy'])->name('durable.destroy');
 Route::get('/material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material.index');
+Route::delete('/material/{id}', [App\Http\Controllers\MaterialController::class, 'destroy'])->name('material.destroy');
 ## Stock Routes
 Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->name('stocks.index');
 Route::get('/stocks/create', [App\Http\Controllers\StockController::class, 'create'])->name('stocks.create');

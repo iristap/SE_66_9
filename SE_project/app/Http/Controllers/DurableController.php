@@ -34,7 +34,7 @@ class DurableController extends Controller
     {
         Durable::where('durable_articles_id', $durable)->delete();
         return redirect()->route('durable.index')
-            ->with('success', 'User deleted successfully');
+            ->with('success', 'Deleted successfully');
     }
 
 }

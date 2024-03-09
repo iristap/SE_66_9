@@ -44,7 +44,7 @@
                 <div class="card-header text-white " style="background-color: #492E87; font-size: 20px; ">{{ __('วัสดุ') }}</div>
 
                 <div class="card-body">
-                    <a class="button button1 rounded" href="{{ route('stocks.index') }}"> เติมสต๊อก </a>
+                    <a class="button button1 rounded" > เติมสต๊อก </a>
                     <br>
                     <br>
                     <table class="table table-hover">
@@ -60,27 +60,37 @@
                         </thead>
                         <tbody>
                             
-                        <?php 
-                            foreach ($material as $materialItem){
-                                echo "<tr>
-                                <td> $materialItem->material_id  </td>
-                                <td> $materialItem->name</td>
-                                <td> $materialItem->amount </td>
-                                <td> $materialItem->unit </td>
+                        
+                        <?php foreach ($material as $materialItem): ?>
+                            <tr>
+                                <td><?php echo $materialItem->material_id ?></td>
+                                <td><?php echo $materialItem->name ?></td>
+                                <td><?php echo $materialItem->amount ?></td>
+                                <td><?php echo $materialItem->unit ?></td>
                                 <td>
                                     <button class='btn btn-outline-warning'>Edit</button>
                                 </td>
                                 <td>
-                                    <button class='btn btn-outline-danger'>Delete</button>
+                                    <form id="deleteForm_<?php echo $materialItem->material_id; ?>" method="POST" action="<?php echo route('material.destroy', $materialItem->material_id) ?>" style="display:inline">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?php echo $materialItem->material_id; ?>)">Delete</button>
+                                    </form>
                                 </td>
-                                </tr>";
-                            }
-                    echo   "</tbody>";
-                    echo "</table>";
-                    ?>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                        </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+<script>
+    function confirmDelete(id) {
+        if (confirm("คุณต้องการลบรายการนี้หรือไม่?")) {
+            document.getElementById('deleteForm_' + id).submit();
+        }
+    }
+</script>

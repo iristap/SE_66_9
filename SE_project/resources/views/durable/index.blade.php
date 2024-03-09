@@ -45,7 +45,7 @@
                                     <form id="deleteForm_<?php echo $durableItem->durable_articles_id; ?>" method="POST" action="<?php echo route('durable.destroy', $durableItem->durable_articles_id) ?>" style="display:inline">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
-                                        <button type="button" class="btn btn-danger" onclick="confirmDelete(<?php echo $durableItem->durable_articles_id; ?>)">Delete</button>
+                                        <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?php echo $durableItem->durable_articles_id; ?>)">Delete</button>
                                     </form>
                                 </td>
                             </tr>
