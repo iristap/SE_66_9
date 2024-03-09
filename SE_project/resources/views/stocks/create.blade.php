@@ -11,10 +11,26 @@
                     <form action="{{ route('stocks.store') }}" method="POST">
                         @csrf
 
-                        @foreach($materials as $material)
-                            {{ $material->name }}
-                            <input type="number" name="{{ $material->id }}" value="0" min="0"> {{ $material->unit }}<br>
-                        @endforeach
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($materials as $material)
+                                    <tr>
+                                        <td>{{ $material->name }}</td>
+                                        <td><input type="number" name="{{ $material->id }}" value="0" min="0"></td>
+                                        <td>{{ $material->unit }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
                 <div class="card-footer">
