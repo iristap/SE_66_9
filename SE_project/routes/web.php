@@ -35,4 +35,6 @@ Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])
 Route::get('/material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material');
 ## Stock Routes
 Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->name('stocks.index');
+Route::get('/stocks/create', [App\Http\Controllers\StockController::class, 'create'])->name('stocks.create');
 Route::get('/stocks/{id}', [App\Http\Controllers\StockController::class, 'show'])->name('stocks.show');
+Route::post('/stocks', [App\Http\Controllers\StockController::class, 'store'])->name('stocks.store');

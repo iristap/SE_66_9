@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Material;
+use App\Models\Stocks_list;
 
 class StockController extends Controller
 {
@@ -23,12 +24,12 @@ class StockController extends Controller
         return view('stocks.show', compact('stock', 'stockLists'));
     }
 
+    
     public function create()
     {
         $materials = Material::all();
         return view('stocks.create', compact('materials'));
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -39,7 +40,7 @@ class StockController extends Controller
         ]);
 
         foreach ($request->materials as $material) {
-            StockList::create([
+            Stocks_list::create([
                 'material_id' => $material['material_id'],
                 'quantity' => $material['quantity'],
                 // เพิ่มรายละเอียดอื่น ๆ ตามต้องการ
@@ -49,4 +50,25 @@ class StockController extends Controller
         return redirect()->route('stocks.index')
                          ->with('success', 'Stock added successfully.');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'materials' => 'required|array',
+    //         'materials.*.material_id' => 'required|exists:materials,id',
+    //         'materials.*.quantity' => 'required|numeric|min:1',
+    //         // รายละเอียดอื่น ๆ ตามต้องการ
+    //     ]);
+
+    //     foreach ($request->materials as $material) {
+    //         StockList::create([
+    //             'material_id' => $material['material_id'],
+    //             'quantity' => $material['quantity'],
+    //             // เพิ่มรายละเอียดอื่น ๆ ตามต้องการ
+    //         ]);
+    //     }
+
+    //     return redirect()->route('stocks.index')
+    //                      ->with('success', 'Stock added successfully.');
+    // }
 }

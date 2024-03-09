@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <a class="btn btn-primary" href="{{ route('stocks.create') }}">Add</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -41,4 +42,5 @@
         </div>
     </div>
 </div>
+
 @endsection
