@@ -39,7 +39,7 @@
                                 <td><?php echo $durableItem->name ?></td>
                                 <td><?php echo $durableItem->status ?></td>
                                 <td>
-                                    <button class='btn btn-outline-warning'>Edit</button>
+                                <a href="{{ route('durable.edit',$durableItem->durable_articles_id) }}" class='btn btn-outline-warning'>Edit</a>
                                 </td>
                                 <td>
                                     <form id="deleteForm_<?php echo $durableItem->durable_articles_id; ?>" method="POST" action="<?php echo route('durable.destroy', $durableItem->durable_articles_id) ?>" style="display:inline">

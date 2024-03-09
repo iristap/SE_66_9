@@ -68,7 +68,7 @@
                                 <td><?php echo $materialItem->amount ?></td>
                                 <td><?php echo $materialItem->unit ?></td>
                                 <td>
-                                    <button class='btn btn-outline-warning'>Edit</button>
+                                    <a href="#" class='btn btn-outline-warning'>Edit</a>
                                 </td>
                                 <td>
                                     <form id="deleteForm_<?php echo $materialItem->material_id; ?>" method="POST" action="<?php echo route('material.destroy', $materialItem->material_id) ?>" style="display:inline">
