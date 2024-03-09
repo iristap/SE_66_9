@@ -49,12 +49,13 @@ class DurableController extends Controller
         $request->validate(
             [
                 'durable_articles_code'=>'required|max:5',
-                'name'=>'required'
+                'name'=>'required|max:30'
             ],
             [
                 'durable_articles_code.required'=>'โปรดป้อนหมายเลขครุภัณฑ์',
                 'durable_articles_code.max'=>'หมายเลขครุภัณฑ์ไม่ควรเกิน 5 ตัวอักษร',
-                'name.required'=>'โปรดป้อนชื่อครุภัณฑ์'
+                'name.required'=>'โปรดป้อนชื่อครุภัณฑ์',
+                'name.max'=>'ชื่อครุภัณฑ์ไม่ควรเกิน 30 ตัวอักษร'
             ]
             );
             $data=[

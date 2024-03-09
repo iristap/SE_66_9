@@ -33,13 +33,18 @@
                         </div>
                         @error('durable_articles_code')
                         <div>
-                            <span class="text-danger">{{$message}}</span>
+                            <span class="text-danger  d-flex justify-content-center ">{{$message}}</span>
                         </div>
                         @enderror
                         <div class=form-group>
                             <label class="col-md-4 col-form-label text-md">ชื่อ</label>
                             <input class="col-md-4 col-form-label text-md" type="text" name="name" value="{{ $durable->name }}">
                         </div>
+                        @error('name')
+                        <div>
+                            <span class="text-danger  d-flex justify-content-center ">{{$message}}</span>
+                        </div>
+                        @enderror
                             <!-- เพิ่มฟิลด์อื่น ๆ ตามต้องการ -->
                         <div class="d-flex flex-row-reverse">
                             <a href="/durable" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
