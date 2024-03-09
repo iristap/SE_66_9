@@ -67,7 +67,7 @@
                             <li>
                                 <!-- <a class="nav-link" href="#">parcelRole</a>  -->
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
-                                <a class="nav-link" href="{{ route('durable') }}">{{ __('Durable Articles') }}</a>
+                                <a class="nav-link" href="{{ route('durable.index') }}">{{ __('จัดการครุภัณฑ์') }}</a>
                             </li>
                             <li>
                                 <a class="nav-link" href="{{ route('stocks.index') }}">เติมสต็อก(เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ)</a>
@@ -75,7 +75,7 @@
                                 {{-- (เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ) --}}
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('material') }}">{{ __('Material') }}</a>
+                                <a class="nav-link" href="{{ route('material.index') }}">{{ __('จัดการวัสดุ') }}</a>
                                 
                                 {{-- (เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ) --}}
                             </li>

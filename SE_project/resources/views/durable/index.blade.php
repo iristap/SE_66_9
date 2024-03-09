@@ -31,27 +31,38 @@
                         </thead>
                         <tbody>
                             
-                        <?php 
-                            foreach ($durable as $durableItem){
-                                echo "<tr>
-                                <td> $durableItem->durable_articles_id </td>
-                                <td> $durableItem->durable_articles_code </td>
-                                <td> $durableItem->name </td>
-                                <td> $durableItem->status </td>
+                        
+                        <?php foreach ($durable as $durableItem): ?>
+                            <tr>
+                                <td><?php echo $durableItem->durable_articles_id ?></td>
+                                <td><?php echo $durableItem->durable_articles_code ?></td>
+                                <td><?php echo $durableItem->name ?></td>
+                                <td><?php echo $durableItem->status ?></td>
                                 <td>
                                     <button class='btn btn-outline-warning'>Edit</button>
                                 </td>
                                 <td>
-                                    <button class='btn btn-outline-danger'>Delete</button>
+                                    <form id="deleteForm_<?php echo $durableItem->durable_articles_id; ?>" method="POST" action="<?php echo route('durable.destroy', $durableItem->durable_articles_id) ?>" style="display:inline">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        <button type="button" class="btn btn-danger" onclick="confirmDelete(<?php echo $durableItem->durable_articles_id; ?>)">Delete</button>
+                                    </form>
                                 </td>
-                                </tr>";
-                            }
-                        echo   "</tbody>";
-                        echo "</table>";
-                        ?>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                        </table>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+<script>
+    function confirmDelete(id) {
+        if (confirm("คุณต้องการลบรายการนี้หรือไม่?")) {
+            document.getElementById('deleteForm_' + id).submit();
+        }
+    }
+</script>

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DurableController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,8 +31,9 @@ Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'des
 Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 
 ## parcel Routes
-Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable');
-Route::get('/material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material');
+Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable.index');
+Route::delete('/durable/{id}', [DurableController::class, 'destroy'])->name('durable.destroy');
+Route::get('/material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material.index');
 ## Stock Routes
 Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->name('stocks.index');
 Route::get('/stocks/create', [App\Http\Controllers\StockController::class, 'create'])->name('stocks.create');
