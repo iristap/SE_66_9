@@ -13,7 +13,7 @@
 
                         @foreach($materials as $material)
                             {{ $material->name }}
-                            <input type="number" name="{{ $material->id }}" value="0" min="0">
+                            <input type="number" name="{{ $material->id }}" value="0" min="0"> {{ $material->unit }}<br>
                         @endforeach
                     </form>
                 </div>
