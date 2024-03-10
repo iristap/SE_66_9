@@ -44,7 +44,7 @@
                 <div class="card-header text-white " style="background-color: #492E87; font-size: 20px; ">{{ __('วัสดุ') }}</div>
 
                 <div class="card-body">
-                    <a class="button button1 rounded" > เติมสต๊อก </a>
+                    <!-- <a class="button button1 rounded" > เติมสต๊อก </a> -->
                     <a class="btn btn-primary" href="{{ route('stocks.create') }}">Stock</a>
                     <a class="btn btn-primary" href="{{ route('stocks.index') }}"> ประวัติการ Stock </a>
                     <br>
