@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Stock Details</div>
+                <div class="card-header" style="background-color: #86A7FC; font-size: 20px;">Stock Details</div>
 
                 <div class="card-body">
                     <table class="table">

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <div class="card-header">Add Stock</div>
+                <div class="card-header" style="background-color: #74E291; font-size: 20px;">Add Stock</div>
                 @if(session('error'))
                 <div class="alert alert-danger" role="alert">
                     {{ session('error') }}
