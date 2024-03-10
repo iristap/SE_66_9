@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
+    <a class="btn btn-secondary" href="{{ route('material.index') }}">Back</a>
 </div>
 
 @endsection

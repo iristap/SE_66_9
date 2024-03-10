@@ -70,7 +70,7 @@
                                 <a class="nav-link" href="{{ route('durable.index') }}">{{ __('จัดการครุภัณฑ์') }}</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('stocks.index') }}">เติมสต็อก(เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ)</a>
+                                {{-- <a class="nav-link" href="{{ route('stocks.index') }}">เติมสต็อก(เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ)</a> --}}
 
                                 {{-- (เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ) --}}
                             </li>

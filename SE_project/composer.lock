@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "295871ddd192ba35e61a71d0ff6653f3",
+    "content-hash": "4b17c7ecdebd94fffd0222d08c72b2a2",
     "packages": [
         {
             "name": "brick/math",
@@ -2455,6 +2455,61 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "phattarachai/thaidate",
+            "version": "12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phattarachai/thaidate.git",
+                "reference": "4a759081179f3401a5dd47a39db923aee51c301c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phattarachai/thaidate/zipball/4a759081179f3401a5dd47a39db923aee51c301c",
+                "reference": "4a759081179f3401a5dd47a39db923aee51c301c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.13",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Phattarachai\\Thaidate\\ThaidateServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/function.php"
+                ],
+                "psr-4": {
+                    "Phattarachai\\Thaidate\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phattarachai Chaimongkol",
+                    "email": "phatchai28@gmail.com"
+                }
+            ],
+            "description": "A Laravel, PHP package for thaidate() function",
+            "homepage": "https://phattarachai.dev",
+            "support": {
+                "issues": "https://github.com/phattarachai/thaidate/issues",
+                "source": "https://github.com/phattarachai/thaidate/tree/12.1"
+            },
+            "time": "2021-06-07T20:17:19+00:00"
         },
         {
             "name": "phpoption/phpoption",
