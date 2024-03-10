@@ -30,26 +30,74 @@ class StockController extends Controller
         $materials = Material::all();
         return view('stocks.create', compact('materials'));
     }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'materials' => 'required|array',
-            'materials.*.material_id' => 'required|exists:materials,id',
-            'materials.*.quantity' => 'required|numeric|min:1',
-            // รายละเอียดอื่น ๆ ตามต้องการ
-        ]);
+        $formData = $request->all();
 
-        foreach ($request->materials as $material) {
+        // คุณสามารถใช้ dd() เพื่อดูข้อมูลที่ถูกส่งมา
+        // dd($formData);
+
+        // $ids = $request->input('material_id');
+        // foreach ($ids as $id) {
+        //     echo "id:";
+        //     echo $id . "<br>";
+        // }
+        // $materials = Material::all();
+        // foreach ($materials as $material) {
+        //     // echo "id:";
+        //     // echo $material->material_id . "<br>";
+        //     // echo "name:";
+        //     // echo $material->name . "<br>";
+        //     // echo "quantity:";
+        //     // echo $material->amount . "<br>";
+        //     // echo $formData['quantity'][$material->id] . "<br>";
+        //     // echo $formData["material_id"][$material->name]. "<br>";
+        // }
+        // echo $formData["material_id"]["กระดาษ"]. "<br>";
+
+       
+    
+
+    // หรือ
+   
+    
+  
+
+    if (array_sum($formData["material_id"]) === 0) {
+        return redirect()->route('stocks.create')->with('error', 'Please select at least one material.');
+    }
+    // echo $formData['id'][1]. "<br>";
+    // if($formData["material_id"] == 0) {
+    //     return redirect()->route('stocks.create')->with('error', 'Please select at least one material.');
+    // }
+
+    $stock = Stock::create([
+        'date_stock' => now(),
+        'id_stocker' => auth()->id(),
+    ]);
+
+    $materials = Material::all();
+    foreach ($materials as $material) {
+        if($formData["material_id"][$material->name] > 0) {
             Stocks_list::create([
-                'material_id' => $material['material_id'],
-                'quantity' => $material['quantity'],
-                // เพิ่มรายละเอียดอื่น ๆ ตามต้องการ
+                'id_stock' => $stock->id,
+                'material_id' => $material->material_id,
+                'quantity' => $formData["material_id"][$material->name],
             ]);
         }
-
-        return redirect()->route('stocks.index')
-                         ->with('success', 'Stock added successfully.');
     }
+
+
+   
+    
+
+
+    // // // ส่งผลการดำเนินการกลับไปยังหน้ารายการ Stocks พร้อมกับข้อความแจ้งเตือน
+    return redirect()->route('stocks.index')->with('success', 'Stock added successfully.');
+}
+
+    
 
 
 }
