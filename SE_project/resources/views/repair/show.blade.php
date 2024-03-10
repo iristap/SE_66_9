@@ -19,8 +19,8 @@
                 <div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>ลำดับการซ่อม</strong> <!--ลำดับการยืม -->
-                            {{ $repair->no }}
+                            <strong>ลำดับการซ่อม</strong> 
+                            {{ $repair-> borrowing_id}}
                         </div>                
                     </div>
 
@@ -41,41 +41,45 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>ชื่อผู้เบิก</strong>
-
+                            {{ $repair->sender_name }}
                         </div>                
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>วันที่ยืม</strong>
-
+                            {{ $repair->borrow_date }}
                         </div>                
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>กำหนดคืน</strong>
-
+                            {{ $repair->due_date }}
                         </div>                
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>เหตุผลในการยืม</strong>
-
+                            {{ $repair->not_approved_note }}
                         </div>                
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>สถานะ</strong>
-
-                        </div>                
+                            <select class="form-select" style="width: 200px;" name="status">
+                                <option value="ปกติ">ปกติ</option>
+                                <option value="ไม่สามารถซ่อมได้">ไม่สามารถซ่อมได้</option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
-                <div class="card-footer">
-                    <a href="{{ route('repair.index') }}" class="btn btn-outline-primary">Back</a>
+                <div class="card-footer d-flex flex-row-reverse">
+                    <a href="{{ route('repair.index') }}" class="btn btn-outline-primary p-2 ml-4">ยกเลิก</a>
+                    <button class="btn btn-outline-success p-2 ml-4" type="submit">ยืนยัน</button>
                 </div>
             </div>
         </div>

@@ -3,17 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Repair {
-    use HasApiTokens,HasFactory, Notifiable;
+class Repair extends Model{
 
-    public function __construct(){
-
-    }
+    use HasFactory;
+    protected $table = 'repair_list';
 
     protected $fillable = [
            'no', 
@@ -22,4 +18,5 @@ class Repair {
             'status',
             'detail',
     ];
+
 }
