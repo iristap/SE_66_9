@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Repair</title>
 </head>
 <body style="background-color: #f9ffc2;">
 
@@ -30,21 +30,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
-                        <?php 
-                            foreach ($repair as $repairItem){
-                                echo "<tr>
-                                <td> $repairItem->no </td>
-                                <td> $repairItem->durable_articles_id </td>
-                                <td> $repairItem->name </td>
-                                <td> $repairItem->inspector_name </td>
-                                <td> $repairItem->status </td>
-                                <td> $repairItem->detail </td>
-                                </tr>";
-                            }
-                    echo   "</tbody>";
-                    echo "</table>";
-                    ?>
+                            @foreach ($repairs as $repair)
+                                <tr>
+                                <td> {{$repair->no}} </td>
+                                <td> {{$repair->durable_articles_id}} </td>
+                                <td> {{$repair->name}} </td>
+                                <td> {{$repair->inspector_name}} </td>
+                                <td> {{$repair->status}} </td>
+                                    <td>
+                                        <a class="btn btn-info" href="{{ route('repair.show',$repair->no) }}">ซ่อม</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

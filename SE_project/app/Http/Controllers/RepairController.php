@@ -7,14 +7,19 @@ use Illuminate\Support\Facades\DB;
 
 class RepairController extends Controller {
     function index(){
-        $repair = DB::table('repair_list')
+        $repairs = DB::table('repair_list')
         ->select('repair_list.*', 'durable_articles.name')
         ->join('durable_articles', 'repair_list.durable_articles_id', '=', 'durable_articles.durable_articles_id')
         ->get();
-        return view('repair', compact('repair'));
+        return view('repair.index', compact('repairs'));
     }
 
-    public function showRepair() {
-        return $this->index();
+    public function show($no)
+    {
+        $repair = DB::table('repair_list')
+                    ->join('durable_articles', 'repair_list.durable_articles_id', '=', 'durable_articles.durable_articles_id')
+                    ->where('repair_list.no', $no)
+                    ->first(); 
+        return view('repair.show', compact('repair'));
     }
 }

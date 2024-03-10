@@ -42,5 +42,6 @@ Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->n
 Route::get('/stocks/create', [App\Http\Controllers\StockController::class, 'create'])->name('stocks.create');
 Route::get('/stocks/{id}', [App\Http\Controllers\StockController::class, 'show'])->name('stocks.show');
 Route::post('/stocks', [App\Http\Controllers\StockController::class, 'store'])->name('stocks.store');
-
-Route::get('/repair', [App\Http\Controllers\RepairController::class, 'index'])->name('repair');
+## Technician Routes
+Route::get('/repair', [App\Http\Controllers\RepairController::class, 'index'])->name('repair.index');
+Route::get('/repair/{id}',[App\Http\Controllers\RepairController::class, 'show'])->name('repair.show');
