@@ -1,15 +1,5 @@
 @extends('layouts.app')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Durable Articles</title>
-</head>
-<body style="background-color: #f9ffc2;">
 
-</body>
-</html>
 @section('content')
 <div class="container">
     <a class="btn btn-primary" href="{{ route('stocks.create') }}">Add</a>
