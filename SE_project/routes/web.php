@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DurableController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +30,17 @@ Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 
-Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable');
+## parcel Routes
+Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable.index');
+Route::get('/durable/{id}', [App\Http\Controllers\DurableController::class, 'edit'])->name('durable.edit');
+Route::put('/durable/{id}', [App\Http\Controllers\DurableController::class, 'update'])->name('durable.update');
+Route::delete('/durable/{id}', [App\Http\Controllers\DurableController::class, 'destroy'])->name('durable.destroy');
+Route::get('/material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material.index');
+Route::delete('/material/{id}', [App\Http\Controllers\MaterialController::class, 'destroy'])->name('material.destroy');
+## Stock Routes
+Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->name('stocks.index');
+Route::get('/stocks/create', [App\Http\Controllers\StockController::class, 'create'])->name('stocks.create');
+Route::get('/stocks/{id}', [App\Http\Controllers\StockController::class, 'show'])->name('stocks.show');
+Route::post('/stocks', [App\Http\Controllers\StockController::class, 'store'])->name('stocks.store');
 
 Route::get('/repair', [App\Http\Controllers\RepairController::class, 'index'])->name('repair');
