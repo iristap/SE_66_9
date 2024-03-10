@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #dda0dd;">{{ __('ครุภัณฑ์') }}</div>
+                <div class="card-header" style="background-color: #dda0dd; font-size: 20px;">{{ __('ครุภัณฑ์') }}</div>
 
                 <div class="card-body">
                     <table class="table table-hover">

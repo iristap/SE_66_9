@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FB88B4;">{{ __('แก้ไขครุภัณฑ์') }}</div>
+                <div class="card-header" style="background-color: #FB88B4; font-size: 20px; ">{{ __('แก้ไขครุภัณฑ์') }}</div>
 
                 <div class="card-body">
                     <!-- <div class="my-2">
