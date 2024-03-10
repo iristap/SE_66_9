@@ -70,7 +70,7 @@
                                 <td><?php echo $materialItem->amount ?></td>
                                 <td><?php echo $materialItem->unit ?></td>
                                 <td>
-                                    <a href="#" class='btn btn-outline-warning'>Edit</a>
+                                <a href="{{ route('material.edit',$materialItem->material_id) }}" class='btn btn-outline-warning'>Edit</a>
                                 </td>
                                 <td>
                                     <form id="deleteForm_<?php echo $materialItem->material_id; ?>" method="POST" action="<?php echo route('material.destroy', $materialItem->material_id) ?>" style="display:inline">
