@@ -14,6 +14,7 @@ class Material extends Model
  *
  * @var string
  */
+    public $timestamps = false;
     protected $table = 'material';
     public static function getAll()
     {
