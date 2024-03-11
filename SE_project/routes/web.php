@@ -48,4 +48,6 @@ Route::post('/stocks', [App\Http\Controllers\StockController::class, 'store'])->
 
 ## Technician Routes
 Route::get('/repair', [App\Http\Controllers\RepairController::class, 'index'])->name('repair.index');
+Route::get('/repair/history',[App\Http\Controllers\RepairController::class, 'history'])->name('repair.history');
 Route::get('/repair/{id}',[App\Http\Controllers\RepairController::class, 'show'])->name('repair.show');
+Route::post('/repair/{id}',[App\Http\Controllers\RepairController::class, 'update'])->name('repair.update');

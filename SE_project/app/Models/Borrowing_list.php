@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Borrowing_list extends Model
 {
     use HasFactory;
+    protected $table = 'borrowing_list';
+    protected $primaryKey = 'borrowing_list_id';
     public $timestamps = false;
     protected $fillable = 
     [
@@ -15,4 +17,14 @@ class Borrowing_list extends Model
         'borrowing_id', 
         'durable_articles_id'
     ];
+    
+    public function borrowing()
+    {
+        return $this->belongsTo(Borrowing::class, 'borrowing_id', 'borrowing_id');
+    }
+
+    public function durable()
+    {
+        return $this->belongsTo(Durable::class, 'durable_articles_id', 'durable_articles_id');
+    }
 }

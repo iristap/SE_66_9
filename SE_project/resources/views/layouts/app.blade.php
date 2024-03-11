@@ -87,7 +87,10 @@
                                 <a class="nav-link" href="#">technicianRole</a> 
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('repair.index') }}">{{ __('Repair') }}</a>
+                                    <a class="nav-link" href="{{ route('repair.index') }}">{{ __('รายการซ่อม') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('repair.history') }}">{{ __('ประวัติการซ่อม') }}</a>
                             </li>
                             @endtechnicianRole    
                             
