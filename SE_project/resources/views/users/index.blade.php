@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -48,19 +49,37 @@
             <td>
               <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
               <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-              <form method="POST" action="{{ route('users.destroy', $user->id) }}" style="display:inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+              <a class="btn btn-danger" href="#" onclick="confirmDelete('{{ $user->name }} {{ $user->surname }}', '{{ $user->id }}')">Delete</a>
+              <form id="delete-user-{{ $user->id }}" method="POST" action="{{ route('users.destroy', $user->id) }}" style="display: none;">
+                  @csrf
+                  @method('DELETE')
+              </form>
             </td>
+            
           </tr>
         @endforeach
       </table>
     </div>
+    <div class="d-flex justify-content-center">
+      {!! $data->render('pagination::bootstrap-4') !!}
+    </div>
   </div>
 </div>
-{!! $data->render() !!}
-
-
 @endsection
+
+<script>
+  function confirmDelete(name, id) {
+      Swal.fire({
+          title: 'คุณแน่ใจหรือไม่?',
+          text: 'คุณต้องการลบผู้ใช้ ' + name + ' ใช่หรือไม่?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'ลบข้อมูล',
+          cancelButtonText: 'ยกเลิก'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              document.getElementById('delete-user-' + id).submit();
+          }
+      });
+  }
+</script>

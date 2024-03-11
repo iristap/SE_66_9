@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <a class="btn btn-primary" href="{{ route('stocks.create') }}">Add</a>
+    
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -16,6 +16,10 @@
                     @endif
 
                     <table class="table">
+                        <div class="card-header">
+                            <a class="btn btn-primary" href="{{ route('stocks.create') }}">Add</a>
+                        </div>
+                        
                         <thead>
                             <tr>
                                 <th>id stock</th>
@@ -38,10 +42,18 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="d-flex justify-content-center">
+                    {{ $stocks->links("pagination::bootstrap-4") }}
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-secondary" href="{{ route('material.index') }}">กลับหน้าจัดการวัสดุ</a>
+                </div>
+                
             </div>
+            
         </div>
     </div>
-    <a class="btn btn-secondary" href="{{ route('material.index') }}">Back</a>
+    
 </div>
 
 @endsection

@@ -12,7 +12,7 @@ class StockController extends Controller
     // แสดงรายการสินค้าใน Stock
     public function index()
     {
-        $stocks = Stock::all();
+        $stocks = Stock::paginate(5);
         return view('stocks.index', compact('stocks'));
     }
     
@@ -85,7 +85,11 @@ class StockController extends Controller
                 'material_id' => $material->material_id,
                 'quantity' => $formData["material_id"][$material->name],
             ]);
+
+            $material->amount += $formData["material_id"][$material->name];
+            $material->where('material_id', $material->material_id)->update(['amount' => $material->amount]);
         }
+
     }
 
 
