@@ -31,12 +31,18 @@ class RepairController extends Controller {
         $durable = $repair->durable;
         if ($status === 'ปกติ') {
             $durable->status = 'ว่าง';
+            $repair->delete();
         } else {
             $durable->status = 'ไม่ว่าง';
         }
+        DB::table('repair_list')
+        ->join('durable_articles', 'repair_list.durable_articles_id', '=', 'durable_articles.durable_articles_id')
+        ->join('borrowing_list', 'durable_articles.durable_articles_id', '=', 'borrowing_list.durable_articles_id')
+        ->join('borrowing', 'borrowing_list.borrowing_id', '=', 'borrowing.borrowing_id')
+        ->where('repair_list.no', $no)
+        ->update(['borrowing.status' => $status]);    
         
         $durable->save();
-        $repair->delete();
         return redirect()->route('repair.index');
     }
 
