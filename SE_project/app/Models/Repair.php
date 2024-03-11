@@ -18,5 +18,10 @@ class Repair extends Model{
             'status',
             'detail',
     ];
+    
+    public function durable()
+    {
+        return $this->belongsTo(Durable::class, 'durable_articles_id', 'durable_articles_id');
+    }
 
 }

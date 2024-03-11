@@ -34,9 +34,11 @@
                                 <tr>
                                 <td> {{$repair->no}} </td>
                                 <td> {{$repair->durable_articles_id}} </td>
-                                <td> {{$repair->name}} </td>
+                                <td> {{$repair->durable->name}} </td>
                                 <td> {{$repair->inspector_name}} </td>
-                                <td> {{$repair->status}} </td>
+                                <td>
+                                    <span class="badge rounded-pill bg-warning">{{$repair->status}}</span>
+                                </td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('repair.show',$repair->no) }}">ซ่อม</a>
                                     </td>
