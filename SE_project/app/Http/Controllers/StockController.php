@@ -12,7 +12,7 @@ class StockController extends Controller
     // แสดงรายการสินค้าใน Stock
     public function index()
     {
-        $stocks = Stock::all();
+        $stocks = Stock::paginate(5);
         return view('stocks.index', compact('stocks'));
     }
     

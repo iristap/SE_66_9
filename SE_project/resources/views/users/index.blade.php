@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -58,9 +59,35 @@
         @endforeach
       </table>
     </div>
+    <div class="d-flex justify-content-center">
+      {!! $data->render('pagination::bootstrap-4') !!}
+    </div>
   </div>
 </div>
-{!! $data->render() !!}
-
-
 @endsection
+
+{{-- <style>
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination .page-item {
+    margin: 0 5px;
+  }
+  
+  .pagination .page-link {
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  }
+  
+  .pagination .page-link:hover {
+    z-index: 2;
+    color: #0056b3;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+  }
+  </style> --}}
