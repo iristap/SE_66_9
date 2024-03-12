@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class RepairController extends Controller {
     function index(){
-        $repairs = Repair::with('durable')->get();
+        $repairs = Repair::with('durable')
+        ->where('status', 'ชำรุด')
+        ->get();
         return view('repair.index', compact('repairs'));
     }
 
@@ -31,9 +33,10 @@ class RepairController extends Controller {
         $durable = $repair->durable;
         if ($status === 'ปกติ') {
             $durable->status = 'ว่าง';
-            $repair->delete();
-        } else {
+            $repair->status = $status;
+        }else if($status === 'ไม่สามารถซ่อมได้') {
             $durable->status = 'ไม่ว่าง';
+            $repair->status = $status;
         }
         DB::table('repair_list')
         ->join('durable_articles', 'repair_list.durable_articles_id', '=', 'durable_articles.durable_articles_id')
@@ -43,6 +46,7 @@ class RepairController extends Controller {
         ->update(['borrowing.status' => $status]);    
         
         $durable->save();
+        $repair->save();
         return redirect()->route('repair.index');
     }
 
@@ -51,8 +55,11 @@ class RepairController extends Controller {
         $repairs = DB::table('borrowing_list')
             ->join('durable_articles', 'durable_articles.durable_articles_id', '=', 'borrowing_list.durable_articles_id')
             ->join('borrowing', 'borrowing_list.borrowing_id', '=', 'borrowing.borrowing_id')
-            ->join('repair_list', 'repair_list.durable_articles_id', '=', 'durable_articles.durable_articles_id')
-            ->select('borrowing.status', 'durable_articles.name','durable_articles.durable_articles_code', 'repair_list.inspector_name')
+            ->join('repair_list', function ($join) {
+                $join->on('repair_list.durable_articles_id', '=', 'durable_articles.durable_articles_id')
+                    ->whereColumn('borrowing.status', '=', 'repair_list.status');
+            })
+            ->select('borrowing.status', 'durable_articles.name', 'durable_articles.durable_articles_code', 'repair_list.inspector_name')
             ->get();
         return view('repair.history', compact('repairs'));
     }

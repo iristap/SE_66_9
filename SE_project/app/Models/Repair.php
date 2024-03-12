@@ -11,6 +11,7 @@ class Repair extends Model{
     use HasFactory;
     protected $table = 'repair_list';
     protected $primaryKey = 'no';
+    public $timestamps = false;
     protected $fillable = [
            'no', 
            'durable_articles_id',
