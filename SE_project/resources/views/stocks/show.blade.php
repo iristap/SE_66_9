@@ -19,6 +19,13 @@
                                 <td>{{ $stock->date_stock }}</td>
                             </tr>
                             <tr>
+                            @php
+                                if($stock->stocker == null)
+                                {
+                                    $stock->stocker = new App\Models\User;
+                                    $stock->stocker->name = "ผู้ใช้ถูกลบ";
+                                }
+                            @endphp
                                 <td>คนสต็อก</td>
                                 <td>{{ $stock->stocker->name }}</td>
                             </tr>
