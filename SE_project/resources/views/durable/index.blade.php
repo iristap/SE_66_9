@@ -37,7 +37,8 @@
                                 <td><?php echo $durableItem->durable_articles_id ?></td>
                                 <td><?php echo $durableItem->durable_articles_code ?></td>
                                 <td><?php echo $durableItem->name ?></td>
-                                <td><?php echo $durableItem->status ?></td>
+                                
+                                <td><span class="badge badge-success">{{$durableItem->status}}</span></td>
                                 <td>
                                 <a href="{{ route('durable.edit',$durableItem->durable_articles_id) }}" class='btn btn-outline-warning'>Edit</a>
                                 </td>
