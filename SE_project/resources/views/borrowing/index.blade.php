@@ -7,8 +7,24 @@
     <title>Borrowing</title>
 </head>
 <body style="background-color: #f9ffc2;">
+<script>
+    function validateForm() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var isChecked = false;
 
-</body>
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                isChecked = true;
+            }
+        });
+
+        if (isChecked) {
+            document.getElementById('borrowingForm').submit();
+        } else {
+            alert('กรุณาเลือกอย่างน้อยหนึ่งรายการ');
+        }
+    }
+</script>
 </html>
 @section('content')
 <div class ="container">
@@ -17,7 +33,7 @@
             <div class="card">
                 <div class="card-header" style="background-color: #FF6699;">{{__('การยืม') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('borrowing.confirm') }}">
+                    <form id="borrowingForm" method="POST" action="{{ route('borrowing.confirm') }}">
                         @csrf
                         @method('POST')
                         <table class="table table-hover">
@@ -41,7 +57,7 @@
                             </tbody>
                         </table>
                         <div class="card-footer d-flex flex-row-reverse">
-                            <button type="submit" class="btn btn-outline-success p-2 ml-4">ยืนยัน</button>
+                            <button onclick="validateForm()" type="submit" class="btn btn-outline-success p-2 ml-4">ยืนยัน</button>
                         </div>
                     </form>
                 </div>

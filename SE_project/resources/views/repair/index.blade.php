@@ -30,6 +30,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @if ($repairs->isEmpty())
+                                 <tr>
+                                    <td colspan="6" class="text-center">ไม่มีข้อมูล</td>
+                                </tr>
+                         @else
                             @foreach ($repairs as $repair)
                                 <tr>
                                 <td> {{$repair->no}} </td>
@@ -44,6 +49,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>
