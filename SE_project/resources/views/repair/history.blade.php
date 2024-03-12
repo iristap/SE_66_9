@@ -15,17 +15,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #dda0dd;">{{ __('ประวัติการซ่อม') }}</div>
+                <div class="card-header" style="background-color: #EE82EE;">{{ __('ประวัติการซ่อม') }}</div>
 
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
-                                <th scope="col" class="text-center">ลำดับ</th>
-                                <th scope="col" class="text-center">รหัสครุภัณฑ์</th>
-                                <th scope="col" class="text-center">ครุภัณฑ์</th>
-                                <th scope="col" class="text-center">ผู้ทำการซ่อม</th>
-                                <th scope="col" class="text-center">สถานะ</th>
+                            <tr class="text-center">
+                                <th scope="col">ลำดับ</th>
+                                <th scope="col">รหัสครุภัณฑ์</th>
+                                <th scope="col">ครุภัณฑ์</th>
+                                <th scope="col">ผู้ทำการซ่อม</th>
+                                <th scope="col">สถานะ</th>
                             </tr>
                         </thead>
                         <tbody>

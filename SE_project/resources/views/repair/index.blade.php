@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                             <th scope="col">ลำดับ</th>
                             <th scope="col">รหัสครุภัณฑ์</th>
                             <th scope="col">ครุภัณฑ์</th>
@@ -36,9 +36,9 @@
                                 </tr>
                          @else
                             @foreach ($repairs as $repair)
-                                <tr>
+                                <tr class="text-center"> 
                                 <td> {{$repair->no}} </td>
-                                <td> {{$repair->durable_articles_id}} </td>
+                                <td> {{$repair->durable->durable_articles_code}} </td>
                                 <td> {{$repair->durable->name}} </td>
                                 <td> {{$repair->inspector_name}} </td>
                                 <td>
