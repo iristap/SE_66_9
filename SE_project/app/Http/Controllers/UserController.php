@@ -17,22 +17,29 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+
     public function index(Request $request): View
     {
+        if (!$request->user()->roles()->where('role_id', 1)->exists()) {
+            return view('home');
+        }
         $data = User::with('roles')->latest()->paginate(5);
-
         return view('users.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     public function create(Request $request): View
     {
+        if (!$request->user()->roles()->where('role_id', 1)->exists()) {
+            return view('home');
+        }
         $roles = Role::all(); 
         return view('users.create', compact('roles'));
     }
 
     public function store(Request $request)
 {
+    
     $request->validate([
         'name' => 'required|string|max:255',
         'surname' => 'required|string|max:255',
@@ -59,12 +66,18 @@ class UserController extends Controller
 }
     public function show($id): View
     {
+        if (!auth()->user()->roles()->where('role_id', 1)->exists()) {
+            return view('home');
+        }
         $user = User::with('roles')->find($id); // ดึงข้อมูล user พร้อมกับ roles
         return view('users.show', compact('user'));
     }
 
     public function edit($id): View
     {
+        if (!auth()->user()->roles()->where('role_id', 1)->exists()) {
+            return view('home');
+        }
         $user = User::findOrFail($id);
         $roles = Role::all(); // ดึงข้อมูล role ทั้งหมด
         return view('users.edit', compact('user', 'roles'));
