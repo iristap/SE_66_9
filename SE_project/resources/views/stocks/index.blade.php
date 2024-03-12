@@ -33,6 +33,14 @@
                                 <tr>
                                     <td>{{ $stock->id }}</td>
                                     <td>{{ $stock->date_stock }}</td>
+                                    @php
+                                        if($stock->stocker == null)
+                                        {
+                                            $stock->stocker = new App\Models\User;
+                                            $stock->stocker->name = "ผู้ใช้ถูกลบ";
+                                        }
+                                    @endphp
+                                    
                                     <td>{{ $stock->stocker->name }}</td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('stocks.show',$stock->id) }}">Show</a>
