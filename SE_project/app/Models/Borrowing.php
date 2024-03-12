@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Borrowing extends Model {
     use HasFactory;
+    
     public $timestamps = false;
-
+    protected $table = 'borrowing';
     protected $fillable = [
         'borrowing_id',
         'borrow_date',

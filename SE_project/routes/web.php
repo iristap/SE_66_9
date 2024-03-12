@@ -29,6 +29,10 @@ Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'e
 Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+Route::get('/borrow', [App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowing.index');
+Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingController::class, 'confirm'])->name('borrowing.confirm');
+Route::post('/borrow/store', [App\Http\Controllers\BorrowingController::class, 'store'])->name('borrowing.store');
+
 
 ## parcel Routes
 Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable.index');

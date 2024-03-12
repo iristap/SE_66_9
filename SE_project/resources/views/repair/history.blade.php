@@ -34,7 +34,7 @@
                                 <td scope="row">{{ $index + 1 }}</td>
                                 <td>{{ $repair->durable_articles_code }}</td>
                                 <td>{{ $repair->name }}</td>
-                                <td>{{ $repair->checker_name }}</td>
+                                <td>{{ $repair->inspector_name }}</td>
                                 <td>
                                 @if($repair->status == 'ปกติ')
                                     <span class="badge badge-success">ปกติ</span>

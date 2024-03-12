@@ -51,8 +51,8 @@ class RepairController extends Controller {
         $repairs = DB::table('borrowing_list')
             ->join('durable_articles', 'durable_articles.durable_articles_id', '=', 'borrowing_list.durable_articles_id')
             ->join('borrowing', 'borrowing_list.borrowing_id', '=', 'borrowing.borrowing_id')
-            ->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
-            ->select('borrowing.status', 'durable_articles.name','durable_articles.durable_articles_code', 'checker.name as checker_name')
+            ->join('repair_list', 'repair_list.durable_articles_id', '=', 'durable_articles.durable_articles_id')
+            ->select('borrowing.status', 'durable_articles.name','durable_articles.durable_articles_code', 'repair_list.inspector_name')
             ->get();
         return view('repair.history', compact('repairs'));
     }
