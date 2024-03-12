@@ -11,25 +11,12 @@ class DurableController extends Controller
 {
     function index()
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $durable = Durable::getAll();
         return view('durable.index', compact('durable'));
     }
-    // public function delete(Request $request)
-    // {
-    //     $id = $request->input('id');
-
-    //     // Find the durable item by ID
-    //     $durable = Durable::find($id);
-
-    //     // Check if the durable item exists
-    //     if ($durable) {
-    //         // Delete the durable item
-    //         $durable->delete();
-    //         return redirect()->back()->with('success', 'Durable item deleted successfully.');
-    //     } else {
-    //         return redirect()->back()->with('error', 'Durable item not found.');
-    //     }
-    // }
     public function destroy($durable): RedirectResponse
     {
         Durable::where('durable_articles_id', $durable)->delete();
@@ -37,12 +24,10 @@ class DurableController extends Controller
             ->with('success', 'Deleted successfully');
     }
     public function edit(Request $request, $id){
-        // $durable = Durable::findOrFail($id);
         $durable=\DB::table('durable_articles')->where('durable_articles_id', $id)->first();
-        // $durable->edit($request->all());
-        // \DB::table('durable_articles')->where('durable_articles_id', $id)->edit($request->all());
-        // dd($durable);
-        // return redirect()->route('durable.edit');
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         return view('durable.edit', compact('durable'));
     }
     public function update(Request $request, $id){

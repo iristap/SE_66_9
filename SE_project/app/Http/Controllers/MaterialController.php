@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 class MaterialController extends Controller
 {
     function index(){
-        // $material=DB::table('material')->get();
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $material = Material::getAll();
         return view('material.index', compact('material'));
     }
@@ -20,6 +22,9 @@ class MaterialController extends Controller
             ->with('success', ' Deleted successfully');
     }
     public function edit(Request $request, $id){
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $material=\DB::table('material')->where('material_id', $id)->first();
         return view('material.edit', compact('material'));
     }
