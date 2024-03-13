@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Durable Articles</title>
 </head>
-<body style="background-color: #f9ffc2;">
-
+<!-- <body style="background-color: #f9ffc2;"> -->
+<body>
 </body>
 </html>
 @section('content')

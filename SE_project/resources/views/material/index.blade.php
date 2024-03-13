@@ -32,8 +32,8 @@
     }
     </style>
 </head>
-<body style="background-color: #f9ffc2;">
-
+<!-- <body style="background-color: #f9ffc2;"> -->
+<body>
 </body>
 </html>
 @section('content')
