@@ -63,6 +63,10 @@
                             <li>
                                 <a class="nav-link" href="{{ route('borrowing.index') }}">{{ __('การยืม') }}</a>
                             </li>
+
+                            <li>
+                                <a class="nav-link" href="{{ route('return.index') }}">{{ __('การคืน') }}</a>
+                            </li>
                             @enduserRole
                             
                             
