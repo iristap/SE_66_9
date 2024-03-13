@@ -13,7 +13,7 @@
 @section('content')
 <div class="container" >
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('ครุภัณฑ์') }}</div>
 
@@ -24,7 +24,8 @@
                             <th scope="col">ลำดับ</th>
                             <th scope="col">หมายเลขครุภัณฑ์</th>
                             <th scope="col">ชื่อ</th>
-                            <th scope="col">สถานะ</th>
+                            <th scope="col">สถานะความพร้อมใช้งาน</th>
+                            <th scope="col">สถานะสภาพ</th>
                             <th width="280px">Action</th>
                             </tr>
                         </thead>
@@ -37,7 +38,11 @@
                                 <td><?php echo $durableItem->durable_articles_code ?></td>
                                 <td><?php echo $durableItem->name ?></td>
                                 
-                                <td><span class="badge badge-success">{{$durableItem->status}}</span></td>
+                                <!-- <td><span class="badge badge-success">{{$durableItem->availability_status}}</span></td>
+                                <td><span class="badge badge-success">{{$durableItem->condition_status}}</span></td> -->
+                                <td><span class="badge {{$durableItem->availability_status == 'ว่าง' ? 'badge-success' : 'badge-danger'}}">{{$durableItem->availability_status}}</span></td>
+                                <td><span class="badge {{$durableItem->condition_status == 'ปกติ' ? 'badge-info' : 'badge-warning'}}">{{$durableItem->condition_status}}</span></td>
+
                                 <td>
                                 <a href="{{ route('durable.edit',$durableItem->durable_articles_id) }}" class='btn btn-warning ml-4'>Edit</a>
                                 <a class="btn btn-danger ml-4" href="#" onclick="confirmDelete('{{ $durableItem->name }}', '{{ $durableItem->durable_articles_id }}')">Delete</a>
