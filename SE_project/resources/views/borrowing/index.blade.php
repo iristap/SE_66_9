@@ -14,6 +14,7 @@
                             <a class="btn btn-warning">considering</a><br><br>
 
                             <table class="table table-bordered">
+
                                 <thead>
                                     <tr>
                                         <td>ID</td>
