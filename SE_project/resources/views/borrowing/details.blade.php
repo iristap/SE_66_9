@@ -53,12 +53,8 @@
                                 </tbody>
                             </table>
                             <br>
-                            <a href="{{route('borrowing.approved',$brlItem->borrowing_id)}}" class="btn btn-success">อนุมัติ</a><br>
-                            <?php
-                            echo "<a href='".route('borrowing.approved', ['id' => $brlItem->borrowing_id])."' class='btn btn-success'>อนุมัติ</a>";
-                            echo "<a href='".route('borrowing.not_approved', ['id' => $brlItem->borrowing_id])."' class='btn btn-danger'>ไม่อนุมัติ</a>";
-                            ?>
-
+                            <a href="{{route('borrowing.approved',$brlItem->borrowing_id)}}" class="btn btn-success">อนุมัติ</a>
+                            <a href="{{route('borrowing.not_approved',$brlItem->borrowing_id)}}" class="btn btn-danger">ไม่อนุมัติ</a>
                             <a href='/borrowing'><button class="btn btn-secondary my-2">back</button></a>
 
                         </div>

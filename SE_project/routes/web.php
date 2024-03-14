@@ -53,6 +53,7 @@ Route::get('/borrowing/details/{id}', [App\Http\Controllers\BorrowingController:
 Route::get('/borrowing/approved/{id}', [App\Http\Controllers\BorrowingController::class, 'approved'])->name('borrowing.approved');
 Route::put('/borrowing/approved/update/{id}', [App\Http\Controllers\BorrowingController::class, 'a_update'])->name('borrowing.a_update');
 Route::get('/borrowing/not_approved/{id}', [App\Http\Controllers\BorrowingController::class, 'not_approved'])->name('borrowing.not_approved');
+Route::put('/borrowing/not_approved/update/{id}', [App\Http\Controllers\BorrowingController::class, 'na_update'])->name('borrowing.na_update');
 
 Route::get('/disbursement', [App\Http\Controllers\DisbursementController::class,'index'] )->name('disbursement.index');
 Route::get('/disbursement/considering', [App\Http\Controllers\DisbursementController::class,'considering'] )->name('disbursement.considering');

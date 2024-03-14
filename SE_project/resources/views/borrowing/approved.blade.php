@@ -36,7 +36,7 @@
 
 
                                     <div class="d-flex flex-row-reverse">
-                                        <button class="btn btn-primary p-2 ml-4" type="submit">อัปเดต</button>
+                                        <button class="btn btn-success p-2 ml-4" type="submit">ยืนยันการอนุมัติ</button>
                                         <a href="/borrowing" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
 
 
