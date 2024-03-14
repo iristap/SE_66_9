@@ -47,15 +47,15 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif --}}
-                        @else 
-                            
+                        @else
+
                             @adminRole
                             <li>
                                 <a class="nav-link" href="{{ route('users.index') }}">จัดการผู้ใช้งาน</a>
                             </li>
                             @endadminRole
-                           
-                            
+
+
                             @userRole
                             <li>
                                 <a class="nav-link" href="#">userRole</a>
@@ -64,17 +64,17 @@
                                 <a class="nav-link" href="{{ route('borrowing.index') }}">{{ __('การยืม') }}</a>
                             </li>
 
-                            
+
                             @enduserRole
-                            
-                            
+
+
                             @parcelRole
                             <li>
-                                <a class="nav-link" href="{{ route('borrowing.index') }}">Borrowing</a>
+                                <a class="nav-link" href="{{ route('borrowing.index') }}">การอนุมัติการยืม</a>
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('disbursement.index') }}">Disbursement</a>
+                                <a class="nav-link" href="{{ route('disbursement.index') }}">การอนุมัติการเบิก</a>
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             </li>
                             <li>
@@ -92,15 +92,15 @@
                             </li>
                             <li>
                                 <a class="nav-link" href="{{ route('material.index') }}">{{ __('จัดการวัสดุ') }}</a>
-                                
+
                                 {{-- (เดี๋ยวไปปุ่มในหน้าจัดการวัสดุ) --}}
                             </li>
                             @endparcelRole
-                            
-                            
+
+
                             @technicianRole
                             <li>
-                                <a class="nav-link" href="#">technicianRole</a> 
+                                <a class="nav-link" href="#">technicianRole</a>
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             <li class="nav-item">
                                     <a class="nav-link" href="{{ route('repair.index') }}">{{ __('รายการซ่อม') }}</a>
@@ -108,8 +108,8 @@
                             <li class="nav-item">
                                     <a class="nav-link" href="{{ route('repair.history') }}">{{ __('ประวัติการซ่อม') }}</a>
                             </li>
-                            @endtechnicianRole    
-                            
+                            @endtechnicianRole
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
