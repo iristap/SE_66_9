@@ -14,9 +14,10 @@
                             <a class="btn btn-warning">considering</a><br><br>
 
                             <table class="table table-bordered">
+
                                 <thead>
                                     <tr>
-                                        <td>ID</td>
+                                        <td>ID love you jubjub</td>
                                         <td>Borrower</td>
                                         <td>Borrowing Date</td>
                                         <td>Due Date</td>
