@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Disbursement details</h2>
+                            <br><h2>การอนุมัติการเบิกอุปกรณ์</h2>
                         </div>
 
 
@@ -53,14 +53,14 @@
                             <br>วันที่อนุมัติ
                             <input type="date">
 
-                            <br>หมายเหตุกรณีไม่อนุมัติ
+                            หมายเหตุกรณีไม่อนุมัติ
                             <input type="text"><br>
 
                             <br>
-                            <br><button class="btn btn-success my-2">approved</button>
-                            <button class="btn btn-danger my-2">not approved</button>
+                            <br><button class="btn btn-success my-2">อนุมัติ</button>
+                            <button class="btn btn-danger my-2">ไม่อนุมัติ</button>
 
-                            <a href='/disbursement/considering'><button class='btn btn-secondary my-2'>back</button></a>
+                            <a href='/disbursement/considering'><button class='btn btn-secondary my-2'>กลับ</button></a>
 
                         </div>
                     </div>

@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Disbursement list</h2>
+                            <br><h2>การอนุมัติการเบิกอุปกรณ์</h2>
                         </div>
 
                         <div class="pull-right ">
@@ -20,7 +20,7 @@
                                         <td>ผู้ขอเบิก</td>
                                         <td>วันที่ขอเบิก</td>
                                         <td>พิจารณา</td>
-                                        <td>see the details</td>
+                                        <td>รายละเอียด</td>
                                     </tr>
                                 </thead>
 
@@ -31,7 +31,7 @@
                                     <td>{$d->uname}</td>
                                     <td>{$d->date_disbursement}</td>
                                     <td>{$d->status}</td>
-                                    <td><a href='".route('disbursement.considered_details', ['id' => $d->disbursement_id])."' class='btn btn-secondary'>details</a></td>
+                                    <td><a href='".route('disbursement.considered_details', ['id' => $d->disbursement_id])."' class='btn btn-secondary'>ดูรายละเอียด</a></td>
                                 </tr>";
                                 }
 

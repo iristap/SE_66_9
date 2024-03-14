@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Disbursement details</h2>
+                            <br><h2>การอนุมัติการเบิกอุปกรณ์</h2>
                         </div>
                         <div>
                             <?php
@@ -68,7 +68,8 @@
 
                                 <?php
                                 if ($dbmUser->status == 'ไม่อนุมัติ') {
-                                    echo "<br>หมายเหตุกรณีไม่อนุมัติ";
+                                    echo "หมายเหตุกรณีไม่อนุมัติ: ";
+                                    echo "{$dbmUser->status}";
                                 }
                                 ?>
 
@@ -76,13 +77,7 @@
 
                                 <br>
                                 <br>
-                                <?php
-                                if ($dbmUser->status == 'อนุมัติแล้ว') {
-                                    echo "<a href='/disbursement/considered'><button class='btn btn-secondary my-2'>back</button></a>";
-                                } else {
-                                    echo "<a href='/disbursement/considered'><button class='btn btn-secondary my-2'>back</button></a>";
-                                }
-                                ?>
+                                <a href='/disbursement/considered'><button class='btn btn-secondary my-2'>กลับ</button></a>
 
                             </div>
                         </div>
