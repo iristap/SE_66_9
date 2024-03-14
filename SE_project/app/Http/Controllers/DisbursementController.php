@@ -55,6 +55,61 @@ class DisbursementController extends Controller
         return view('disbursement.considering_details', compact('dbmItem','dbmId','dbmUser','dbmMat'));
     }
 
+    public function approved(Request $request): View
+    {
+        $disbursement_id = $request->id; // รับ borrowing_id จาก request
+        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
+        $dbm = Disbursement::where('disbursement_id', $disbursement_id)->first();
+
+        return view('disbursement.approved', compact('dbm','disbursement_id'));
+    }
+
+    public function a_update(Request $request, $id){
+        $request->validate(
+            [
+                'date_approved'=>'required'
+            ],
+            [
+                'date_approved.required'=>'กรุณาใส่วันที่อนุมัติ'
+            ]
+        );
+        $data=[
+            'date_approved'=>$request->date_approved,
+            'status'=>$request->status
+        ];
+        DB::table('disbursement')->where('disbursement_id', $id)->update($data);
+        return redirect('/disbursement/considering');
+    }
+
+    public function not_approved(Request $request): View
+    {
+        $disbursement_id = $request->id; // รับ borrowing_id จาก request
+        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
+        $dbm = Disbursement::where('disbursement_id', $disbursement_id)->first();
+
+        return view('disbursement.not_approved', compact('dbm','disbursement_id'));
+    }
+
+    public function na_update(Request $request, $id){
+        $request->validate(
+            [
+                'date_approved'=>'required',
+                'status'=>'required'
+            ],
+            [
+                'date_approved.required'=>'กรุณาใส่วันที่ไพิจารณาม่อนุมัติ',
+                'status.required'=>'กรุณาใส่หมายเหตุการไม่อนุมัติ'
+            ]
+        );
+        $data=[
+            'date_approved'=>$request->date_approved,
+            'status'=>$request->status,
+            'note_approved'=>$request->note_approved
+        ];
+        DB::table('disbursement')->where('disbursement_id', $id)->update($data);
+        return redirect('/disbursement/considering');
+    }
+
     public function considered_details(Request $request): View
     {
         $dbmId = $request->id; // รับ borrowing_id จาก request

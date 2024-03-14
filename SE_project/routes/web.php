@@ -58,6 +58,10 @@ Route::put('/borrowing/not_approved/update/{id}', [App\Http\Controllers\Borrowin
 Route::get('/disbursement', [App\Http\Controllers\DisbursementController::class,'index'] )->name('disbursement.index');
 Route::get('/disbursement/considering', [App\Http\Controllers\DisbursementController::class,'considering'] )->name('disbursement.considering');
 Route::get('/disbursement/considering/details/{id}', [App\Http\Controllers\DisbursementController::class,'considering_details'] )->name('disbursement.considering_details');
+Route::get('/disbursement/considering/details/approved/{id}', [App\Http\Controllers\DisbursementController::class,'approved'] )->name('disbursement.approved');
+Route::put('/disbursement/considering/details/approved/update/{id}', [App\Http\Controllers\DisbursementController::class,'a_update'] )->name('disbursement.a_update');
+Route::get('/disbursement/considering/details/not_approved/{id}', [App\Http\Controllers\DisbursementController::class,'not_approved'] )->name('disbursement.not_approved');
+Route::put('/disbursement/considering/details/not_approved/update/{id}', [App\Http\Controllers\DisbursementController::class,'na_update'] )->name('disbursement.na_update');
 Route::get('/disbursement/considered', [App\Http\Controllers\DisbursementController::class,'considered'] )->name('disbursement.considered');
 Route::get('/disbursement/considered/details/{id}', [App\Http\Controllers\DisbursementController::class,'considered_details'] )->name('disbursement.considered_details');
 

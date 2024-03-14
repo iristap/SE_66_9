@@ -9,11 +9,9 @@
                         <div class="pull-left ">
                             <br><h2>การอนุมัติการเบิกอุปกรณ์</h2>
                         </div>
-
-
                         <?php
 
-                        if ($dbmItem) {
+                        if ($dbmUser) {
                             echo "ID การยืม: {$dbmUser->disbursement_id}<br>";
                             echo "ID ผู้ขอยืมครุภัณฑ์: {$dbmUser->user_id}<br>";
                             echo "ชื่อผู้ขอยืมครุภัณฑ์: {$dbmUser->users_name}<br>";
@@ -46,20 +44,10 @@
                                     }
                                     ?>
                                 </tbody>
-
                             </table>
-
-
-                            <br>วันที่อนุมัติ
-                            <input type="date">
-
-                            หมายเหตุกรณีไม่อนุมัติ
-                            <input type="text"><br>
-
                             <br>
-                            <br><button class="btn btn-success my-2">อนุมัติ</button>
-                            <button class="btn btn-danger my-2">ไม่อนุมัติ</button>
-
+                            <a href="{{route('disbursement.approved',$dbmUser->disbursement_id)}}" class="btn btn-success">อนุมัติ</a>
+                            <a href="{{route('disbursement.not_approved',$dbmUser->disbursement_id)}}" class="btn btn-danger">ไม่อนุมัติ</a>
                             <a href='/disbursement/considering'><button class='btn btn-secondary my-2'>กลับ</button></a>
 
                         </div>

@@ -60,24 +60,8 @@
                                         }
                                         ?>
                                     </tbody>
-
                                 </table>
-
-                                <br>วันที่อนุมัติ
-                                <input type="date">
-
-                                <?php
-                                if ($dbmUser->status == 'ไม่อนุมัติ') {
-                                    echo "หมายเหตุกรณีไม่อนุมัติ: ";
-                                    echo "{$dbmUser->status}";
-                                }
-                                ?>
-
-
-
-                                <br>
-                                <br>
-                                <a href='/disbursement/considered'><button class='btn btn-secondary my-2'>กลับ</button></a>
+                                <br><br><a href='/disbursement/considered'><button class='btn btn-secondary my-2'>กลับ</button></a>
 
                             </div>
                         </div>
