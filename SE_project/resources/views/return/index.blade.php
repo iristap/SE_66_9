@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Return</title>
 </head>
-<body style="background-color: #f9ffc2;">
+<body style="background-color: #FFFFFF;">
 
 </body>
 </html>
@@ -46,7 +46,7 @@
                             <td>{{ optional($return->borrowing->sender)->name }}</td>
                             <td>{{ optional($return->borrowing->approver)->name }}</td>
                             <td>
-                                <span class="badge badge-danger">{{ $return->durable->status }}</span>
+                                <span class="badge badge-danger">{{ $return->durable->availability_status }}</span>
                             </td>
                             <td>
                                 <a class="btn btn-info" href="{{ route('return.show', ['id' => $return->borrowing_list_id]) }}">คืน</a>
