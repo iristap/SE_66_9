@@ -17,7 +17,7 @@
 
                                 <thead>
                                     <tr>
-                                        <td>ID love you jubjub</td>
+                                        <td>ID love you jubjub Wowwwwwwwwwwwwww</td>
                                         <td>Borrower</td>
                                         <td>Borrowing Date</td>
                                         <td>Due Date</td>
