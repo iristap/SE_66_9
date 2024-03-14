@@ -29,9 +29,9 @@ Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'e
 Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-Route::get('/borrow', [App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowing.index');
-Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingController::class, 'confirm'])->name('borrowing.confirm');
-Route::post('/borrow/store', [App\Http\Controllers\BorrowingController::class, 'store'])->name('borrowing.store');
+// Route::get('/borrow', [App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowing.index');
+// Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingController::class, 'confirm'])->name('borrowing.confirm');
+// Route::post('/borrow/store', [App\Http\Controllers\BorrowingController::class, 'store'])->name('borrowing.store');
 
 
 ## parcel Routes
@@ -43,6 +43,17 @@ Route::get('/material', [App\Http\Controllers\MaterialController::class, 'index'
 Route::get('/material/{id}', [App\Http\Controllers\MaterialController::class, 'edit'])->name('material.edit');
 Route::put('/material/{id}', [App\Http\Controllers\MaterialController::class, 'update'])->name('material.update');
 Route::delete('/material/{id}', [App\Http\Controllers\MaterialController::class, 'destroy'])->name('material.destroy');
+
+
+Route::get('/borrowing', [App\Http\Controllers\BorrowingController::class,'index'] )->name('borrowing.index');
+Route::get('/borrowing/approved/{id}', [App\Http\Controllers\BorrowingController::class, 'approved'])->name('borrowing.approved');
+Route::get('/borrowing/not_approved/{id}', [App\Http\Controllers\BorrowingController::class, 'not_approved'])->name('borrowing.not_approved');
+
+Route::get('/disbursement', [App\Http\Controllers\DisbursementController::class,'index'] )->name('disbursement.index');
+Route::get('/disbursement/considering', [App\Http\Controllers\DisbursementController::class,'considering'] )->name('disbursement.considering');
+Route::get('/disbursement/considering/details/{id}', [App\Http\Controllers\DisbursementController::class,'considering_details'] )->name('disbursement.considering_details');
+Route::get('/disbursement/considered', [App\Http\Controllers\DisbursementController::class,'considered'] )->name('disbursement.considered');
+Route::get('/disbursement/considered/details/{id}', [App\Http\Controllers\DisbursementController::class,'considered_details'] )->name('disbursement.considered_details');
 
 ## Stock Routes
 Route::get('/stocks', [App\Http\Controllers\StockController::class, 'index'])->name('stocks.index');
