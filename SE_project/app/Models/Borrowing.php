@@ -73,11 +73,12 @@ class Borrowing extends Model {
 
     }
 
-    public static function getApper($borrowing_id) {
+    public static function getApper($borrowing_id){
+
         return $br = DB::table('borrowing')
-            ->select('borrowing.borrowing_id as bid', 'borrowing.id_approver as apper')
-            ->where('borrowing.borrowing_id', $borrowing_id)
-            ->get();
+    ->select('borrowing.borrowing_id as bid','borrowing.id_approver as apper')
+    ->where('borrowing.borrowing_id', $borrowing_id)
+    ->get();
     }
 
 

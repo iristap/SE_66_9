@@ -11,7 +11,7 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning" href="/disbursement/considering">รอการอนุมัติ</a>
+                            <a class="btn btn-warning" href="/disbursement/considering">กำลังพิจารณา</a>
                             <a class="btn btn-secondary" href="/disbursement/considered">พิจารณาแล้ว</a><br><br>
 
 

@@ -81,18 +81,26 @@ class BorrowingController extends Controller
     {
         $borrowingId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
-        $br = Borrowing::getID($borrowingId);
-        $apper = Borrowing::getApper($borrowingId);
+        $br = Borrowing::where('borrowing_id', $borrowingId)->first();
 
-        return view('borrowing.approved', compact('br','borrowingId','apper'));
+        return view('borrowing.approved', compact('br','borrowingId'));
 
     }
-    public function update(Request $request, $id){
+    public function a_update(Request $request, $id){
+            $request->validate(
+                [
+                    'id_approver'=>'required|max:5',
+                    'approved_date'=>'required'
+                ],
+                [
+                    'id_approver'=>'กรุณาใส่ ID ผู้อนุมัติ',
+                    'approved_date.required'=>'กรุณากรอกวันที่อนุมัติ'
+                ]
+            );
             $data=[
-                'approver'=>$request->id_approver,
+                'id_approver'=>$request->id_approver,
                 'approved_date'=>$request->approved_date,
-                'status'=>$request->status,
-                'note'=>$request->not_approved_note
+                'status'=>$request->status
             ];
             DB::table('borrowing')->where('borrowing_id', $id)->update($data);
             return redirect('/borrowing');
