@@ -72,6 +72,14 @@
                             
                             @parcelRole
                             <li>
+                                <a class="nav-link" href="{{ route('borrowing.index') }}">Borrowing</a>
+                                {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('disbursement.index') }}">Disbursement</a>
+                                {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
+                            </li>
+                            <li>
                                 <!-- <a class="nav-link" href="#">parcelRole</a>  -->
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                                 <a class="nav-link" href="{{ route('durable.index') }}">{{ __('จัดการครุภัณฑ์') }}</a>

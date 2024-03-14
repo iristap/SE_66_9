@@ -1,29 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Durable;
-use App\Models\Borrowing;
-use App\Models\Borrowing_list;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Auth;
+use App\Models\Durable;
+use App\Models\User;
+use DB;
+
+use Illuminate\Support\Arr;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use App\Models\Borrowing_list;
+use App\Models\Borrowing;
+use App\Models\Users_br;
 
 class BorrowingController extends Controller
 {
-    public function index()
+    public function index(Request $request): View
     {
-        $durables = Durable::where('status', 'ว่าง')->get();;
-        return view('borrowing.index', compact('durables'));
+        $borrowing =  Borrowing::getAll();
+
+        return view('borrowing.index',compact('borrowing'));
     }
-    public function confirm(Request $request)
-    {
-        $request->validate([
-            'durable_articles_id' => 'required|array|min:1',
-        ],);
-        $user = Auth::user();
-        $selectedDurableIds = $request->input('durable_articles_id');
-        $selectedDurables = Durable::whereIn('durable_articles_id', $selectedDurableIds)->get();
-        return view('borrowing.confirm', compact('selectedDurables','user'));
-    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -48,4 +53,43 @@ class BorrowingController extends Controller
         }
         return redirect()->route('borrowing.index')->with('success', 'Borrowing successful!');
     }
+
+    public function confirm(Request $request)
+    {
+        $request->validate([
+            'durable_articles_id' => 'required|array|min:1',
+        ],);
+        $user = Auth::user();
+        $selectedDurableIds = $request->input('durable_articles_id');
+        $selectedDurables = Durable::whereIn('durable_articles_id', $selectedDurableIds)->get();
+        return view('borrowing.confirm', compact('selectedDurables','user'));
+    }
+
+    public function approved(Request $request): View
+    {
+        $borrowingId = $request->id; // รับ borrowing_id จาก request
+        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
+        $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
+        $br_user = Borrowing_list::getUserName($borrowingId);
+        $br_da = Borrowing_list::getDurable($borrowingId);
+
+        return view('borrowing.approved', compact('brlItem','br_user','br_da'));
+
+    }
+
+    public function not_approved(Request $request): View
+    {
+        $borrowingId = $request->id; // รับ borrowing_id จาก request
+        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
+        $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
+        $br_user = Borrowing_list::getUserName($borrowingId);
+        $br_da = Borrowing_list::getDurable($borrowingId);
+
+        return view('borrowing.not_approved', compact('brlItem','br_user','br_da'));
+
+    }
+
+
+
+
 }
