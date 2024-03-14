@@ -32,7 +32,17 @@ class Borrowing extends Model {
     ];
     public function sender()
     {
-        return $this->belongsTo(User::class, 'id_sender', 'id');
+        return $this->belongsTo(User::class, 'id_sender','id');
+    }
+
+    public function approver()
+    {
+        return $this->belongsTo(User::class, 'id_approver', 'id');
+    }
+
+    public function checker()
+    {
+        return $this->belongsTo(User::class, 'id_checker', 'id');
     }
 
     public function borrowingLists()

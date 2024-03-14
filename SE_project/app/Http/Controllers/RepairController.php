@@ -23,6 +23,7 @@ class RepairController extends Controller {
             ->where('repair_list.no', $no)
             ->select('repair_list.no','borrowing.*', 'durable_articles.*', 'sender.name as sender_name')
             ->first();
+        
         return view('repair.show', compact('repair'));
     }
 

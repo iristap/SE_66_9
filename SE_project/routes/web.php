@@ -29,6 +29,9 @@ Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'e
 Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+Route::get('/return', [App\Http\Controllers\ReturnController::class, 'index'])->name('return.index');
+Route::get('/return/{id}', [App\Http\Controllers\ReturnController::class, 'show'])->name('return.show');
+Route::put('/return/{id}', [App\Http\Controllers\ReturnController::class, 'update'])->name('return.update');
 // Route::get('/borrow', [App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowing.index');
 // Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingController::class, 'confirm'])->name('borrowing.confirm');
 // Route::post('/borrow/store', [App\Http\Controllers\BorrowingController::class, 'store'])->name('borrowing.store');
@@ -65,4 +68,4 @@ Route::post('/stocks', [App\Http\Controllers\StockController::class, 'store'])->
 Route::get('/repair', [App\Http\Controllers\RepairController::class, 'index'])->name('repair.index');
 Route::get('/repair/history',[App\Http\Controllers\RepairController::class, 'history'])->name('repair.history');
 Route::get('/repair/{id}',[App\Http\Controllers\RepairController::class, 'show'])->name('repair.show');
-Route::post('/repair/{id}',[App\Http\Controllers\RepairController::class, 'update'])->name('repair.update');
+Route::put('/repair/{id}',[App\Http\Controllers\RepairController::class, 'update'])->name('repair.update');
