@@ -64,9 +64,7 @@
                                 <a class="nav-link" href="{{ route('borrowing.index') }}">{{ __('การยืม') }}</a>
                             </li>
 
-                            <li>
-                                <a class="nav-link" href="{{ route('return.index') }}">{{ __('การคืน') }}</a>
-                            </li>
+                            
                             @enduserRole
                             
                             
@@ -78,6 +76,9 @@
                             <li>
                                 <a class="nav-link" href="{{ route('disbursement.index') }}">Disbursement</a>
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('return.index') }}">{{ __('การคืน') }}</a>
                             </li>
                             <li>
                                 <!-- <a class="nav-link" href="#">parcelRole</a>  -->
