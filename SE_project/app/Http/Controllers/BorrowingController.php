@@ -65,6 +65,18 @@ class BorrowingController extends Controller
         return view('borrowing.confirm', compact('selectedDurables','user'));
     }
 
+    public function details(Request $request): View
+    {
+        $borrowingId = $request->id; // รับ borrowing_id จาก request
+        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
+        $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
+        $br_user = Borrowing_list::getUserName($borrowingId);
+        $br_da = Borrowing_list::getDurable($borrowingId);
+
+        return view('borrowing.details', compact('brlItem','br_user','br_da'));
+
+    }
+
     public function approved(Request $request): View
     {
         $borrowingId = $request->id; // รับ borrowing_id จาก request

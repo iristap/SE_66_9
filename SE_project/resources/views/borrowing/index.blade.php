@@ -35,8 +35,7 @@
                                     <td>{$brItem->users_name}</td>
                                     <td>{$brItem->borrow_date}</td>
                                     <td>{$dueDate}</td>
-                                    <td><a href='".route('borrowing.approved', ['id' => $brItem->borrowing_id])."' class='btn btn-success'>approved</a>
-                                    <a href='".route('borrowing.not_approved', ['id' => $brItem->borrowing_id])."' class='btn btn-danger'>not approved</a></td>
+                                    <td><a href='".route('borrowing.details', ['id' => $brItem->borrowing_id])."' class='btn btn-secondary'>ดูรายละเอียด</a></td>
                                 </tr>";
                                 }
 
