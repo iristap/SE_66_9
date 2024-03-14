@@ -81,24 +81,31 @@ class BorrowingController extends Controller
     {
         $borrowingId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
-        $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
-        $br_user = Borrowing_list::getUserName($borrowingId);
-        $br_da = Borrowing_list::getDurable($borrowingId);
+        $br = Borrowing::getID($borrowingId);
+        $apper = Borrowing::getApper($borrowingId);
 
-        return view('borrowing.approved', compact('brlItem','br_user','br_da'));
+        return view('borrowing.approved', compact('br','borrowingId','apper'));
 
+    }
+    public function update(Request $request, $id){
+            $data=[
+                'approver'=>$request->id_approver,
+                'approved_date'=>$request->approved_date,
+                'status'=>$request->status,
+                'note'=>$request->not_approved_note
+            ];
+            DB::table('borrowing')->where('borrowing_id', $id)->update($data);
+            return redirect('/borrowing');
     }
 
     public function not_approved(Request $request): View
     {
         $borrowingId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
-        $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
-        $br_user = Borrowing_list::getUserName($borrowingId);
-        $br_da = Borrowing_list::getDurable($borrowingId);
+        $br = Borrowing::getID($borrowingId);
+        $apper = Borrowing::getApper($borrowingId);
 
-        return view('borrowing.not_approved', compact('brlItem','br_user','br_da'));
-
+        return view('borrowing.not_approved', compact('br','borrowingId','apper'));
     }
 
 

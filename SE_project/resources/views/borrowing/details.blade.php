@@ -52,9 +52,12 @@
                                     ?>
                                 </tbody>
                             </table>
+                            <br>
+                            <?php
+                            echo "<a href='".route('borrowing.approved', ['id' => $brlItem->borrowing_id])."' class='btn btn-success'>อนุมัติ</a>";
+                            echo "<a href='".route('borrowing.not_approved', ['id' => $brlItem->borrowing_id])."' class='btn btn-danger'>ไม่อนุมัติ</a>";
+                            ?>
 
-                            <br><button class="btn btn-success my-2">อนุมัติ</button>
-                            <button class="btn btn-danger my-2">ไม่อนุมัติ</button>
                             <a href='/borrowing'><button class="btn btn-secondary my-2">back</button></a>
 
                         </div>

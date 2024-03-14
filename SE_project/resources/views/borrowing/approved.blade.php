@@ -7,55 +7,34 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Approved consider</h2>
+                            <br>
+                            <h2>พิจารณาการยืมครุภัณฑ์</h2>
+                            <h4>อนุมัติการยืม</h4>
                         </div>
 
                         <div class="pull-right ">
-                            <?php
-                            if ($brlItem) {
-                                // สร้างวัตถุ DateTime จาก borrow_date
-                                $borrowDate = new DateTime($br_user->borrow_date);
-                                // เพิ่ม 14 วันให้กับ borrow_date
-                                $dueDate = $borrowDate->add(new DateInterval('P14D'))->format('Y-m-d');
-
-                                echo "ID การยืม: {$brlItem->borrowing_id}<br>";
-                                echo "ID ผู้ขอยืมครุภัณฑ์: {$br_user->users_id}<br>";
-                                echo "ชื่อผู้ขอยืมครุภัณฑ์: {$br_user->users_name}<br>";
-                                echo "วันที่ทำรายการ: {$br_user->borrow_date}<br>";
-                                echo "วันกำหนดคืน: {$dueDate}<br>";
-                                echo "หมายเหตุการยืมครุภัณฑ์: {$br_user->borrowing_note}<br>";
-                                echo "สถานะการทำรายการ: {$br_user->status}<br>";
+                            <div class="card-body">
+                                <?php
+                                var_dump($br);
+                                ?>
+                                <form method="POST" action="{{ route('borrowing.update', $borrowingId) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class=form-group>
+                                        <label class="col-md-4 col-form-label text-md">ผู้อนุมัติ</label>
+                                        <input class="col-md-4 col-form-label text-md" type="text" name="approver"
+                                            value="{{ $apper ? $apper->apper : '' }}">
+                                    </div>
 
 
-                            } else {
-                                echo 'ไม่พบข้อมูลการยืมที่มี ID นี้';
-                            }
-                            ?>
 
-                            <br>
-                            <h4>รายการยืมครุภัณฑ์</h4>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>name</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach ($br_da as $b) {
-                                        echo '<tr>';
-                                        echo "<td>{$b->da_id}</td>";
-                                        echo "<td>{$b->da_name}</td>";
-                                        echo '</tr>';
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                                    <div class="d-flex flex-row-reverse">
+                                        <a href="/borrowing" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
+                                        <button class="btn btn-primary p-2 ml-4" type="submit">อัปเดต</button>
 
-                            <br><button class="btn btn-success my-2">approved</button>
-                            <a href='/borrowing'><button class="btn btn-secondary my-2">back</button></a>
-
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
