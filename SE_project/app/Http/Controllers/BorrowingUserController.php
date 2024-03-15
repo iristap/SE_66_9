@@ -67,4 +67,9 @@ class BorrowingUserController extends Controller
         $borrowings = Borrowing::where('id_sender', $user->id)->where('status','พิจารณาแล้ว')->get();
         return view('borrowing.history_considered',compact('user','borrowings'));
     }
+
+    public function detail(Request $request)
+    {
+        return view('borrowing.history_detail');
+    }
 }
