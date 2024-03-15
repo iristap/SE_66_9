@@ -151,10 +151,15 @@ class StockController extends Controller
         return redirect()->route('stocks.index')->with('success', 'Stock updated successfully.');
     }
 
-    // public function destroy($id)
-    // {
-    //     $stock = Stock::findOrFail($id);
-    //     $stock->delete();
-    //     return redirect()->route('stocks.index')->with('success', 'Stock deleted successfully.');
-    // }
+    public function destroy($id)
+    {
+        $stock = Stock::findOrFail($id);
+        foreach ($stock->stockLists as $stockList) {
+            $material = $stockList->material;
+            $material->amount -= $stockList->quantity;
+            $material->where('material_id', $material->material_id)->update(['amount' => $material->amount]);
+        }
+        $stock->delete();
+        return redirect()->route('stocks.index')->with('success', 'Stock deleted successfully.');
+    }
 }

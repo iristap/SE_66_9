@@ -45,11 +45,11 @@
                                     <td>
                                         <a class="btn btn-info" href="{{ route('stocks.show',$stock->id) }}">Show</a>
                                         <a class="btn btn-primary" href="{{ route('stocks.edit',$stock->id) }}">Edit</a>
-                                            {{-- <form action="{{ route('stocks.destroy', $stock->id) }}" method="POST">
+                                            <form action="{{ route('stocks.destroy', $stock->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="sub   mit" class="btn btn-danger">Delete</button>
-                                            </form> --}}
+                                            </form>
                                     </td>
                                 </tr>
                             @endforeach
