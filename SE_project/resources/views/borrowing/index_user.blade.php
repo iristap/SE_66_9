@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrowing</title>
 </head>
-<body style="background-color: #f9ffc2;">
+<body>
 <script>
     function validateForm() {
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');

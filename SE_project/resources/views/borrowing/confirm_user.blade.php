@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrowing Details</title>
 </head>
-<body style="background-color: #f9ffc2;">
+<body>
 </body>
 </body>
 </html>
@@ -15,12 +15,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FB88B4;">Borrowing Detail</div>
+                <div class="card-header">การยืมครุภัณฑ์</div>
                 <div>
                 <form method="POST" action="{{ route('borrowing.store_user') }}">
                 @csrf
                 @method('POST')
-                    <h1 class="col">การยืมครุภัณฑ์</h1>
+                    <br>
                     <p class="col">ผู้ขอเบิก: {{ $user->name }} </p>
                     <p class="col">วันที่ยืม: {{ date('Y-m-d') }}</p>
                     @foreach($selectedDurables as $durable)
