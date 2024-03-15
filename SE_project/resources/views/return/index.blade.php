@@ -37,9 +37,9 @@
                                     <td colspan="9" class="text-center">ไม่มีข้อมูล</td>
                                 </tr>
                          @else
-                        @foreach($returns as $return)
+                        @foreach($returns as $index => $return)
                         <tr class="text-center">
-                            <td>{{ $return->borrowing_list_id }}</td> 
+                             <td scope="row">{{ $index + 1 }}</td>
                             <td>{{ $return->borrowing->borrow_date }}</td>
                             <td>{{ $return->borrowing->due_date }}</td>
                             <td>{{ $return->borrowing->return_date }}</td>

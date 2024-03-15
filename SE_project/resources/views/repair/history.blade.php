@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repair</title>
 </head>
-<body style="background-color: #f9ffc2;">
+<body style="background-color: #FFFFFF;">
 
 </body>
 </html>
@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #EE82EE;">{{ __('ประวัติการซ่อม') }}</div>
+                <div class="card-header" style="background-color: #EEE8AA;">{{ __('ประวัติการซ่อม') }}</div>
 
                 <div class="card-body">
                     <table class="table table-hover">

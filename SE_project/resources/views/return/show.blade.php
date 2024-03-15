@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Return Detail</title>
 </head>
-<body style="background-color: #f9ffc2;">
+<body style="background-color: #FFFFFF;">
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const statusSelect = document.getElementById('statusSelect');

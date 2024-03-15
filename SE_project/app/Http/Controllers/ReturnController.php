@@ -35,6 +35,11 @@ class ReturnController extends Controller {
         $durable = $borrowingList->durable;
         $status = $request->input('status');
         if($status === 'ปกติ'){
+            foreach ($durable->borrowingList as $borrowingList) {
+                $borrowing = $borrowingList->borrowing;
+                $borrowing->return_date= date('Y-m-d');
+                $borrowing->save();
+            }
             $durable->availability_status = 'ว่าง';
             $durable->save();
             DB::table('borrowing_list')
@@ -42,7 +47,13 @@ class ReturnController extends Controller {
             ->where('borrowing_list.borrowing_list_id', $id)
             ->delete();
         } else if($status === 'ชำรุด'){
-            $borrowing->status=$status;
+            foreach ($durable->borrowingList as $borrowingList) {
+                $borrowing = $borrowingList->borrowing;
+                $borrowing->status = $status;
+                $borrowing->return_date= date('Y-m-d');
+                $borrowing->save();
+            }
+            $durable->availability_status = 'ไม่ว่าง';
             $damagedDurable = new Repair();
             $damagedDurable->durable_articles_id = $durable->durable_articles_id;
             $damagedDurable->durable_articles_name = $durable->name;
@@ -51,6 +62,12 @@ class ReturnController extends Controller {
             $damagedDurable->detail = $request->input('detail');
             $damagedDurable->save();
         } else if($status === 'หาย'){
+            foreach ($durable->borrowingList as $borrowingList) {
+                $borrowing = $borrowingList->borrowing;
+                $borrowing->status = $status;
+                $borrowing->return_date= date('Y-m-d');
+                $borrowing->save();
+            }
             $durable->availability_status = 'ไม่ว่าง';
             $durable->condition_status = 'หาย';
             $durable->save();
