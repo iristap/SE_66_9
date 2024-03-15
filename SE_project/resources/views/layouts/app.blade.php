@@ -66,6 +66,12 @@
                             <li>
                                 <a class="nav-link" href="{{ route('borrowing.index_history') }}">{{ __('ประวัติยืมครุภัณฑ์') }}</a>
                             </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('withdraw.withdraw') }}">การเบิกวัสดุ</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('withdraw.histwd') }}">ประวัติการเบิกวัสดุ</a>
+                            </li>
                             @enduserRole
 
 

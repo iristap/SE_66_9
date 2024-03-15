@@ -36,7 +36,7 @@
                         </tbody>
                     </table>
                     <div class="card-footer d-flex flex-row-reverse">
-                        <a href="{{ route('withdraw.listwd') }}"><button type="button"
-                                class="btn btn-outline-secondary" >ยืนยัน</button></a>
-                    </div>
+                            <button type="submit" class="btn btn-outline-success p-2 ml-4">ยืนยัน</button>
+                        </div>
+                    </form>
                 @endsection
