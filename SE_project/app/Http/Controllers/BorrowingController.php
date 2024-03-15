@@ -65,7 +65,7 @@ class BorrowingController extends Controller
         return view('borrowing.confirm', compact('selectedDurables','user'));
     }
 
-    public function approved(Request $request): View
+    public function details(Request $request): View
     {
         $borrowingId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
@@ -73,21 +73,70 @@ class BorrowingController extends Controller
         $br_user = Borrowing_list::getUserName($borrowingId);
         $br_da = Borrowing_list::getDurable($borrowingId);
 
-        return view('borrowing.approved', compact('brlItem','br_user','br_da'));
+        return view('borrowing.details', compact('brlItem','br_user','br_da'));
 
+    }
+
+    public function approved(Request $request): View
+    {
+        $borrowingId = $request->id; // รับ borrowing_id จาก request
+        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
+        $br = Borrowing::where('borrowing_id', $borrowingId)->first();
+
+        return view('borrowing.approved', compact('br','borrowingId'));
+
+    }
+    public function a_update(Request $request, $id){
+            $request->validate(
+                [
+                    'id_approver'=>'required|max:5',
+                    'approved_date'=>'required'
+                ],
+                [
+                    'id_approver'=>'กรุณาใส่ ID ผู้อนุมัติ',
+                    'approved_date.required'=>'กรุณากรอกวันที่อนุมัติ'
+                ]
+            );
+            $data=[
+                'id_approver'=>$request->id_approver,
+                'approved_date'=>$request->approved_date,
+                'status'=>$request->status
+            ];
+            DB::table('borrowing')->where('borrowing_id', $id)->update($data);
+            return redirect('/borrowing');
     }
 
     public function not_approved(Request $request): View
     {
         $borrowingId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
-        $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
-        $br_user = Borrowing_list::getUserName($borrowingId);
-        $br_da = Borrowing_list::getDurable($borrowingId);
+        $br = Borrowing::where('borrowing_id', $borrowingId)->first();
 
-        return view('borrowing.not_approved', compact('brlItem','br_user','br_da'));
-
+        return view('borrowing.not_approved', compact('br','borrowingId'));
     }
+
+    public function na_update(Request $request, $id){
+        $request->validate(
+            [
+                'id_approver'=>'required|max:5',
+                'approved_date'=>'required',
+                'not_approved_note'=>'required'
+            ],
+            [
+                'id_approver'=>'กรุณาใส่ ID ผู้อนุมัติ',
+                'approved_date.required'=>'กรุณากรอกวันที่อนุมัติ',
+                'not_approved_note.required'=>'กรุณากรอกหมายเหตุ'
+            ]
+        );
+        $data=[
+            'id_approver'=>$request->id_approver,
+            'approved_date'=>$request->approved_date,
+            'not_approved_note'=>$request->not_approved_note,
+            'status'=>$request->status
+        ];
+        DB::table('borrowing')->where('borrowing_id', $id)->update($data);
+        return redirect('/borrowing');
+}
 
 
 

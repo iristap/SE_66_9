@@ -63,5 +63,23 @@ class Borrowing extends Model {
 
     }
 
+    public static function getID($borrowing_id){
+
+        return $br = DB::table('borrowing')
+    ->join('users', 'id_sender', '=', 'users.id')
+    ->select('borrowing.*', 'users.name as users_name')
+    ->where('borrowing.borrowing_id', $borrowing_id)
+    ->get();
+
+    }
+
+    public static function getApper($borrowing_id){
+
+        return $br = DB::table('borrowing')
+    ->select('borrowing.borrowing_id as bid','borrowing.id_approver as apper')
+    ->where('borrowing.borrowing_id', $borrowing_id)
+    ->get();
+    }
+
 
 }

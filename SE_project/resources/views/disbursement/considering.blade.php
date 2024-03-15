@@ -7,11 +7,11 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Disbursement list</h2>
+                            <br><h2>การอนุมัติการเบิกอุปกรณ์</h2>
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning" href="/disbursement/considering">รอการอนุมัติ</a>
+                            <a class="btn btn-warning" href="/disbursement/considering">กำลังพิจารณา</a>
                             <a class="btn btn-secondary" href="/disbursement/considered">พิจารณาแล้ว</a><br><br>
 
 
@@ -21,7 +21,7 @@
                                         <td>ID</td>
                                         <td>ผู้ขอเบิก</td>
                                         <td>วันที่ขอเบิก</td>
-                                        <td>see the details</td>
+                                        <td>รายละเอียด</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,7 +32,7 @@
                                         echo "<td>{$d->disbursement_id}</td>";
                                         echo "<td>{$d->uname}</td>";
                                         echo "<td>{$d->date_disbursement}</td>";
-                                        echo "<td><a href='".route('disbursement.considering_details', ['id' => $d->disbursement_id])."' class='btn btn-secondary'>details</a></td>";
+                                        echo "<td><a href='".route('disbursement.considering_details', ['id' => $d->disbursement_id])."' class='btn btn-secondary'>ดูรายละเอียด</a></td>";
                                         echo '</tr>';
                                     }
                                     ?>

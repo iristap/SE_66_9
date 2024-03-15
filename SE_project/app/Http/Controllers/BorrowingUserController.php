@@ -7,12 +7,12 @@ use App\Models\Borrowing_list;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class BorrowingController extends Controller
+class BorrowingUserController extends Controller
 {
     public function index()
     {
-        $durables = Durable::where('status', 'ว่าง')->get();;
-        return view('borrowing.index', compact('durables'));
+        $durables = Durable::where('availability_status', 'ว่าง')->get();;
+        return view('borrowing.index_user', compact('durables'));
     }
     public function confirm(Request $request)
     {
@@ -22,7 +22,7 @@ class BorrowingController extends Controller
         $user = Auth::user();
         $selectedDurableIds = $request->input('durable_articles_id');
         $selectedDurables = Durable::whereIn('durable_articles_id', $selectedDurableIds)->get();
-        return view('borrowing.confirm', compact('selectedDurables','user'));
+        return view('borrowing.confirm_user', compact('selectedDurables','user'));
     }
     public function store(Request $request)
     {
@@ -39,13 +39,28 @@ class BorrowingController extends Controller
         $selectedDurableIds = $request->input('durable_articles_id');
         foreach ($selectedDurableIds as $durableId) {
             $durable = Durable::findOrFail($durableId);
-            $durable->status = 'ไม่ว่าง';
+            $durable->availability_status = 'ไม่ว่าง';
             $durable->save();
             $borrowingList = new Borrowing_list();
             $borrowingList->borrowing_id = $borrowing->id;
             $borrowingList->durable_articles_id = $durableId;
             $borrowingList->save();
         }
-        return redirect()->route('borrowing.index')->with('success', 'Borrowing successful!');
+        return redirect()->route('borrowing.index_user')->with('success', 'Borrowing successful!');
+    }
+
+    public function index_history()
+    {
+        return view('borrowing.history');
+    }
+
+    public function considering()
+    {
+        return view('borrowing.history_considering');
+    }
+
+    public function considered()
+    {
+        return view('borrowing.history_considered');
     }
 }

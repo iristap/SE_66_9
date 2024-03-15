@@ -7,11 +7,12 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Borrowing list</h2>
+                            <br>
+                            <h2>การอนุมัติการยืมครุภัณฑ์</h2>
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning">considering</a><br><br>
+                            <a class="btn btn-warning">กำลังพิจารณา</a><br><br>
 
                             <table class="table table-bordered">
 
@@ -21,31 +22,30 @@
                                         <td>Borrower</td>
                                         <td>Borrowing Date</td>
                                         <td>Due Date</td>
-                                        <td>see the details</td>
-                                        <td>see the details</td>
+                                        <td>รายละเอียด</td>
                                     </tr>
                                 </thead>
+                                <tbody>
 
                                 <?php
                                 foreach ($borrowing as $brItem) {
-                                    $borrowDate = new DateTime($brItem->borrow_date);
-                                    $dueDate = $borrowDate->add(new DateInterval('P14D'))->format('Y-m-d');
+                                    if ($brItem->status == 'รอการอนุมัติ') {
+                                        $borrowDate = new DateTime($brItem->borrow_date);
+                                        $dueDate = $borrowDate->add(new DateInterval('P14D'))->format('Y-m-d');
 
-                                    echo "<tr>
-                                    <td>{$brItem->borrowing_id}</td>
-                                    <td>{$brItem->users_name}</td>
-                                    <td>{$brItem->borrow_date}</td>
-                                    <td>{$dueDate}</td>
-                                    <td><a href='".route('borrowing.approved', ['id' => $brItem->borrowing_id])."' class='btn btn-success'>approved</a></td>
-                                    <td><a href='".route('borrowing.not_approved', ['id' => $brItem->borrowing_id])."' class='btn btn-danger'>not approved</a></td>
-                                </tr>";
+                                        echo "<tr>
+                                                                    <td>{$brItem->borrowing_id}</td>
+                                                                    <td>{$brItem->users_name}</td>
+                                                                    <td>{$brItem->borrow_date}</td>
+                                                                    <td>{$dueDate}</td>
+                                                                    <td><a href='" .
+                                            route('borrowing.details', ['id' => $brItem->borrowing_id]) .
+                                            "' class='btn btn-secondary'>ดูรายละเอียด</a></td>
+                                                                </tr>";
+                                    }
                                 }
-
-                                echo '</tbody>';
-                                echo '</table>';
                                 ?>
-
-
+                                </tbody>
                             </table>
                         </div>
                     </div>

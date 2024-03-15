@@ -7,31 +7,30 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Disbursement details</h2>
+                            <br>
+                            <h2>การอนุมัติการเบิกอุปกรณ์</h2>
                         </div>
                         <div>
                             <?php
-                                if ($dbmUser->status == 'อนุมัติแล้ว') {
-                                    echo "<button class='btn btn-success my-2'>พิจารณาอนุมัติแล้ว</button>";
-                                } else {
-                                    echo "<button class='btn btn-danger my-2'>พิจารณาไม่อนุมัติ</button>";
-                                }
-                                ?>
+                            if ($dbmUser->status == 'อนุมัติแล้ว') {
+                                echo "<button class='btn btn-success my-2'>พิจารณาอนุมัติแล้ว</button>";
+                            } elseif ($dbmUser->status == 'ไม่อนุมัติ') {
+                                echo "<button class='btn btn-danger my-2'>พิจารณาไม่อนุมัติ</button>";
+                            }
+                            ?>
                         </div>
 
 
                         <div class="pull-right ">
                             <?php
-                            if ($dbmItem) {
-
+                            if ($dbmUser) {
                                 echo "ID การยืม: {$dbmUser->disbursement_id}<br>";
                                 echo "ID ผู้ขอยืมครุภัณฑ์: {$dbmUser->user_id}<br>";
                                 echo "ชื่อผู้ขอยืมครุภัณฑ์: {$dbmUser->users_name}<br>";
                                 echo "วันที่ทำรายการ: {$dbmUser->date_disbursement}<br>";
                                 echo "หมายเหตุการยืมครุภัณฑ์: {$dbmUser->note_disbursement}<br>";
                                 echo "สถานะการทำรายการ: {$dbmUser->status}<br>";
-                                echo "ผู้พิจารณารายการ: {}<br>";
-                                echo "วันที่พิจารณารายการ: {}<br>";
+                                echo "วันที่พิจารณารายการ: {$dbmUser->date_approved}<br>";
                             } else {
                                 echo 'ไม่พบข้อมูลการยืมที่มี ID นี้';
                             }
@@ -51,38 +50,18 @@
 
                                     <tbody>
                                         <?php
-                                        foreach ($dbmMat as $d) {
-                                            echo '<tr>';
-                                            echo "<td>{$d->material_id}</td>";
-                                            echo "<td>{$d->name}</td>";
-                                            echo "<td>{$d->amount}</td>";
-                                            echo '</tr>';
-                                        }
+                                            foreach ($dbmMat as $d) {
+                                                    echo '<tr>';
+                                                    echo "<td>{$d->material_id}</td>";
+                                                    echo "<td>{$d->name}</td>";
+                                                    echo "<td>{$d->amount}</td>";
+                                                    echo '</tr>';
+                                                }
                                         ?>
                                     </tbody>
-
                                 </table>
-
-                                <br>วันที่อนุมัติ
-                                <input type="date">
-
-                                <?php
-                                if ($dbmUser->status == 'ไม่อนุมัติ') {
-                                    echo "<br>หมายเหตุกรณีไม่อนุมัติ";
-                                }
-                                ?>
-
-
-
-                                <br>
-                                <br>
-                                <?php
-                                if ($dbmUser->status == 'อนุมัติแล้ว') {
-                                    echo "<a href='/disbursement/considered'><button class='btn btn-secondary my-2'>back</button></a>";
-                                } else {
-                                    echo "<a href='/disbursement/considered'><button class='btn btn-secondary my-2'>back</button></a>";
-                                }
-                                ?>
+                                <br><br><a href='/disbursement/considered'><button
+                                        class='btn btn-secondary my-2'>กลับ</button></a>
 
                             </div>
                         </div>

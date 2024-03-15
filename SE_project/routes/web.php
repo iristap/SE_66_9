@@ -32,10 +32,13 @@ Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->na
 Route::get('/return', [App\Http\Controllers\ReturnController::class, 'index'])->name('return.index');
 Route::get('/return/{id}', [App\Http\Controllers\ReturnController::class, 'show'])->name('return.show');
 Route::put('/return/{id}', [App\Http\Controllers\ReturnController::class, 'update'])->name('return.update');
-// Route::get('/borrow', [App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowing.index');
-// Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingController::class, 'confirm'])->name('borrowing.confirm');
-// Route::post('/borrow/store', [App\Http\Controllers\BorrowingController::class, 'store'])->name('borrowing.store');
+Route::get('/borrow', [App\Http\Controllers\BorrowingUserController::class, 'index'])->name('borrowing.index_user');
+Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingUserController::class, 'confirm'])->name('borrowing.confirm_user');
+Route::post('/borrow/store', [App\Http\Controllers\BorrowingUserController::class, 'store'])->name('borrowing.store_user');
 
+Route::get('/borrow/history', [App\Http\Controllers\BorrowingUserController::class, 'index_history'])->name('borrowing.index_history');
+Route::get('/borrow/history/considering', [App\Http\Controllers\BorrowingUserController::class, 'considering'])->name('borrowing.history.considering');
+Route::get('/borrow/history/considered', [App\Http\Controllers\BorrowingUserController::class, 'considered'])->name('borrowing.history.considered');
 
 ## parcel Routes
 Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable.index');
@@ -49,12 +52,19 @@ Route::delete('/material/{id}', [App\Http\Controllers\MaterialController::class,
 
 
 Route::get('/borrowing', [App\Http\Controllers\BorrowingController::class,'index'] )->name('borrowing.index');
+Route::get('/borrowing/details/{id}', [App\Http\Controllers\BorrowingController::class,'details'] )->name('borrowing.details');
 Route::get('/borrowing/approved/{id}', [App\Http\Controllers\BorrowingController::class, 'approved'])->name('borrowing.approved');
+Route::put('/borrowing/approved/update/{id}', [App\Http\Controllers\BorrowingController::class, 'a_update'])->name('borrowing.a_update');
 Route::get('/borrowing/not_approved/{id}', [App\Http\Controllers\BorrowingController::class, 'not_approved'])->name('borrowing.not_approved');
+Route::put('/borrowing/not_approved/update/{id}', [App\Http\Controllers\BorrowingController::class, 'na_update'])->name('borrowing.na_update');
 
 Route::get('/disbursement', [App\Http\Controllers\DisbursementController::class,'index'] )->name('disbursement.index');
 Route::get('/disbursement/considering', [App\Http\Controllers\DisbursementController::class,'considering'] )->name('disbursement.considering');
 Route::get('/disbursement/considering/details/{id}', [App\Http\Controllers\DisbursementController::class,'considering_details'] )->name('disbursement.considering_details');
+Route::get('/disbursement/considering/details/approved/{id}', [App\Http\Controllers\DisbursementController::class,'approved'] )->name('disbursement.approved');
+Route::put('/disbursement/considering/details/approved/update/{id}', [App\Http\Controllers\DisbursementController::class,'a_update'] )->name('disbursement.a_update');
+Route::get('/disbursement/considering/details/not_approved/{id}', [App\Http\Controllers\DisbursementController::class,'not_approved'] )->name('disbursement.not_approved');
+Route::put('/disbursement/considering/details/not_approved/update/{id}', [App\Http\Controllers\DisbursementController::class,'na_update'] )->name('disbursement.na_update');
 Route::get('/disbursement/considered', [App\Http\Controllers\DisbursementController::class,'considered'] )->name('disbursement.considered');
 Route::get('/disbursement/considered/details/{id}', [App\Http\Controllers\DisbursementController::class,'considered_details'] )->name('disbursement.considered_details');
 

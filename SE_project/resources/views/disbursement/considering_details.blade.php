@@ -7,13 +7,12 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <h2>Disbursement details</h2>
+                            <br>
+                            <h2>การอนุมัติการเบิกอุปกรณ์</h2>
                         </div>
-
-
                         <?php
 
-                        if ($dbmItem) {
+                        if ($dbmUser) {
                             echo "ID การยืม: {$dbmUser->disbursement_id}<br>";
                             echo "ID ผู้ขอยืมครุภัณฑ์: {$dbmUser->user_id}<br>";
                             echo "ชื่อผู้ขอยืมครุภัณฑ์: {$dbmUser->users_name}<br>";
@@ -25,7 +24,8 @@
                         }
                         ?>
                         <div class="pull-right ">
-                            <br><h4>รายการเบิกอุปกรณ์</h4>
+                            <br>
+                            <h4>รายการเบิกอุปกรณ์</h4>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -37,30 +37,23 @@
 
                                 <tbody>
                                     <?php
-                                    foreach ($dbmMat as $d) {
+                                    dd($dbmUser);
+                                    foreach ($dbmUser as $d) {
                                         echo '<tr>';
-                                        echo "<td>{$d->material_id}</td>";
-                                        echo "<td>{$d->name}</td>";
-                                        echo "<td>{$d->amount}</td>";
+                                        echo "<td>{$d->mid}</td>";
+                                        echo "<td>{$d->mname}</td>";
+                                        echo "<td>{$d->dbmamount}</td>";
                                         echo '</tr>';
                                     }
                                     ?>
                                 </tbody>
-
                             </table>
-
-
-                            <br>วันที่อนุมัติ
-                            <input type="date">
-
-                            <br>หมายเหตุกรณีไม่อนุมัติ
-                            <input type="text"><br>
-
                             <br>
-                            <br><button class="btn btn-success my-2">approved</button>
-                            <button class="btn btn-danger my-2">not approved</button>
-
-                            <a href='/disbursement/considering'><button class='btn btn-secondary my-2'>back</button></a>
+                            <a href="{{ route('disbursement.approved', $dbmUser->disbursement_id) }}"
+                                class="btn btn-success">อนุมัติ</a>
+                            <a href="{{ route('disbursement.not_approved', $dbmUser->disbursement_id) }}"
+                                class="btn btn-danger">ไม่อนุมัติ</a>
+                            <a href='/disbursement/considering'><button class='btn btn-secondary my-2'>กลับ</button></a>
 
                         </div>
                     </div>
