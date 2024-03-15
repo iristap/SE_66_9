@@ -31,7 +31,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FF6699;">{{__('ยืมครุภัณฑ์') }}</div>
+                <div class="card-header">{{__('รายการครุภัณฑ์') }}</div>
                 <div class="card-body">
                     <form id="borrowingForm" method="POST" action="{{ route('borrowing.confirm_user') }}">
                         @csrf
