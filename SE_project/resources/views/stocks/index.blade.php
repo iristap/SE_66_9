@@ -44,6 +44,30 @@
                                     <td>{{ $stock->stocker->name }}</td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('stocks.show',$stock->id) }}">Show</a>
+                                        <a class="btn btn-primary" href="{{ route('stocks.edit',$stock->id) }}">Edit</a>
+                                            <form action="{{ route('stocks.destroy', $stock->id) }}" method="POST" id="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ $stock->id }}')">Delete</button>
+                                            </form>
+
+                                            <script>
+                                                function confirmDelete(id) {
+                                                    Swal.fire({
+                                                        title: 'คุณแน่ใจหรือไม่?',
+                                                        text: 'คุณต้องการลบ stock ' + id + ' ใช่หรือไม่?',
+                                                        
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonText: 'ลบข้อมูล',
+                                                        cancelButtonText: 'ยกเลิก'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('delete-form').submit();
+                                                        }
+                                                    });
+                                                }
+                                            </script>
                                     </td>
                                 </tr>
                             @endforeach
