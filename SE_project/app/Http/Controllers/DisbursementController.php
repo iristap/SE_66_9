@@ -47,12 +47,11 @@ class DisbursementController extends Controller
     {
         $dbmId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
-        $dbmItem = Disbursement::getID($dbmId);
         $dbmUser = Disbursement::getUserName($dbmId);
         $dbmMat = Disbursement::getMat($dbmId);
 
 
-        return view('disbursement.considering_details', compact('dbmItem','dbmId','dbmUser','dbmMat'));
+        return view('disbursement.considering_details', compact('dbmUser','dbmMat'));
     }
 
     public function approved(Request $request): View
@@ -114,14 +113,10 @@ class DisbursementController extends Controller
     {
         $dbmId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
-        $dbmItem = Disbursement::getID($dbmId);
-        $dbmUser = Disbursement::getUserName($dbmId);
         $dbmMat = Disbursement::getMat($dbmId);
-        $dbmNote = Disbursement::getNote($dbmId);
-        $dbApp = Disbursement::getApprover($dbmId);
+        $dbmUser = Disbursement::getUserName($dbmId);
 
-
-        return view('disbursement.considered_details', compact('dbmItem','dbmId','dbmUser','dbmMat','dbmNote','dbApp'));
+        return view('disbursement.considered_details', compact('dbmMat', 'dbmUser'));
 
     }
 

@@ -26,9 +26,14 @@ class Disbursement extends Model
 
         return $br_list=DB::table('disbursement')
         ->join('users', 'user_id', '=', 'users.id')
+        ->join('disbursement_detail', 'disbursement.disbursement_id', '=', 'disbursement_detail.disbursement_id')
+        ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
         ->select('disbursement.*'
         , 'users.name as users_name'
-        , 'users.id as users_id')
+        , 'users.id as users_id'
+        , 'material.name as mname'
+        , 'material.material_id as mid'
+        , 'disbursement_detail.amount as dbmamount')
         ->where('disbursement.disbursement_id', $db_id)
         ->first();
     }
@@ -49,9 +54,9 @@ class Disbursement extends Model
         return $dbm=DB::table('disbursement')
         ->join('disbursement_detail', 'disbursement.disbursement_id', '=', 'disbursement_detail.disbursement_id')
         ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
-        ->select('disbursement.disbursement_id', 'material.material_id', 'material.name','material.amount')
+        ->select('disbursement.disbursement_id', 'material.material_id', 'material.name', 'disbursement_detail.amount')
         ->where('disbursement.disbursement_id', $db_id)
-        ->get();
+        ->first();
     }
 
     public static function getNote($db_id){
