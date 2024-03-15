@@ -11,7 +11,10 @@
                             <a class="btn btn-secondary"
                                 href="{{ route('borrowing.history.considered') }}">พิจารณาแล้ว</a><br><br>
                         </div>
-                        <table class="table table-bordered">
+                        @if ($borrowings->isEmpty())
+                            ไม่มีประวัติการยืมครุภัณฑ์
+                        @else
+                            <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <td>ID</td>
@@ -25,8 +28,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($borrowings as $item)
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->due_date }}</td>
+                                <td>{{ $item->id_approver }}</td>
+                                <td>{{ $item->id_checker }}</td>
+                                <td>{{ $item->borrow_date }}</td>
+                                <td>{{ $item->status }}</td>
+                                <td><a class="btn btn-secondary">อ่าน</a></td>
+                                <td><a class="btn btn-danger">ลบ</a></td>
+                                @endforeach
                             </tbody>
                         </table>
+                        @endif
+                        
                     </div>
                 </div>
             </div>

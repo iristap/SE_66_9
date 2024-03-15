@@ -56,7 +56,10 @@ class BorrowingUserController extends Controller
 
     public function considering()
     {
-        return view('borrowing.history_considering');
+        $user = Auth::user();
+        #$borrowing =  Borrowing::getAll();
+        $borrowings = Borrowing::where('id_sender', $user->id)->get();
+        return view('borrowing.history_considering',compact('user','borrowings'));
     }
 
     public function considered()
