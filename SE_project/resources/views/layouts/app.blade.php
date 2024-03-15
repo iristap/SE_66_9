@@ -63,7 +63,9 @@
                             <li>
                                 <a class="nav-link" href="{{ route('borrowing.index_user') }}">{{ __('ยืมครุภัณฑ์') }}</a>
                             </li>
-
+                            <li>
+                                <a class="nav-link" href="#">{{ __('ประวัติยืมครุภัณฑ์') }}</a>
+                            </li>
                             @enduserRole
 
 
