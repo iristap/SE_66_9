@@ -48,4 +48,19 @@ class BorrowingUserController extends Controller
         }
         return redirect()->route('borrowing.index_user')->with('success', 'Borrowing successful!');
     }
+
+    public function index_history()
+    {
+        return view('borrowing.history');
+    }
+
+    public function considering()
+    {
+        return view('borrowing.history_considering');
+    }
+
+    public function considered()
+    {
+        return view('borrowing.history_considered');
+    }
 }
