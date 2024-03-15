@@ -42,11 +42,13 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($stockLists as $stockList)
-                                                <tr>
-                                                    <td>{{ $stockList->material->name }}</td>
-                                                    <td>{{ $stockList->quantity }}</td>
-                                                    <td>{{ $stockList->material->unit }}</td>
-                                                </tr>
+                                                @if ($stockList->quantity > 0)
+                                                    <tr>
+                                                        <td>{{ $stockList->material->name }}</td>
+                                                        <td>{{ $stockList->quantity }}</td>
+                                                        <td>{{ $stockList->material->unit }}</td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
