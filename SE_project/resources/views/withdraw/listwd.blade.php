@@ -7,6 +7,9 @@
     <div class ="container">
         <div class="card">
             <div class="card-body">
+            <form method="POST" action="{}">
+                @csrf
+                @method('POST')
                 <h4>รายการเบิกวัสดุ</h4>
                 <table class="table">
                     <thead>
@@ -14,16 +17,16 @@
                             <th scope="col">ID</th>
                             <th scope="col">ชื่อ</th>
                             <th scope="col">จำนวน</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($disbursement_detail as $item)
+                         @foreach($selectedMaterials as $material)
                             <tr>
 
-                                <td>{{ $item->disbursement_id}}</td>
-                                <td>{{ $item->material_id}}</td>
-                                <td>{{ $item->amount}} {{ $item->unit }}</td>
-                                <td></td>
+                                <td>{{ $material->material_id}}</td>
+                                <td>{{ $material->name}}</td>
+                                <td>{{ $material->amount}} {{ $material->unit}}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -32,4 +35,5 @@
                     <a href="{{ route('withdraw.histwd') }}"><button type="button"
                             class="btn btn-outline-secondary">ยืนยัน</button></a>
                 </div>
+                </form>
             @endsection

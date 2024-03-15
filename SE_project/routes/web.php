@@ -40,6 +40,13 @@ Route::get('/borrow/history', [App\Http\Controllers\BorrowingUserController::cla
 Route::get('/borrow/history/considering', [App\Http\Controllers\BorrowingUserController::class, 'considering'])->name('borrowing.history.considering');
 Route::get('/borrow/history/considered', [App\Http\Controllers\BorrowingUserController::class, 'considered'])->name('borrowing.history.considered');
 Route::get('/borrow/history/detail/{id}', [App\Http\Controllers\BorrowingUserController::class, 'detail'])->name('borrowing.history.detail');
+Route::get('/withdraw',[App\Http\Controllers\WithdrawController::class,'index'])->name('withdraw.withdraw');
+Route::post('/withdraw/listwd',[App\Http\Controllers\WithdrawController::class,'listwd'])->name('withdraw.listwd');
+
+Route::get('/histwd', function () {
+    return view('withdraw.histwd');
+})->name('withdraw.histwd');
+
 
 ## parcel Routes
 Route::get('/durable', [App\Http\Controllers\DurableController::class, 'index'])->name('durable.index');

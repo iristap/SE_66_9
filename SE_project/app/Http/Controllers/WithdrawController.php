@@ -23,8 +23,8 @@ class WithdrawController extends Controller
         ],);
         $user = Auth::user();
         $selectedMaterialIds = $request->input('material_id');
-        $selectedMaterial = Material::whereIn('material_id', $selectedMaterialIds)->get();
+        $selectedMaterials = Material::whereIn('material_id', $selectedMaterialIds)->get();
 
-        return view('withdraw.listwd', compact('selectedMaterial','user'));
+        return view('withdraw.listwd', compact('selectedMaterials','user'));
     }
 }
