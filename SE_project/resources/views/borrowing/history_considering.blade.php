@@ -29,14 +29,32 @@
                             </thead>
                             <tbody>
                                 @foreach ($borrowings as $item)
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->due_date }}</td>
-                                <td>{{ $item->id_approver }}</td>
-                                <td>{{ $item->id_checker }}</td>
+                                <td>{{ $item->borrowing_id }}</td>
+                                <td>
+                                    @if ($item->due_date == null)
+                                        -
+                                    @else
+                                        {{ $item->due_date }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item->due_date == null)
+                                        -
+                                    @else
+                                        {{ $item->id_approver }}    
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item->due_date == null)
+                                        -
+                                    @else
+                                        {{ $item->id_checker }}  
+                                    @endif
+                                </td>
                                 <td>{{ $item->borrow_date }}</td>
-                                <td>{{ $item->status }}</td>
-                                <td><a class="btn btn-secondary">อ่าน</a></td>
-                                <td><a class="btn btn-danger">ลบ</a></td>
+                                <td><span class="badge btn btn-warning">{{ $item->status }}</span></td>
+                                <td><span class="btn btn-secondary">อ่าน</span></td>
+                                <td><span class="btn btn-danger">ลบ</span></td>
                                 @endforeach
                             </tbody>
                         </table>

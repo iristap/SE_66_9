@@ -57,13 +57,14 @@ class BorrowingUserController extends Controller
     public function considering()
     {
         $user = Auth::user();
-        #$borrowing =  Borrowing::getAll();
-        $borrowings = Borrowing::where('id_sender', $user->id)->get();
+        $borrowings = Borrowing::where('id_sender', $user->id)->where('status','รอการอนุมัติ')->get();
         return view('borrowing.history_considering',compact('user','borrowings'));
     }
 
     public function considered()
     {
-        return view('borrowing.history_considered');
+        $user = Auth::user();
+        $borrowings = Borrowing::where('id_sender', $user->id)->where('status','พิจารณาแล้ว')->get();
+        return view('borrowing.history_considered',compact('user','borrowings'));
     }
 }

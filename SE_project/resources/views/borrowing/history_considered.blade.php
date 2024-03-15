@@ -10,7 +10,10 @@
                             <a class="btn btn-secondary" href="{{ route('borrowing.history.considering') }}">รอการอนุมัติ</a>
                             <a class="btn btn-dark" href="{{ route('borrowing.history.considered') }}">พิจารณาแล้ว</a><br><br>
                         </div>
-                        <table class="table table-bordered">
+                        @if ($borrowings->isEmpty())
+                            ไม่มีประวัติการยืมครุภัณฑ์
+                        @else
+                            <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <td>ID</td>
@@ -24,8 +27,37 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($borrowings as $item)
+                                <td>{{ $item->borrowing_id }}</td>
+                                <td>
+                                    @if ($item->due_date == null)
+                                        -
+                                    @else
+                                        {{ $item->due_date }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item->due_date == null)
+                                        -
+                                    @else
+                                        {{ $item->id_approver }}    
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item->due_date == null)
+                                        -
+                                    @else
+                                        {{ $item->id_checker }}  
+                                    @endif
+                                </td>
+                                <td>{{ $item->borrow_date }}</td>
+                                <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
+                                <td><span class="btn btn-secondary">อ่าน</span></td>
+                                <td><span class="btn btn-danger">ลบ</span></td>
+                                @endforeach
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>
