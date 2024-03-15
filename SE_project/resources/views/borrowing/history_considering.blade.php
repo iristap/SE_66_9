@@ -38,14 +38,14 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($item->due_date == null)
+                                    @if ($item->id_approver == null)
                                         -
                                     @else
                                         {{ $item->id_approver }}    
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($item->due_date == null)
+                                    @if ($item->id_checker == null)
                                         -
                                     @else
                                         {{ $item->id_checker }}  
