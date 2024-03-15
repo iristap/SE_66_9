@@ -6,6 +6,7 @@ use App\Models\Borrowing;
 use App\Models\Borrowing_list;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BorrowingUserController extends Controller
 {
@@ -64,7 +65,20 @@ class BorrowingUserController extends Controller
     public function considered()
     {
         $user = Auth::user();
-        $borrowings = Borrowing::where('id_sender', $user->id)->where('status','พิจารณาแล้ว')->get();
+        $borrowings = DB::table('borrowing')
+                        ->join('users as sender', 'borrowing.id_sender', '=', 'sender.id')
+                        ->join('users as approver', 'borrowing.id_approver', '=', 'approver.id')
+                        ->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
+                        ->select(
+                            'borrowing.*', 
+                            'sender.name as sender_name',
+                            'approver.name as approver_name',
+                            'checker.name as checker_name'
+                        )
+                        ->where('borrowing.id_sender', $user->id)
+                        ->where('borrowing.status', 'พิจารณาแล้ว')
+                        ->get();
+
         return view('borrowing.history_considered',compact('user','borrowings'));
     }
 

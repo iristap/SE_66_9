@@ -41,18 +41,18 @@
                                                 @if ($item->id_approver == null)
                                                     -
                                                 @else
-                                                    {{ $item->id_approver }}
+                                                    {{ $item->approver_name }}
                                                 @endif
                                             </td>
                                             <td>
                                                 @if ($item->id_checker == null)
                                                     -
                                                 @else
-                                                    {{ $item->id_checker }}
+                                                    {{ $item->checker_name }}
                                                 @endif
                                             </td>
                                             <td>{{ $item->borrow_date }}</td>
-                                            <td><span class="badge btn btn-warning">{{ $item->status }}</span></td>
+                                            <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
                                             <td><span class="btn btn-secondary">อ่าน</span></td>
                                             <td><span class="btn btn-danger">ลบ</span></td>
                                         </tr>
