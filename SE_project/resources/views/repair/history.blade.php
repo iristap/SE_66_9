@@ -37,8 +37,8 @@
                             @foreach($repairs as $index => $repair)
                             <tr class="text-center">
                                 <td scope="row">{{ $index + 1 }}</td>
-                                <td>{{ $repair->durable_articles_code }}</td>
-                                <td>{{ $repair->name }}</td>
+                                <td>{{ $repair->durable->durable_articles_code }}</td>
+                                <td>{{ $repair->durable->name }}</td>
                                 <td>{{ $repair->inspector_name }}</td>
                                 <td>
                                 @if($repair->status == 'ปกติ')

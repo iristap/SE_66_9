@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Borrowing extends Model {
     use HasFactory;
     public $timestamps = false;
-
+    protected $primaryKey = 'borrowing_id';
     protected $fillable = [
         'borrowing_id',
         'borrow_date',

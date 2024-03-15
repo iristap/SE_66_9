@@ -22,49 +22,57 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>ลำดับการซ่อม</strong> 
-                                {{ $repair-> borrowing_id}}
+                                {{ $repair->no}}
                             </div>                
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>รหัสครุภัณฑ์</strong>
-                                {{ $repair->durable_articles_code }}
+                                {{ $repair->durable->durable_articles_code }}
                             </div>                
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>ชื่อครุภัณฑ์</strong>
-                                {{ $repair->name }}
+                                {{ $repair->durable->name }}
                             </div>                
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>ชื่อผู้เบิก</strong>
-                                {{ $repair->sender_name }}
+                                @foreach ($repair->durable->borrowingList as $borrowingList)
+                                {{ $borrowingList->borrowing->sender->name }}
+                                @endforeach
                             </div>                
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>วันที่ยืม</strong>
-                                {{ $repair->borrow_date }}
+                                @foreach ($repair->durable->borrowingList as $borrowingList)
+                                {{ $borrowingList->borrowing->borrow_date }}
+                                @endforeach
                             </div>                
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>กำหนดคืน</strong>
-                                {{ $repair->due_date }}
+                                @foreach ($repair->durable->borrowingList as $borrowingList)
+                                {{ $borrowingList->borrowing->due_date }}
+                                @endforeach
                             </div>                
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>เหตุผลในการยืม</strong>
-                                {{ $repair->not_approved_note }}
+                                @foreach ($repair->durable->borrowingList as $borrowingList)
+                                {{ $borrowingList->borrowing->borrowing_note }}
+                                @endforeach
                             </div>                
                         </div>
 
