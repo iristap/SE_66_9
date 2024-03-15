@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header" style="background-color: #FB88B4;">Borrowing Detail</div>
                 <div>
-                <form method="POST" action="{{ route('borrowing.store') }}">
+                <form method="POST" action="{{ route('borrowing.store_user') }}">
                 @csrf
                 @method('POST')
                     <h1 class="col">การยืมครุภัณฑ์</h1>
@@ -39,7 +39,7 @@
                          </ul>
                     @endforeach
                     <div class="card-footer d-flex flex-row-reverse">
-                        <a href="{{ route('borrowing.index') }}" class="btn btn-outline-primary p-2 ml-4">ยกเลิก</a>
+                        <a href="{{ route('borrowing.index_user') }}" class="btn btn-outline-primary p-2 ml-4">ยกเลิก</a>
                         <button class="btn btn-outline-success p-2 ml-4" type="submit">ยืนยัน</button>
                     </div>
                 </form>

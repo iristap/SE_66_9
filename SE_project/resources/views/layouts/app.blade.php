@@ -61,9 +61,8 @@
                                 <a class="nav-link" href="#">userRole</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('borrowing.index') }}">{{ __('การยืม') }}</a>
+                                <a class="nav-link" href="{{ route('borrowing.index_user') }}">{{ __('ยืมครุภัณฑ์') }}</a>
                             </li>
-
 
                             @enduserRole
 

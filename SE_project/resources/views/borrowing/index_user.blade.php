@@ -31,9 +31,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FF6699;">{{__('การยืม') }}</div>
+                <div class="card-header" style="background-color: #FF6699;">{{__('ยืมครุภัณฑ์') }}</div>
                 <div class="card-body">
-                    <form id="borrowingForm" method="POST" action="{{ route('borrowing.confirm') }}">
+                    <form id="borrowingForm" method="POST" action="{{ route('borrowing.confirm_user') }}">
                         @csrf
                         @method('POST')
                         <table class="table table-hover">

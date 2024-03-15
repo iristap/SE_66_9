@@ -32,9 +32,9 @@ Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->na
 Route::get('/return', [App\Http\Controllers\ReturnController::class, 'index'])->name('return.index');
 Route::get('/return/{id}', [App\Http\Controllers\ReturnController::class, 'show'])->name('return.show');
 Route::put('/return/{id}', [App\Http\Controllers\ReturnController::class, 'update'])->name('return.update');
-// Route::get('/borrow', [App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowing.index');
-// Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingController::class, 'confirm'])->name('borrowing.confirm');
-// Route::post('/borrow/store', [App\Http\Controllers\BorrowingController::class, 'store'])->name('borrowing.store');
+Route::get('/borrow', [App\Http\Controllers\BorrowingUserController::class, 'index'])->name('borrowing.index_user');
+Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingUserController::class, 'confirm'])->name('borrowing.confirm_user');
+Route::post('/borrow/store', [App\Http\Controllers\BorrowingUserController::class, 'store'])->name('borrowing.store_user');
 
 
 ## parcel Routes
