@@ -62,7 +62,8 @@ class Borrowing_list extends Model
         ->join('durable_articles','borrowing_list.durable_articles_id','=','durable_articles.durable_articles_id')
         ->select('borrowing.borrowing_id'
         , 'durable_articles.durable_articles_id as da_id'
-        , 'durable_articles.name as da_name')
+        , 'durable_articles.name as da_name'
+        , 'durable_articles.durable_articles_code as da_code')
         ->where('borrowing.borrowing_id', $borrowing_id)
         ->get();
     }

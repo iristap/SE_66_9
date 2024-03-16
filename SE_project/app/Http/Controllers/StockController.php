@@ -9,6 +9,10 @@ use App\Models\Stocks_list;
 
 class StockController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     // แสดงรายการสินค้าใน Stock
     public function index()
     {
