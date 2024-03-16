@@ -40,7 +40,11 @@
                                 <td> {{$repair->no}} </td>
                                 <td> {{$repair->durable->durable_articles_code}} </td>
                                 <td> {{$repair->durable->name}} </td>
-                                <td> {{$repair->inspector_name}} </td>
+                                <td>    
+                                    @foreach ($repair->durable->borrowingList as $borrowingList) 
+                                        {{ $borrowingList->borrowing->checker->name }}
+                                    @endforeach     
+                                    </td>
                                 <td>
                                     <span class="badge rounded-pill bg-warning">{{$repair->status}}</span>
                                 </td>

@@ -53,7 +53,7 @@ class ReturnController extends Controller {
                 $borrowing->return_date= date('Y-m-d');
                 $borrowing->save();
             }
-            $durable->availability_status = 'ไม่ว่าง';
+            $durable->availability_status = 'ไม่พร้อมใช้งาน';
             $damagedDurable = new Repair();
             $damagedDurable->durable_articles_id = $durable->durable_articles_id;
             $damagedDurable->durable_articles_name = $durable->name;
@@ -68,7 +68,7 @@ class ReturnController extends Controller {
                 $borrowing->return_date= date('Y-m-d');
                 $borrowing->save();
             }
-            $durable->availability_status = 'ไม่ว่าง';
+            $durable->availability_status = 'ไม่พร้อมใช้งาน';
             $durable->condition_status = 'หาย';
             $durable->save();
         }

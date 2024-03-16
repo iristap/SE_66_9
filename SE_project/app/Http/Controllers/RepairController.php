@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Repair;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RepairController extends Controller {
     function index(){
-        $repairs = Repair::with('durable')
+        $repairs = Repair::with('durable.borrowingList.borrowing.sender')
                     ->where('status', 'ชำรุด')
                     ->get();
         return view('repair.index', compact('repairs'));
@@ -27,16 +28,16 @@ class RepairController extends Controller {
     {
         $repair = Repair::findOrFail($no);
         $status = $request->input('status');
+        $user = Auth::user();
         $durable = $repair->durable;
-        $borrowingLists = $durable->borrowingList;
         if ($status === 'ปกติ') {
             $durable->availability_status = 'ว่าง';
             $durable->condition_status = 'ปกติ';
-            $repair->status = $status;
         }else if($status === 'ไม่สามารถซ่อมได้') {
-            $durable->availability_status = 'ไม่ว่าง';
-            $repair->status = $status;
+            $durable->availability_status = 'ไม่พร้อมใช้งาน';
         }
+        $repair->status = $status;
+        $repair->inspector_name = $user->name;
         $durable->save();
         $repair->save();
         foreach ($durable->borrowingList as $borrowingList) {
