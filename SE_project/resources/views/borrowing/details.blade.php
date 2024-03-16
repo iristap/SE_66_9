@@ -38,6 +38,7 @@
                                 <thead>
                                     <tr>
                                         <td>ID</td>
+                                        <td>code</td>
                                         <td>name</td>
                                     </tr>
                                 </thead>
@@ -46,6 +47,7 @@
                                     foreach ($br_da as $b) {
                                         echo '<tr>';
                                         echo "<td>{$b->da_id}</td>";
+                                        echo "<td>{$b->da_code}</td>";
                                         echo "<td>{$b->da_name}</td>";
                                         echo '</tr>';
                                     }
