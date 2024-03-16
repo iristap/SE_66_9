@@ -42,7 +42,7 @@
                                 <td><span class="badge badge-success">{{$durableItem->condition_status}}</span></td> -->
                                 <!-- <td><span style= "font-size: 13px;" class="badge {{$durableItem->availability_status == 'ว่าง' ? 'badge-success' : 'badge-danger'}}">{{$durableItem->availability_status}}</span></td>
                                 <td><span style= "font-size: 13px;" class="badge {{$durableItem->condition_status == 'ปกติ' ? 'badge-info' : 'badge-warning'}}">{{$durableItem->condition_status}}</span></td> -->
-                                <td><span style="font-size: 13px;" class="badge {{$durableItem->availability_status == 'ไม่ว่าง' ? 'btn btn-danger' : ($durableItem->availability_status == 'ถูกยืม' ? 'btn btn-secondary' : 'btn btn-success')}}">{{$durableItem->availability_status}}</span></td>
+                                <td><span style="font-size: 13px;" class="badge {{$durableItem->availability_status == 'ไม่พร้อมใช้งาน' ? 'btn btn-danger' : ($durableItem->availability_status == 'ถูกยืม' ? 'btn btn-secondary' : 'btn btn-success')}}">{{$durableItem->availability_status}}</span></td>
                                 <td><span style="font-size: 13px;" class="badge {{$durableItem->condition_status == 'ปกติ' ? 'btn btn-primary' : ($durableItem->condition_status == 'ชำรุด' ? 'btn btn-warning' : 'btn btn-secondary')}}">{{$durableItem->condition_status}}</span></td>
 
                                 <td>
