@@ -37,14 +37,13 @@
 
                                 <tbody>
                                     <?php
-                                    dd($dbmUser);
-                                    foreach ($dbmUser as $d) {
-                                        echo '<tr>';
-                                        echo "<td>{$d->mid}</td>";
-                                        echo "<td>{$d->mname}</td>";
-                                        echo "<td>{$d->dbmamount}</td>";
-                                        echo '</tr>';
-                                    }
+                                        foreach ($mat as $m) {
+                                            echo '<tr>';
+                                            echo "<td>{$m->mid}</td>";
+                                            echo "<td>{$m->mname}</td>";
+                                            echo "<td>{$m->amount}</td>";
+                                            echo '</tr>';
+                                        }
                                     ?>
                                 </tbody>
                             </table>

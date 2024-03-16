@@ -59,6 +59,15 @@ class Disbursement extends Model
         ->first();
     }
 
+    public static function getMatID($db_id){
+
+        return $dbm=DB::table('disbursement_detail')
+        ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
+        ->select('disbursement_detail.disbursement_id as dbmid', 'disbursement_detail.material_id as mid', 'material.name as mname', 'disbursement_detail.amount as amount')
+        ->where('disbursement_detail.disbursement_id', $db_id)
+        ->get();
+    }
+
     public static function getNote($db_id){
 
         return $dbm=DB::table('disbursement')

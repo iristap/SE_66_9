@@ -30,7 +30,8 @@
                                 echo "วันที่ทำรายการ: {$dbmUser->date_disbursement}<br>";
                                 echo "หมายเหตุการยืมครุภัณฑ์: {$dbmUser->note_disbursement}<br>";
                                 echo "สถานะการทำรายการ: {$dbmUser->status}<br>";
-                                echo "วันที่พิจารณารายการ: {$dbmUser->date_approved}<br>";
+                                echo "วันที่พิจารณารายการ: {$dbmUser->date_approved}<br><br>";
+                                echo "เหตุผลการไม่อนุมัติ: {$dbmUser->note_approved}<br>";
                             } else {
                                 echo 'ไม่พบข้อมูลการยืมที่มี ID นี้';
                             }
@@ -50,17 +51,17 @@
 
                                     <tbody>
                                         <?php
-                                            foreach ($dbmMat as $d) {
+                                            foreach ($mat as $m) {
                                                     echo '<tr>';
-                                                    echo "<td>{$d->material_id}</td>";
-                                                    echo "<td>{$d->name}</td>";
-                                                    echo "<td>{$d->amount}</td>";
+                                                    echo "<td>{$m->mid}</td>";
+                                                    echo "<td>{$m->mname}</td>";
+                                                    echo "<td>{$m->amount}</td>";
                                                     echo '</tr>';
-                                                }
+                                            }
                                         ?>
                                     </tbody>
                                 </table>
-                                <br><br><a href='/disbursement/considered'><button
+                                <a href='/disbursement/considered'><button
                                         class='btn btn-secondary my-2'>กลับ</button></a>
 
                             </div>
