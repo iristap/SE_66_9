@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DurableController;
+use App\Http\Controllers\DisbursementUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,17 +36,16 @@ Route::put('/return/{id}', [App\Http\Controllers\ReturnController::class, 'updat
 Route::get('/borrow', [App\Http\Controllers\BorrowingUserController::class, 'index'])->name('borrowing.index_user');
 Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingUserController::class, 'confirm'])->name('borrowing.confirm_user');
 Route::post('/borrow/store', [App\Http\Controllers\BorrowingUserController::class, 'store'])->name('borrowing.store_user');
-
 Route::get('/borrow/history', [App\Http\Controllers\BorrowingUserController::class, 'index_history'])->name('borrowing.index_history');
 Route::get('/borrow/history/considering', [App\Http\Controllers\BorrowingUserController::class, 'considering'])->name('borrowing.history.considering');
 Route::get('/borrow/history/considered', [App\Http\Controllers\BorrowingUserController::class, 'considered'])->name('borrowing.history.considered');
-Route::get('/borrow/history/detail/{id}', [App\Http\Controllers\BorrowingUserController::class, 'detail'])->name('borrowing.history.detail');
-Route::get('/withdraw',[App\Http\Controllers\WithdrawController::class,'index'])->name('withdraw.withdraw');
-Route::post('/withdraw/listwd',[App\Http\Controllers\WithdrawController::class,'listwd'])->name('withdraw.listwd');
 
-Route::get('/histwd', function () {
-    return view('withdraw.histwd');
-})->name('withdraw.histwd');
+Route::get('/withdraw',[App\Http\Controllers\DisbursementUserController::class,'index'])->name('withdraw.index_user');
+Route::post('/withdraw/confirm',[App\Http\Controllers\DisbursementUserController::class,'confirm'])->name('withdraw.confirm_user');
+Route::post('/withdraw/store', [App\Http\Controllers\DisbursementUserController::class, 'store'])->name('withdraw.store_user');
+Route::get('/withdraw/history', [App\Http\Controllers\DisbursementUserController::class, 'index_history'])->name('withdraw.index_history');
+Route::get('/withdraw/history/considering', [App\Http\Controllers\DisbursementUserController::class, 'considering'])->name('withdraw.history.considering');
+Route::get('/withdraw/history/considered', [App\Http\Controllers\DisbursementUserController::class, 'considered'])->name('withdraw.history.considered');
 
 
 ## parcel Routes

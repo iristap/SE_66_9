@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Material;
+use App\Models\Withdraw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Event\Test\Prepared;
+use App\Http\Controllers\Controller;
 
 
 class WithdrawController extends Controller
@@ -16,7 +19,7 @@ class WithdrawController extends Controller
         return view('withdraw.withdraw', compact('material'));
     }
 
-    public function listwd(Request $request)
+    public function disbursement_detail(Request $request)
     {
         $request->validate([
             'material_id' => 'required|array|min:1',
@@ -25,6 +28,8 @@ class WithdrawController extends Controller
         $selectedMaterialIds = $request->input('material_id');
         $selectedMaterials = Material::whereIn('material_id', $selectedMaterialIds)->get();
 
-        return view('withdraw.listwd', compact('selectedMaterials','user'));
+        return view('withdraw.disbursement_detail', compact('selectedMaterials', 'user'));
     }
+
 }
+

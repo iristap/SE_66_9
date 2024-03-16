@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 // use App\Http\Controllers\Auth;
 use App\Models\Durable;
 use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Arr;
 use Illuminate\View\View;

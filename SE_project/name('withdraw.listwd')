@@ -1,0 +1,32 @@
+
+   ErrorException 
+
+  file_put_contents(C:\xampp\htdocs\SE_66_9\SE_project\app/Http/Controllers/Route::post('/withdraw/listwd',[App/Http/Controllers/WithdrawController::class,'listwd'])-;.php): Failed to open stream: No such file or directory
+
+  at vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php:205
+    201▕      * @return int|bool
+    202▕      */
+    203▕     public function put($path, $contents, $lock = false)
+    204▕     {
+  ➜ 205▕         return file_put_contents($path, $contents, $lock ? LOCK_EX : 0);
+    206▕     }
+    207▕ 
+    208▕     /**
+    209▕      * Write the contents of a file, replacing it atomically if it already exists.
+
+  1   vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php:205
+
+  2   vendor\laravel\framework\src\Illuminate\Console\GeneratorCommand.php:181
+      Illuminate\Filesystem\Filesystem::put("C:\xampp\htdocs\SE_66_9\SE_project\app/Http/Controllers/Route::post('/withdraw/listwd',[App/Http/Controllers/WithdrawController::class,'listwd'])-;.php", "<?php
+
+namespace App\Http\Controllers\Route::post('\withdraw\listwd',[App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class WithdrawController::class,'listwd'])-; extends Controller
+{
+    //
+}
+")
+

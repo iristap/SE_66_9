@@ -20,4 +20,8 @@ class Material extends Model
     {
         return $material=DB::table('material')->get();
     }
+        public function disbursementlist()
+    {
+        return $this->hasMany(Borrowing_list::class, 'durable_articles_id', 'durable_articles_id');
+    }
 }

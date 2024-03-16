@@ -19,7 +19,7 @@ class Durable extends Model
     ];
     public static function getAll()
     {
-        return $durable=\DB::table('durable_articles')->get();
+        return $durable=DB::table('durable_articles')->get();
     }
     public function borrowingList()
     {

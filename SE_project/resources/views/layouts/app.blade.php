@@ -67,10 +67,10 @@
                                 <a class="nav-link" href="{{ route('borrowing.index_history') }}">{{ __('ประวัติยืมครุภัณฑ์') }}</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('withdraw.withdraw') }}">การเบิกวัสดุ</a>
+                                <a class="nav-link" href="{{ route('withdraw.index_user') }}">การเบิกวัสดุ</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('withdraw.histwd') }}">ประวัติการเบิกวัสดุ</a>
+                                <a class="nav-link" href="{{ route('withdraw.index_history') }}">ประวัติการเบิกวัสดุ</a>
                             </li>
                             @enduserRole
 

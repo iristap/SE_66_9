@@ -25,6 +25,7 @@ class BorrowingUserController extends Controller
         $selectedDurables = Durable::whereIn('durable_articles_id', $selectedDurableIds)->get();
         return view('borrowing.confirm_user', compact('selectedDurables','user'));
     }
+    
     public function store(Request $request)
     {
         $request->validate([
