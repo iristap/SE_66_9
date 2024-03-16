@@ -86,23 +86,17 @@ class BorrowingController extends Controller
         return view('borrowing.approved', compact('br','borrowingId'));
 
     }
-    public function a_update(Request $request, $id){
-            $request->validate(
-                [
-                    'id_approver'=>'required|max:5',
-                    'approved_date'=>'required'
-                ],
-                [
-                    'id_approver'=>'กรุณาใส่ ID ผู้อนุมัติ',
-                    'approved_date.required'=>'กรุณากรอกวันที่อนุมัติ'
-                ]
-            );
+
+    public function a_update($id, $da_id){
             $data=[
-                'id_approver'=>$request->id_approver,
-                'approved_date'=>$request->approved_date,
-                'status'=>$request->status
+                'id_approver'=>auth()->id(),
+                'approved_date'=>now()
+            ];
+            $data2=[
+                'status_approved'=>'อนุมัติแล้ว'
             ];
             DB::table('borrowing')->where('borrowing_id', $id)->update($data);
+            DB::table('borrowing_list')->where('durable_articles_id', $da_id)->update($data2);
             return redirect('/borrowing');
     }
 

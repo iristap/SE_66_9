@@ -29,7 +29,7 @@
 
                                 <?php
                                 foreach ($borrowing as $brItem) {
-                                    if ($brItem->status == 'รอการอนุมัติ') {
+                                    if ($brItem->status == 'รอการพิจารณา') {
                                         $borrowDate = new DateTime($brItem->borrow_date);
                                         $dueDate = $borrowDate->add(new DateInterval('P14D'))->format('Y-m-d');
 

@@ -7,7 +7,8 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <br><h2>พิจารณาการยืมครุภัณฑ์</h2>
+                            <br>
+                            <h2>พิจารณาการยืมครุภัณฑ์</h2>
                         </div>
 
                         <div class="pull-right ">
@@ -25,8 +26,6 @@
                                 echo "วันกำหนดคืน: {$dueDate}<br>";
                                 echo "หมายเหตุการยืมครุภัณฑ์: {$br_user->borrowing_note}<br>";
                                 echo "สถานะการทำรายการ: {$br_user->status}<br>";
-
-
                             } else {
                                 echo 'ไม่พบข้อมูลการยืมที่มี ID นี้';
                             }
@@ -40,23 +39,29 @@
                                         <td>ID</td>
                                         <td>code</td>
                                         <td>name</td>
+                                        <td>สถานะ</td>
+                                        <td>พิจารณา</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     foreach ($br_da as $b) {
-                                        echo '<tr>';
+                                        echo "<tr>";
                                         echo "<td>{$b->da_id}</td>";
                                         echo "<td>{$b->da_code}</td>";
                                         echo "<td>{$b->da_name}</td>";
-                                        echo '</tr>';
+                                        echo "<td>{$b->status}</td>";
+                                        if($b->status=='รอการอนุมัติ'){
+                                            echo "<td>
+                                            <a href='" . route('borrowing.a_update', [$brlItem->borrowing_id, $b->da_id ]) . "' class='btn btn-success' data-method='put'>อนุมัติ</a>
+                                            <a href='" . route('borrowing.na_update', [$brlItem->borrowing_id, $b->da_id]) . "' class='btn btn-danger'>ไม่อนุมัติ</a>
+                                        </tr>";
+                                        }
                                     }
                                     ?>
                                 </tbody>
                             </table>
-                            <br>
-                            <a href="{{route('borrowing.approved',$brlItem->borrowing_id)}}" class="btn btn-success">อนุมัติ</a>
-                            <a href="{{route('borrowing.not_approved',$brlItem->borrowing_id)}}" class="btn btn-danger">ไม่อนุมัติ</a>
+                            <a href='/borrowing'><button class="btn btn-info my-2">พิจารณาเสร็จสิ้น</button></a>
                             <a href='/borrowing'><button class="btn btn-secondary my-2">back</button></a>
 
                         </div>

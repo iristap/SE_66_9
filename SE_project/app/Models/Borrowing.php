@@ -58,7 +58,8 @@ class Borrowing extends Model {
 
         return $br = DB::table('borrowing')
     ->join('users', 'id_sender', '=', 'users.id')
-    ->select('borrowing.*', 'users.name as users_name')
+    ->join('borrowing_list', 'borrowing.borrowing_id', '=', 'borrowing_list.borrowing_id')
+    ->select('borrowing.*', 'users.name as users_name','borrowing_list.status_approved as status1')
     ->get();
 
     }
