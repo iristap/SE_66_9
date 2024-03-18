@@ -18,21 +18,12 @@
                                     @csrf
                                     @method('PUT')
                                     <div class=form-group>
-                                        <label class="col-md-4 col-form-label text-md">วันที่อนุมัติ</label>
-                                        <input class="col-md-4 col-form-label text-md" type="date" name="date_approved">
-                                    </div>
-                                    <div class=form-group>
-                                        <label class="col-md-4 col-form-label text-md">สถานะการทำรายการ</label>
-                                        <input class="col-md-4 col-form-label text-md" type="text" name="status"
-                                            value="ไม่อนุมัติ">
-                                    </div>
-                                    <div class=form-group>
                                         <label class="col-md-4 col-form-label text-md">หมายเหตุการไม่อนุมัติ</label>
                                         <input class="col-md-4 col-form-label text-md" type="text" name="note_approved">
                                     </div>
                                     <div class="d-flex flex-row-reverse">
                                         <button class="btn btn-success p-2 ml-4" type="submit">ยืนยันการไม่อนุมัติ</button>
-                                        <a href="/disbursement" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
+                                        <a href="/disbursement/considered/" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
                                     </div>
                                 </form>
                             </div>

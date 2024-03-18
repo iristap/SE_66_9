@@ -48,8 +48,15 @@
                                 </tbody>
                             </table>
                             <br>
-                            <a href="{{ route('disbursement.approved', $dbmUser->disbursement_id) }}"
-                                class="btn btn-success">อนุมัติ</a>
+                            <?php
+                                /*echo "<a class='btn btn-success ml-4' href='#' onclick=\"confirmApprove('{$dbmUser->disbursement_id}')\">อนุมัติ</a>
+                                            <form id='{$dbmUser->disbursement_id}_{$mat->mid}' method='POST' action='".route('disbursement.a_update', [$dbmUser->disbursement_id, $mat->mid ])."' style='display: none;'>
+                                                " . csrf_field() . "
+                                                " . method_field('PUT') . "
+                                            </form>";*/
+                                //<a href="{{ route('disbursement.approved', $dbmUser->disbursement_id) }}" class="btn btn-success">อนุมัติ</a>
+                            ?>
+
                             <a href="{{ route('disbursement.not_approved', $dbmUser->disbursement_id) }}"
                                 class="btn btn-danger">ไม่อนุมัติ</a>
                             <a href='/disbursement/considering'><button class='btn btn-secondary my-2'>กลับ</button></a>
@@ -61,3 +68,35 @@
         </div>
     </div>
 @endsection
+<script>
+    function confirmApprove(id1) {
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: 'คุณต้องการอนุมัติ ' + id1 + ' ใช่หรือไม่?',
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยันการอนุมัติ',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              document.getElementById(id1 + '_' + id2).submit();
+            }
+        });
+    }
+    function confirmNotApprove(name, id1, id2) {
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: 'คุณต้องการไม่อนุมัติ ' + name + ' ใช่หรือไม่?',
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยันการไม่อนุมัติ',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              document.getElementById(id1 + '_' + id2).submit();
+            }
+        });
+    }
+  </script>
+
+

@@ -74,10 +74,13 @@ class DisbursementController extends Controller
             ]
         );
         $data=[
-            'date_approved'=>$request->date_approved,
-            'status'=>$request->status
+            'date_approved'=>now(),
+            'status'=>'อนุมัติแล้ว'
         ];
-        DB::table('disbursement')->where('disbursement_id', $id)->update($data);
+        DB::table('disbursement')
+        ->where('disbursement_id', $id)
+        ->update($data);
+
         return redirect('/disbursement/considering');
     }
 
@@ -91,23 +94,13 @@ class DisbursementController extends Controller
     }
 
     public function na_update(Request $request, $id){
-        $request->validate(
-            [
-                'date_approved'=>'required',
-                'status'=>'required'
-            ],
-            [
-                'date_approved.required'=>'กรุณาใส่วันที่ไพิจารณาม่อนุมัติ',
-                'status.required'=>'กรุณาใส่หมายเหตุการไม่อนุมัติ'
-            ]
-        );
         $data=[
-            'date_approved'=>$request->date_approved,
-            'status'=>$request->status,
+            'date_approved'=>now(),
+            'status'=>'ไม่อนุมัติ',
             'note_approved'=>$request->note_approved
         ];
         DB::table('disbursement')->where('disbursement_id', $id)->update($data);
-        return redirect('/disbursement/considering');
+        return redirect('/disbursement/considered');
     }
 
     public function considered_details(Request $request): View
