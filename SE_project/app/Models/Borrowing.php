@@ -64,6 +64,15 @@ class Borrowing extends Model {
 
     }
 
+    public static function getOnlyB(){
+
+        return $br = DB::table('borrowing')
+        ->join('users', 'id_sender', '=', 'users.id')
+        ->select('borrowing.*','users.name as uname')
+        ->get();
+
+    }
+
     public static function getID($borrowing_id){
 
         return $br = DB::table('borrowing')

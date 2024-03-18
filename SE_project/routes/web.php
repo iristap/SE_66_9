@@ -60,10 +60,12 @@ Route::delete('/material/{id}', [App\Http\Controllers\MaterialController::class,
 
 
 Route::get('/borrowing', [App\Http\Controllers\BorrowingController::class,'index'] )->name('borrowing.index');
+Route::get('/borrowing/considered', [App\Http\Controllers\BorrowingController::class,'considered'] )->name('borrowing.considered');
 Route::get('/borrowing/details/{id}', [App\Http\Controllers\BorrowingController::class,'details'] )->name('borrowing.details');
+Route::get('/borrowing/detailsC/{id}', [App\Http\Controllers\BorrowingController::class,'detailsC'] )->name('borrowing.detailsC');
 Route::put('borrowing/a_update/{borrowing_id}/{da_id}', [App\Http\Controllers\BorrowingController::class, 'a_update'])->name('borrowing.a_update');
-Route::get('/borrowing/not_approved/{id}', [App\Http\Controllers\BorrowingController::class, 'not_approved'])->name('borrowing.not_approved');
-Route::put('/borrowing/not_approved/update/{id}', [App\Http\Controllers\BorrowingController::class, 'na_update'])->name('borrowing.na_update');
+Route::get('/borrowing/not_approved/{borrowing_id}/{da_id}', [App\Http\Controllers\BorrowingController::class, 'not_approved'])->name('borrowing.not_approved');
+Route::put('/borrowing/not_approved/update/{borrowing_id}/{da_id}', [App\Http\Controllers\BorrowingController::class, 'na_update'])->name('borrowing.na_update');
 
 Route::get('/disbursement', [App\Http\Controllers\DisbursementController::class,'index'] )->name('disbursement.index');
 Route::get('/disbursement/considering', [App\Http\Controllers\DisbursementController::class,'considering'] )->name('disbursement.considering');

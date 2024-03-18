@@ -51,20 +51,8 @@
                                     echo "<td>{$b->da_code}</td>";
                                     echo "<td>{$b->da_name}</td>";
                                     echo "<td>{$b->status}</td>";
-                                    if($b->status=='รอการอนุมัติ'){
-                                        echo "<td>
-                                            <a class='btn btn-success ml-4' href='#' onclick=\"confirmApprove('{$b->da_name}', '{$brlItem->borrowing_id}', '{$b->da_id}')\">อนุมัติ</a>
-                                            <form id='{$brlItem->borrowing_id}_{$b->da_id}' method='POST' action='".route('borrowing.a_update', [$brlItem->borrowing_id, $b->da_id ])."' style='display: none;'>
-                                                " . csrf_field() . "
-                                                " . method_field('PUT') . "
-                                            </form>
-
-                                            <a href=".route('borrowing.not_approved', [$brlItem->borrowing_id, $b->da_id])." class='btn btn-info'>ไม่อนุมัติ</a>
-
-                                            </td>";
-                                    }
-                                    elseif($b->status=='ไม่อนุมัติ'){
-                                        echo "<td>หมายเหตุ: {$brlItem->not_approved_note}</td>";
+                                    if($b->status=='ไม่อนุมัติ'){
+                                        echo "<td>หมายเหตุ: {$b->not_approved_note}</td>";
 
                                     }
                                     echo "</tr>";
@@ -72,7 +60,7 @@
                                 ?>
                                 </tbody>
                             </table>
-                            <a href='/borrowing'><button class="btn btn-secondary my-2">back</button></a>
+                            <a href='/borrowing/considered'><button class="btn btn-secondary my-2">back</button></a>
 
                         </div>
                     </div>

@@ -64,8 +64,23 @@ class Borrowing_list extends Model
         , 'durable_articles.durable_articles_id as da_id'
         , 'durable_articles.name as da_name'
         , 'durable_articles.durable_articles_code as da_code'
-        , 'borrowing_list.status_approved as status')
+        , 'borrowing_list.status_approved as status'
+        , 'borrowing_list.not_approved_note')
         ->where('borrowing.borrowing_id', $borrowing_id)
+        ->get();
+    }
+
+    public static function getEachDur($bid,$daid){
+
+        return $br_list=DB::table('borrowing_list')
+        ->join('borrowing','borrowing_list.borrowing_id','=','borrowing.borrowing_id')
+        ->join('durable_articles','borrowing_list.durable_articles_id','=','durable_articles.durable_articles_id')
+        ->select('borrowing.borrowing_id'
+        , 'durable_articles.durable_articles_id as da_id'
+        , 'durable_articles.name as da_name'
+        , 'borrowing_list.status_approved as status')
+        ->where('borrowing.borrowing_id', $bid)
+        ->where('durable_articles.durable_articles_id', $daid)
         ->get();
     }
 }

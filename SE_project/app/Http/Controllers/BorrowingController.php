@@ -25,8 +25,17 @@ class BorrowingController extends Controller
     public function index(Request $request): View
     {
         $borrowing =  Borrowing::getAll();
+        $onlyB = Borrowing::getOnlyB();
 
-        return view('borrowing.index',compact('borrowing'));
+        return view('borrowing.index',compact('borrowing','onlyB'));
+    }
+
+    public function considered(Request $request): View
+    {
+        $borrowing =  Borrowing::getAll();
+        $onlyB = Borrowing::getOnlyB();
+
+        return view('borrowing.considered',compact('borrowing','onlyB'));
     }
 
     public function store(Request $request)
@@ -77,6 +86,18 @@ class BorrowingController extends Controller
 
     }
 
+    public function detailsC(Request $request): View
+    {
+        $borrowingId = $request->id; // รับ borrowing_id จาก request
+        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
+        $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
+        $br_user = Borrowing_list::getUserName($borrowingId);
+        $br_da = Borrowing_list::getDurable($borrowingId);
+
+        return view('borrowing.detailsC', compact('brlItem','br_user','br_da'));
+
+    }
+
     public function approved(Request $request): View
     {
         $borrowingId = $request->id; // รับ borrowing_id จาก request
@@ -95,42 +116,45 @@ class BorrowingController extends Controller
             $data2=[
                 'status_approved'=>'อนุมัติแล้ว'
             ];
-            DB::table('borrowing')->where('borrowing_id', $id)->update($data);
-            DB::table('borrowing_list')->where('durable_articles_id', $da_id)->update($data2);
-            return redirect('/borrowing');
+            DB::table('borrowing')
+            ->where('borrowing_id', $id)
+            ->update($data);
+
+            DB::table('borrowing_list')
+            ->where('durable_articles_id', $da_id)
+            ->where('borrowing_id', $id)
+            ->update($data2);
+
+            return redirect('/borrowing/details/' . $id);
     }
 
-    public function not_approved(Request $request): View
+    public function not_approved($bid,$da_id): View
     {
-        $borrowingId = $request->id; // รับ borrowing_id จาก request
-        // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
-        $br = Borrowing::where('borrowing_id', $borrowingId)->first();
+        $br = Borrowing_list::getEachDur($bid,$da_id);
 
-        return view('borrowing.not_approved', compact('br','borrowingId'));
+        return view('borrowing.not_approved', compact('br','bid','da_id'));
     }
 
-    public function na_update(Request $request, $id){
-        $request->validate(
-            [
-                'id_approver'=>'required|max:5',
-                'approved_date'=>'required',
-                'not_approved_note'=>'required'
-            ],
-            [
-                'id_approver'=>'กรุณาใส่ ID ผู้อนุมัติ',
-                'approved_date.required'=>'กรุณากรอกวันที่อนุมัติ',
-                'not_approved_note.required'=>'กรุณากรอกหมายเหตุ'
-            ]
-        );
+    public function na_update(Request $request,$bid, $da_id){
         $data=[
-            'id_approver'=>$request->id_approver,
-            'approved_date'=>$request->approved_date,
-            'not_approved_note'=>$request->not_approved_note,
-            'status'=>$request->status
+            'id_approver'=>auth()->id(),
+            'approved_date'=>now(),
         ];
-        DB::table('borrowing')->where('borrowing_id', $id)->update($data);
-        return redirect('/borrowing');
-}
+        $data2=[
+            'status_approved'=>'ไม่อนุมัติ',
+            'not_approved_note'=>$request->not_approved_note
+        ];
+        DB::table('borrowing')
+        ->where('borrowing_id', $bid)
+        ->update($data);
+
+        DB::table('borrowing_list')
+        ->where('durable_articles_id', $da_id)
+        ->where('borrowing_id', $bid)
+        ->update($data2);
+
+        return redirect('/borrowing/details/' . $bid);
+    }
 
 
 

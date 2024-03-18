@@ -12,8 +12,8 @@
                         </div>
 
                         <div class="pull-right ">
-                            <a class="btn btn-warning">กำลังพิจารณา</a>
-                            <a class="btn btn-secondary" href="/borrowing/considered">พิจารณาแล้ว</a><br><br>
+                            <a class="btn btn-secondary" href="/borrowing">กำลังพิจารณา</a>
+                            <a class="btn btn-success" href="/borrowing/considered">พิจารณาแล้ว</a><br><br>
 
                             <table class="table table-bordered">
 
@@ -30,19 +30,19 @@
 
                                 <?php
                                 foreach ($onlyB as $o) {
-                                    if ($o->id_approver == NULL) {
+                                    if ($o->id_approver != NULL) {
                                         $borrowDate = new DateTime($o->borrow_date);
                                         $dueDate = $borrowDate->add(new DateInterval('P14D'))->format('Y-m-d');
 
                                         echo "<tr>
-                                                                    <td>{$o->borrowing_id}</td>
-                                                                    <td>{$o->uname}</td>
-                                                                    <td>{$o->borrow_date}</td>
-                                                                    <td>{$dueDate}</td>
-                                                                    <td><a href='" .
-                                            route('borrowing.details', ['id' => $o->borrowing_id]) .
+                                                <td>{$o->borrowing_id}</td>
+                                                <td>{$o->uname}</td>
+                                                <td>{$o->borrow_date}</td>
+                                                <td>{$dueDate}</td>
+                                                <td><a href='" .
+                                            route('borrowing.detailsC', ['id' => $o->borrowing_id]) .
                                             "' class='btn btn-secondary'>ดูรายละเอียด</a></td>
-                                                                </tr>";
+                                        </tr>";
                                     }
                                 }
                                 ?>
