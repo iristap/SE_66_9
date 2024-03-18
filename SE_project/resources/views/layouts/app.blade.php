@@ -84,7 +84,7 @@
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('disbursement.index') }}">การอนุมัติการเบิก</a>
+                                <a class="nav-link" href="{{ route('disbursement.considering') }}">การอนุมัติการเบิก</a>
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             </li>
                             <li>
