@@ -64,15 +64,15 @@ class DisbursementController extends Controller
         return view('disbursement.approved', compact('dbm','disbursement_id'));
     }
 
-    public function a_update(Request $request, $id){
-        $request->validate(
-            [
-                'date_approved'=>'required'
-            ],
-            [
-                'date_approved.required'=>'กรุณาใส่วันที่อนุมัติ'
-            ]
-        );
+    public function a_update($id){
+        // $request->validate(
+        //     [
+        //         'date_approved'=>'required'
+        //     ],
+        //     [
+        //         'date_approved.required'=>'กรุณาใส่วันที่อนุมัติ'
+        //     ]
+        // );
         $data=[
             'date_approved'=>now(),
             'status'=>'อนุมัติแล้ว'

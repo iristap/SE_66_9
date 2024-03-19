@@ -22,7 +22,7 @@
                                         <input class="col-md-4 col-form-label text-md" type="text" name="note_approved">
                                     </div>
                                     <div class="d-flex flex-row-reverse">
-                                        <button class="btn btn-success p-2 ml-4" type="submit">ยืนยันการไม่อนุมัติ</button>
+                                        <!-- <button class="btn btn-success p-2 ml-4" type="submit">ยืนยันการไม่อนุมัติ</button> -->
                                         <a href="/disbursement/considered/" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
                                     </div>
                                 </form>
@@ -34,3 +34,33 @@
         </div>
     </div>
 @endsection
+<script>
+    function confirmApprove(id1) {
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: 'คุณต้องการอนุมัติ ' + id1 + ' ใช่หรือไม่?',
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยันการอนุมัติ',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              document.getElementById(id1 + '_' + id2).submit();
+            }
+        });
+    }
+    function confirmNotApprove(name, id1, id2) {
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: 'คุณต้องการไม่อนุมัติ ' + name + ' ใช่หรือไม่?',
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยันการไม่อนุมัติ',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              document.getElementById(id1 + '_' + id2).submit();
+            }
+        });
+    }
+  </script>

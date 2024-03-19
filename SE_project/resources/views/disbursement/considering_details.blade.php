@@ -13,14 +13,14 @@
                         <?php
 
                         if ($dbmUser) {
-                            echo "ID การยืม: {$dbmUser->disbursement_id}<br>";
-                            echo "ID ผู้ขอยืมครุภัณฑ์: {$dbmUser->user_id}<br>";
-                            echo "ชื่อผู้ขอยืมครุภัณฑ์: {$dbmUser->users_name}<br>";
+                            echo "ID การเบิก: {$dbmUser->disbursement_id}<br>";
+                            echo "ID ผู้ขอเบิกวัสดุ: {$dbmUser->user_id}<br>";
+                            echo "ชื่อผู้ขอเบิกวัสดุ: {$dbmUser->users_name}<br>";
                             echo "วันที่ทำรายการ: {$dbmUser->date_disbursement}<br>";
-                            echo "หมายเหตุการยืมครุภัณฑ์: {$dbmUser->note_disbursement}<br>";
+                            echo "หมายเหตุการเบิกวัสดุ: {$dbmUser->note_disbursement}<br>";
                             echo "สถานะการทำรายการ: {$dbmUser->status}<br>";
                         } else {
-                            echo 'ไม่พบข้อมูลการยืมที่มี ID นี้';
+                            echo 'ไม่พบข้อมูลเบิกวัสดุที่มี ID นี้';
                         }
                         ?>
                         <div class="pull-right ">
@@ -49,16 +49,23 @@
                             </table>
                             <br>
                             <?php
-                                /*echo "<a class='btn btn-success ml-4' href='#' onclick=\"confirmApprove('{$dbmUser->disbursement_id}')\">อนุมัติ</a>
-                                            <form id='{$dbmUser->disbursement_id}_{$mat->mid}' method='POST' action='".route('disbursement.a_update', [$dbmUser->disbursement_id, $mat->mid ])."' style='display: none;'>
-                                                " . csrf_field() . "
-                                                " . method_field('PUT') . "
-                                            </form>";*/
-                                //<a href="{{ route('disbursement.approved', $dbmUser->disbursement_id) }}" class="btn btn-success">อนุมัติ</a>
+                                // echo "<a class='btn btn-success ml-4' href='#' onclick=\"confirmApprove('{$dbmUser->disbursement_id}')\">อนุมัติ</a>
+                                //             <form id='{$dbmUser->disbursement_id}_{$mat->mid}' method='POST' action='".route('disbursement.a_update', [$dbmUser->disbursement_id, $mat->mid ])."' style='display: none;'>
+                                //                 " . csrf_field() . "
+                                //                 " . method_field('PUT') . "
+                                //             </form>";
+                                //<a href="{{ route('disbursement.approved', $dbmUser->disbursement_id) }}" class='btn btn-success'>อนุมัติ</a>
                             ?>
+                           
+                            <a class='btn btn-success ml-4' href='#' onclick="confirmApprove('{{ $dbmUser->disbursement_id }}')">อนุมัติ</a>
+                            
+                                <form id='{{ $dbmUser->disbursement_id }}' method='POST' action='{{ route('disbursement.a_update', $dbmUser->disbursement_id) }}' style='display: none;'>
+                                    @csrf
+                                    @method('PUT')
+                                </form>
 
                             <a href="{{ route('disbursement.not_approved', $dbmUser->disbursement_id) }}"
-                                class="btn btn-danger">ไม่อนุมัติ</a>
+                                class='btn btn-danger'>ไม่อนุมัติ</a>
                             <a href='/disbursement/considering'><button class='btn btn-secondary my-2'>กลับ</button></a>
 
                         </div>
@@ -69,17 +76,17 @@
     </div>
 @endsection
 <script>
-    function confirmApprove(id1) {
+    function confirmApprove(id) {
         Swal.fire({
             title: 'คุณแน่ใจหรือไม่?',
-            text: 'คุณต้องการอนุมัติ ' + id1 + ' ใช่หรือไม่?',
+            text: 'คุณต้องการอนุมัติการเบิก ' + id + ' ใช่หรือไม่?',
             icon: "question",
             showCancelButton: true,
             confirmButtonText: 'ยืนยันการอนุมัติ',
             cancelButtonText: 'ยกเลิก'
         }).then((result) => {
             if (result.isConfirmed) {
-              document.getElementById(id1 + '_' + id2).submit();
+              document.getElementById(id).submit();
             }
         });
     }

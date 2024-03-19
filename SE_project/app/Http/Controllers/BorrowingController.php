@@ -136,6 +136,14 @@ class BorrowingController extends Controller
     }
 
     public function na_update(Request $request,$bid, $da_id){
+        $request->validate(
+            [
+                'not_approved_note'=>'required',
+            ],
+            [
+                'not_approved_note.required'=>'โปรดป้อนหมายเหตุการไม่อนุมัติ',
+            ]
+            );
         $data=[
             'id_approver'=>auth()->id(),
             'approved_date'=>now(),

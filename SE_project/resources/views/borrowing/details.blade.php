@@ -59,7 +59,7 @@
                                                 " . method_field('PUT') . "
                                             </form>
 
-                                            <a href=".route('borrowing.not_approved', [$brlItem->borrowing_id, $b->da_id])." class='btn btn-info'>ไม่อนุมัติ</a>
+                                            <a href=".route('borrowing.not_approved', [$brlItem->borrowing_id, $b->da_id])." class='btn btn-dark'>ไม่อนุมัติ</a>
 
                                             </td>";
                                     }
