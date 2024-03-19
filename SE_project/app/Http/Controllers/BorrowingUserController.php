@@ -153,6 +153,6 @@ class BorrowingUserController extends Controller
 
         DB::table('borrowing')->where('borrowing_id', $borrowing_id)->delete();
         DB::table('borrowing_list')->where('borrowing_id', $borrowing_id)->delete();
-        return redirect('/borrow/history/considering');
+        return redirect()->route('borrowing.history.considering');
     }
 }
