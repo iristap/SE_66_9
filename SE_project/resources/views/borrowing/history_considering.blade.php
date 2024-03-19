@@ -30,7 +30,7 @@
                                 <td>{{ $item->borrowing_id }}</td>
                                 <td>{{ $item->borrow_date }}</td>
                                 <td><span class="badge btn btn-warning">{{ $item->status }}</span></td>
-                                <td><a href="{{ route('borrowing.history.detail', $item->borrowing_id) }}" class="btn btn-secondary">อ่าน</a></td>
+                                <td><a href="{{ route('borrowing.considering.detail', $item->borrowing_id) }}" class="btn btn-secondary">อ่าน</a></td>
                                 <td><span class="btn btn-danger">ลบ</span></td>
                                 </tr>
                                 @endforeach

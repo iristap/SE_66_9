@@ -23,7 +23,6 @@
                                         <td>วันที่ทำรายการ</td>
                                         <td>สถานะ</td>
                                         <td>รายละเอียด</td>
-                                        <td>ลบการยืม</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,7 +53,6 @@
                                             <td>{{ $item->borrow_date }}</td>
                                             <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
                                             <td><a href="{{ route('borrowing.history.detail', $item->borrowing_id) }}" class="btn btn-secondary">อ่าน</a></td>
-                                            <td><span class="btn btn-danger">ลบ</span></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
