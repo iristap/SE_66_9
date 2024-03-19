@@ -14,14 +14,21 @@
 
                         <div class="pull-right ">
                             <div class="card-body">
-                                <form method="POST" action="{{ route('disbursement.na_update', $dbm->disbursement_id) }}">
+                            <form id="not_approve_form_{{ $dbm->disbursement_id }}" method="POST" action="{{ route('disbursement.na_update', $dbm->disbursement_id) }}">
+                                <!-- <form method="POST" action="{{ route('disbursement.na_update', $dbm->disbursement_id) }}"> -->
                                     @csrf
                                     @method('PUT')
                                     <div class=form-group>
                                         <label class="col-md-4 col-form-label text-md">หมายเหตุการไม่อนุมัติ</label>
                                         <input class="col-md-4 col-form-label text-md" type="text" name="note_approved">
                                     </div>
+                                    @error('note_approved')
+                                    <div>
+                                        <span class="text-danger  d-flex justify-content-center ">{{$message}}</span>
+                                    </div>
+                                    @enderror
                                     <div class="d-flex flex-row-reverse">
+                                    <button id="confirm_not_approve_{{ $dbm->disbursement_id }}" class="btn btn-danger" type="button">ยืนยัน</button>
                                         <!-- <button class="btn btn-success p-2 ml-4" type="submit">ยืนยันการไม่อนุมัติ</button> -->
                                         <a href="/disbursement/considered/" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
                                     </div>
@@ -33,34 +40,23 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('confirm_not_approve_{{  $dbm->disbursement_id }}').addEventListener('click', function () {
+                Swal.fire({
+                    title: 'คุณแน่ใจหรือไม่?',
+                    text: 'คุณต้องการไม่อนุมัติการเบิกนี้ ใช่หรือไม่?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'ยืนยัน',
+                    cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('not_approve_form_{{  $dbm->disbursement_id }}').submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
-<script>
-    function confirmApprove(id1) {
-        Swal.fire({
-            title: 'คุณแน่ใจหรือไม่?',
-            text: 'คุณต้องการอนุมัติ ' + id1 + ' ใช่หรือไม่?',
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: 'ยืนยันการอนุมัติ',
-            cancelButtonText: 'ยกเลิก'
-        }).then((result) => {
-            if (result.isConfirmed) {
-              document.getElementById(id1 + '_' + id2).submit();
-            }
-        });
-    }
-    function confirmNotApprove(name, id1, id2) {
-        Swal.fire({
-            title: 'คุณแน่ใจหรือไม่?',
-            text: 'คุณต้องการไม่อนุมัติ ' + name + ' ใช่หรือไม่?',
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: 'ยืนยันการไม่อนุมัติ',
-            cancelButtonText: 'ยกเลิก'
-        }).then((result) => {
-            if (result.isConfirmed) {
-              document.getElementById(id1 + '_' + id2).submit();
-            }
-        });
-    }
-  </script>

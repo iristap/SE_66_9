@@ -94,6 +94,14 @@ class DisbursementController extends Controller
     }
 
     public function na_update(Request $request, $id){
+        $request->validate(
+            [
+                'note_approved'=>'required',
+            ],
+            [
+                'note_approved.required'=>'โปรดป้อนหมายเหตุการไม่อนุมัติ',
+            ]
+            );
         $data=[
             'date_approved'=>now(),
             'status'=>'ไม่อนุมัติ',
