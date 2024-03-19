@@ -41,11 +41,12 @@ class BorrowingUserController extends Controller
         $selectedDurableIds = $request->input('durable_articles_id');
         foreach ($selectedDurableIds as $durableId) {
             $durable = Durable::findOrFail($durableId);
-            $durable->availability_status = 'ไม่ว่าง';
+            $durable->availability_status = 'ไม่พร้อมใช้งาน';
             $durable->save();
             $borrowingList = new Borrowing_list();
-            $borrowingList->borrowing_id = $borrowing->id;
+            $borrowingList->borrowing_id = $borrowing->borrowing_id;
             $borrowingList->durable_articles_id = $durableId;
+            $borrowingList->status_approved = 'รอการอนุมัติ';
             $borrowingList->save();
         }
         return redirect()->route('borrowing.index_user')->with('success', 'Borrowing successful!');
