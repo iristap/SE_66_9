@@ -33,6 +33,7 @@
                                     </tr>
                                 @endforeach
                             </table>
+                            <a href={{ route('borrowing.history.considering') }}><button class='btn btn-secondary m-2'>ย้อนกลับ</button></a>
                             <br>
                         </div>
                     </div>

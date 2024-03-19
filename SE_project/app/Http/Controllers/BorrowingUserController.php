@@ -84,7 +84,32 @@ class BorrowingUserController extends Controller
         return view('borrowing.history_considered',compact('user','borrowings'));
     }
 
-    public function detail(Request $request)
+    public function detail_considering(Request $request)
+    {
+        $borrowingId = $request->id;
+        $borrowings = DB::table('borrowing')
+                        ->join('users as sender', 'borrowing.id_sender', '=', 'sender.id')
+                        ->join('borrowing_list', 'borrowing.borrowing_id', '=', 'borrowing_list.borrowing_id')
+                        ->join('durable_articles as da', 'borrowing_list.durable_articles_id', '=', 'da.durable_articles_id')
+                        ->select(
+                            'borrowing.*', 
+                            'sender.name as sender_name'
+                        )
+                        ->where('borrowing.borrowing_id', $borrowingId)
+                        ->first();
+        $borrowing_list = DB::table('borrowing_list')
+                            ->join('durable_articles as da', 'borrowing_list.durable_articles_id', '=', 'da.durable_articles_id')
+                            ->select(
+                                'borrowing_list.*', 
+                                'da.durable_articles_code as da_code',
+                                'da.name as da_name'
+                            )
+                            ->where('borrowing_list.borrowing_id', $borrowingId)
+                            ->get();
+        return view('borrowing.considering_detail', compact('borrowings','borrowing_list'));
+    }
+
+    public function detail_considered(Request $request)
     {
         $borrowingId = $request->id;
         $borrowings = DB::table('borrowing')
@@ -110,32 +135,7 @@ class BorrowingUserController extends Controller
                             )
                             ->where('borrowing_list.borrowing_id', $borrowingId)
                             ->get();
-        return view('borrowing.history_detail', compact('borrowings','borrowing_list'));
-    }
-
-    public function detail_considering(Request $request)
-    {
-        $borrowingId = $request->id;
-        $borrowings = DB::table('borrowing')
-                        ->join('users as sender', 'borrowing.id_sender', '=', 'sender.id')
-                        ->join('borrowing_list', 'borrowing.borrowing_id', '=', 'borrowing_list.borrowing_id')
-                        ->join('durable_articles as da', 'borrowing_list.durable_articles_id', '=', 'da.durable_articles_id')
-                        ->select(
-                            'borrowing.*', 
-                            'sender.name as sender_name'
-                        )
-                        ->where('borrowing.borrowing_id', $borrowingId)
-                        ->first();
-        $borrowing_list = DB::table('borrowing_list')
-                            ->join('durable_articles as da', 'borrowing_list.durable_articles_id', '=', 'da.durable_articles_id')
-                            ->select(
-                                'borrowing_list.*', 
-                                'da.durable_articles_code as da_code',
-                                'da.name as da_name'
-                            )
-                            ->where('borrowing_list.borrowing_id', $borrowingId)
-                            ->get();
-        return view('borrowing.considering_detail', compact('borrowings','borrowing_list'));
+        return view('borrowing.considered_detail', compact('borrowings','borrowing_list'));
     }
 
     public function delete($borrowing_id)

@@ -47,6 +47,7 @@
                             @else
                                 {{ $borrowings->checker_name }}<br>
                             @endif
+                            <a href={{ route('borrowing.history.considering') }}><button class='btn btn-secondary m-2'>ย้อนกลับ</button></a>
                         </div>
                     </div>
                 </div>

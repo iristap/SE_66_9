@@ -52,7 +52,7 @@
                                             </td>
                                             <td>{{ $item->borrow_date }}</td>
                                             <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
-                                            <td><a href="{{ route('borrowing.history.detail', $item->borrowing_id) }}" class="btn btn-secondary">อ่าน</a></td>
+                                            <td><a href="{{ route('borrowing.considered.detail', $item->borrowing_id) }}" class="btn btn-secondary">อ่าน</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
