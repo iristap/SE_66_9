@@ -24,12 +24,16 @@
                                     <tr>
                                         <td>ID</td>
                                         <td>name</td>
+                                        <td>เหตุผลการยืม</td>
+                                        <td>สถานะ</td>
                                     </tr>
                                 </thead>
                                 @foreach ($borrowing_list as $item)
                                     <tr>
                                         <td>{{ $item->da_code }}</td>
                                         <td>{{ $item->da_name }}</td>
+                                        <td>{{ $item->br_note }}</td>
+                                        <td>{{ $item->br_status }}</td>
                                     </tr>
                                 @endforeach
                             </table>
