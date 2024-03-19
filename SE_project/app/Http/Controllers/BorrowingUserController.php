@@ -12,7 +12,7 @@ class BorrowingUserController extends Controller
 {
     public function index()
     {
-        $durables = Durable::where('availability_status', 'ว่าง')->get();;
+        $durables = Durable::where('availability_status', 'พร้อมใช้งาน')->get();;
         return view('borrowing.index_user', compact('durables'));
     }
     public function confirm(Request $request)
