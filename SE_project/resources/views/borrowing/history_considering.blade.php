@@ -18,9 +18,6 @@
                             <thead>
                                 <tr>
                                     <td>ID</td>
-                                    <td>กำหนดการคืน</td>
-                                    <td>ผู้อนุมัติ</td>
-                                    <td>ผู้ตรวจคืน</td>
                                     <td>วันที่ทำรายการ</td>
                                     <td>สถานะ</td>
                                     <td>รายละเอียด</td>
@@ -31,27 +28,6 @@
                                 @foreach ($borrowings as $item)
                                 <tr>
                                 <td>{{ $item->borrowing_id }}</td>
-                                <td>
-                                    @if ($item->due_date == null)
-                                        -
-                                    @else
-                                        {{ $item->due_date }}
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($item->id_approver == null)
-                                        -
-                                    @else
-                                        {{ $item->id_approver }}    
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($item->id_checker == null)
-                                        -
-                                    @else
-                                        {{ $item->id_checker }}  
-                                    @endif
-                                </td>
                                 <td>{{ $item->borrow_date }}</td>
                                 <td><span class="badge btn btn-warning">{{ $item->status }}</span></td>
                                 <td><a href="{{ route('borrowing.history.detail', $item->borrowing_id) }}" class="btn btn-secondary">อ่าน</a></td>

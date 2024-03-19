@@ -60,7 +60,7 @@ class BorrowingUserController extends Controller
     public function considering()
     {
         $user = Auth::user();
-        $borrowings = Borrowing::where('id_sender', $user->id)->where('status','รอการอนุมัติ')->get();
+        $borrowings = Borrowing::where('id_sender', $user->id)->where('status','รอการพิจารณา')->get();
         return view('borrowing.history_considering',compact('user','borrowings'));
     }
 
