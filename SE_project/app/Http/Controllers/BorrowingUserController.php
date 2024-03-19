@@ -140,8 +140,18 @@ class BorrowingUserController extends Controller
 
     public function delete($borrowing_id)
     {
+        $selectedDurables = DB::table('borrowing_list')->where('borrowing_id', $borrowing_id)->pluck('durable_articles_id');
+
+        foreach ($selectedDurables as $durable_id) {
+            $durable = Durable::find($durable_id);
+    
+            if ($durable) {
+                $durable->availability_status = 'พร้อมใช้งาน';
+                $durable->save();
+            }
+        }
+
         DB::table('borrowing')->where('borrowing_id', $borrowing_id)->delete();
-        //$durable = DB::table('durable_articles')->where('borrowing_id', $borrowing_id);
         DB::table('borrowing_list')->where('borrowing_id', $borrowing_id)->delete();
         return redirect('/borrow/history/considering');
     }
