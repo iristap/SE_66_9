@@ -35,7 +35,7 @@ class BorrowingUserController extends Controller
         $borrowing = new Borrowing();
         $borrowing->borrow_date = now();
         $borrowing->borrowing_note = $request->input('borrowing_note');
-        $borrowing->status = 'ปกติ';
+        $borrowing->status = 'รอการพิจารณา';
         $borrowing->id_sender = $user->id;
         $borrowing->save();
         $selectedDurableIds = $request->input('durable_articles_id');
@@ -78,7 +78,7 @@ class BorrowingUserController extends Controller
                             'checker.name as checker_name'
                         )
                         ->where('borrowing.id_sender', $user->id)
-                        ->where('borrowing.status', 'พิจารณาแล้ว')
+                        ->where('borrowing.status', 'อนุมัติแล้ว')
                         ->get();
 
         return view('borrowing.history_considered',compact('user','borrowings'));
