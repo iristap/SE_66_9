@@ -31,7 +31,7 @@
                                 <td>{{ $item->borrow_date }}</td>
                                 <td><span class="badge btn btn-warning">{{ $item->status }}</span></td>
                                 <td><a href="{{ route('borrowing.considering.detail', $item->borrowing_id) }}" class="btn btn-secondary">อ่าน</a></td>
-                                <td><span class="btn btn-danger">ลบ</span></td>
+                                <td><a href="{{ route('borrowing.delete_user', $item->borrowing_id) }}" class="btn btn-danger" onclick="return confirm('คุณต้องการลบหรือไหม?')">ลบ</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

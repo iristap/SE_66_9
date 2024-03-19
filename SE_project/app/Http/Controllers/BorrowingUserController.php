@@ -137,4 +137,12 @@ class BorrowingUserController extends Controller
                             ->get();
         return view('borrowing.considering_detail', compact('borrowings','borrowing_list'));
     }
+
+    public function delete($borrowing_id)
+    {
+        DB::table('borrowing')->where('borrowing_id', $borrowing_id)->delete();
+        //$durable = DB::table('durable_articles')->where('borrowing_id', $borrowing_id);
+        DB::table('borrowing_list')->where('borrowing_id', $borrowing_id)->delete();
+        return redirect('/borrow/history/considering');
+    }
 }

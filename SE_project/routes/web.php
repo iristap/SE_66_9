@@ -38,6 +38,7 @@ Route::post('/borrow/confirm', [App\Http\Controllers\BorrowingUserController::cl
 Route::post('/borrow/store', [App\Http\Controllers\BorrowingUserController::class, 'store'])->name('borrowing.store_user');
 Route::get('/borrow/history', [App\Http\Controllers\BorrowingUserController::class, 'index_history'])->name('borrowing.index_history');
 
+Route::get('/borrow/detele/{id}', [App\Http\Controllers\BorrowingUserController::class, 'delete'])->name('borrowing.delete_user');
 Route::get('/borrow/history/considering', [App\Http\Controllers\BorrowingUserController::class, 'considering'])->name('borrowing.history.considering');
 Route::get('/borrow/history/considered', [App\Http\Controllers\BorrowingUserController::class, 'considered'])->name('borrowing.history.considered');
 Route::get('/borrow/history/detail/{id}', [App\Http\Controllers\BorrowingUserController::class, 'detail'])->name('borrowing.history.detail');
