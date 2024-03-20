@@ -24,6 +24,9 @@ class BorrowingController extends Controller
 {
     public function index(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $borrowing =  Borrowing::getAll();
         $onlyB = Borrowing::getOnlyB();
 
@@ -32,6 +35,9 @@ class BorrowingController extends Controller
 
     public function considered(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $borrowing =  Borrowing::getAll();
         $onlyB = Borrowing::getOnlyB();
 
@@ -76,6 +82,9 @@ class BorrowingController extends Controller
 
     public function details(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $borrowingId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
         $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
@@ -88,6 +97,9 @@ class BorrowingController extends Controller
 
     public function detailsC(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $borrowingId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
         $brlItem = Borrowing_list::where('borrowing_id', $borrowingId)->first();
@@ -109,6 +121,9 @@ class BorrowingController extends Controller
     }
 
     public function a_update($id, $da_id){
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
             $data=[
                 'id_approver'=>auth()->id(),
                 'approved_date'=>now()
@@ -130,12 +145,18 @@ class BorrowingController extends Controller
 
     public function not_approved($bid,$da_id): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $br = Borrowing_list::getEachDur($bid,$da_id);
 
         return view('borrowing.not_approved', compact('br','bid','da_id'));
     }
 
     public function na_update(Request $request,$bid, $da_id){
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $request->validate(
             [
                 'not_approved_note'=>'required',

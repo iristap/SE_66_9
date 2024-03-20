@@ -22,6 +22,9 @@ class DisbursementController extends Controller
 {
     public function index(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $disbursement =  Disbursement::getAll();
 
         return view('disbursement.index',compact('disbursement'));
@@ -29,6 +32,9 @@ class DisbursementController extends Controller
 
     public function considering(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $dbm =  Disbursement::getAll();
         $dbm_ring = Disbursement::getConsidering();
 
@@ -37,6 +43,9 @@ class DisbursementController extends Controller
 
     public function considered(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $disbursement =  Disbursement::getAll();
         $dbm_red = Disbursement::getConsidered();
 
@@ -45,6 +54,9 @@ class DisbursementController extends Controller
 
     public function considering_details(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $dbmId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
         $dbmUser = Disbursement::getUserName($dbmId);
@@ -57,6 +69,9 @@ class DisbursementController extends Controller
 
     public function approved(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $disbursement_id = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
         $dbm = Disbursement::where('disbursement_id', $disbursement_id)->first();
@@ -73,6 +88,9 @@ class DisbursementController extends Controller
         //         'date_approved.required'=>'กรุณาใส่วันที่อนุมัติ'
         //     ]
         // );
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $data=[
             'date_approved'=>now(),
             'status'=>'อนุมัติแล้ว'
@@ -86,6 +104,9 @@ class DisbursementController extends Controller
 
     public function not_approved(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $disbursement_id = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
         $dbm = Disbursement::where('disbursement_id', $disbursement_id)->first();
@@ -94,6 +115,9 @@ class DisbursementController extends Controller
     }
 
     public function na_update(Request $request, $id){
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $request->validate(
             [
                 'note_approved'=>'required',
@@ -113,6 +137,9 @@ class DisbursementController extends Controller
 
     public function considered_details(Request $request): View
     {
+        if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
+            return view('home');
+        }
         $dbmId = $request->id; // รับ borrowing_id จาก request
         // ค้นหาการยืมที่มี borrowing_id ตรงกับที่ส่งมา
         $dbmMat = Disbursement::getMat($dbmId);
