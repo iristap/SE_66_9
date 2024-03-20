@@ -20,6 +20,7 @@ class DisbursementUserController extends Controller
     {
         $request->validate([
             'material_id' => 'required|array|min:1',
+            'amount_selected' => 'required|array|min:1',
         ],);
         $user = Auth::user();
         $selectedMaterialIds = $request->input('material_id');
@@ -29,7 +30,7 @@ class DisbursementUserController extends Controller
         foreach ($selectedMaterials as $item) {
             // Process each $amount here
         }
-        return view('withdraw.confirm_user', compact('selectedMaterials','user'));
+        return view('withdraw.confirm_user', compact('selectedMaterials','user', 'amount_selected'));
     }
 
 
@@ -63,6 +64,43 @@ class DisbursementUserController extends Controller
         }
         return redirect()->route('withdraw.index_user')->with('success', 'withdraw successful!');
     }
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'material_id' => 'required|array|min:1',
+    //         'amount' => 'required|array|min:1',
+    //         'note_disbursement' => 'required|string|max:255',
+    //     ]);
+
+    //     $user = Auth::user();
+    //     $disbursement = new Disbursement();
+    //     $disbursement->date_disbursement = now();
+    //     $disbursement->note_disbursement = $request->input('note_disbursement');
+    //     $disbursement->user_id = $user->id;
+    //     $disbursement->status = 'รออนุมัติ';
+    //     $disbursement->save();
+
+    //     $selectedMaterialIds = $request->input('material_id');
+    //     $amountSelected = $request->input('amount_selected');
+
+    //     foreach ($selectedMaterialIds as $key => $materialId) {
+    //         $material = Material::find($materialId);
+    //         if ($material) {
+    //             $amount = $amountSelected[$key];
+    //             $material->amount -= $amount;
+    //             $material->save();
+
+    //             $disbursementDetail = new Disbursement_detail();
+    //             $disbursementDetail->disbursement_id = $disbursement->id;
+    //             $disbursementDetail->material_id = $materialId;
+    //             $disbursementDetail->amount = $amount;
+    //             $disbursementDetail->save();
+    //         }
+    //     }
+
+    //     return redirect()->route('withdraw.index_user')->with('success', 'Withdraw successful!');
+    // }
+
 
     public function index_history()
     {

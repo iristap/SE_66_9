@@ -39,7 +39,15 @@
                                     <tr class="text-center">
                                         <td>{{ $maierial->material_id }}</td>
                                         <td>{{ $maierial->name }}</td>
-                                        <td><span id="selectedAmount">{{ old('amount_selected', 0) }}</span></td>
+                                        <td>
+                                            @if(isset($amount_selected[$loop->index])) <!-- ตรวจสอบว่ามีค่าที่ต้องการใน $amount_selected หรือไม่ -->
+                                                {{ $amount_selected[$loop->index] }}
+                                            @else
+                                                0 <!-- ให้แสดง 0 ถ้าไม่มีค่าที่ต้องการใน $amount_selected -->
+                                            @endif
+                                        </td>
+                                        <!-- <td>{{ $amount_selected[$loop->index] }}</td> -->
+                                        <!-- <td><span id="selectedAmount">{{ old('amount_selected', 0) }}</span></td> -->
                                         <td>{{ $maierial->unit }}</td>
                                     </tr>
 

@@ -27,6 +27,22 @@
                 alert('กรุณาเลือกอย่างน้อยหนึ่งรายการ');
             }
         }
+        // function validateForm() {
+        //     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        //     var isChecked = false;
+
+        //     checkboxes.forEach(function(checkbox) {
+        //         if (checkbox.checked) {
+        //             isChecked = true;
+        //         }
+        //     });
+
+        //     if (isChecked) {
+        //         document.getElementById('withdrawForm').submit();
+        //     } else {
+        //         alert('กรุณาเลือกอย่างน้อยหนึ่งรายการ');
+        //     }
+        // }
     </script>
 
 </html>
@@ -78,7 +94,9 @@
                                                     -
                                                   </button>
                                                   
-                                                  <input type="number" name="amount_selected" min="0" max="{{ $material->amount }}" value="0">
+                                                  <!-- <input type="number" name="amount_selected" min="0" max="{{ $material->amount }}" value="0"> -->
+                                                  <input type="number" name="amount_selected[]" min="0" max="{{ $material->amount }}" value="0">
+
                                                   
                                                 
                                                   <button type="button" onclick="this.parentNode.querySelector('[type=number]').stepUp();">
