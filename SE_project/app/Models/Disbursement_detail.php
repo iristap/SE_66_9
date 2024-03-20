@@ -10,6 +10,7 @@ class disbursement_detail extends Model
 {
     protected $table = 'disbursement_detail';
     protected $primaryKey = 'disbursement_id ';
+    public $incrementing = false;
     public $timestamps = false;
     protected $fillable =
     [
