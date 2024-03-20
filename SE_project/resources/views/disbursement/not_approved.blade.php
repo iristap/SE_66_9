@@ -2,18 +2,20 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
-                <div class="row">
+                <div class="card-header text-white" style="background-color: #FF5BAE; font-size: 20px;">{{ __('พิจารณาการเบิกอุปกรณ์') }}</div>
+                <div class="card-body">
+                <!-- <div class="row"> -->
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
                             <br>
-                            <h2>พิจารณาการเบิกอุปกรณ์</h2>
-                            <h4>กรอกข้อมูลการไม่อนุมัติการเบิก</h4>
+                            <!-- <h2>พิจารณาการเบิกอุปกรณ์</h2> -->
+                            <h5  class="ml-3">กรอกข้อมูลการไม่อนุมัติการเบิก</h5>
                         </div>
 
                         <div class="pull-right ">
-                            <div class="card-body">
+                            <!-- <div class="card-body"> -->
                             <form id="not_approve_form_{{ $dbm->disbursement_id }}" method="POST" action="{{ route('disbursement.na_update', $dbm->disbursement_id) }}">
                                 <!-- <form method="POST" action="{{ route('disbursement.na_update', $dbm->disbursement_id) }}"> -->
                                     @csrf
@@ -28,7 +30,7 @@
                                     </div>
                                     @enderror
                                     <div class="d-flex flex-row-reverse">
-                                    <button id="confirm_not_approve_{{ $dbm->disbursement_id }}" class="btn btn-danger" type="button">ยืนยัน</button>
+                                    <button id="confirm_not_approve_{{ $dbm->disbursement_id }}" class="btn btn-danger ml-3" type="button">ยืนยัน</button>
                                         <!-- <button class="btn btn-success p-2 ml-4" type="submit">ยืนยันการไม่อนุมัติ</button> -->
                                         <a href="/disbursement/considered/" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
                                     </div>
@@ -36,6 +38,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

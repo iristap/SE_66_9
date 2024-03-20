@@ -2,18 +2,22 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
-                <div class="row">
-                    <div class="col-lg-12 margin-tb">
+                <div class="card-header text-white" style="background-color: #FC6736; font-size: 20px;">{{ __('พิจารณาการยืมครุภัณฑ์') }}</div>
+                <div class="card-body">
+                
+                <!-- <div class="row"> -->
+                        <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
                             <br>
-                            <h2>พิจารณาการยืมครุภัณฑ์</h2>
-                            <h4>กรอกข้อมูลเพื่อไม่อนุมัติการยืม</h4>
+                            <!-- <h2>พิจารณาการยืมครุภัณฑ์</h2> -->
+                            <!-- <h5>กรอกข้อมูลเพื่อไม่อนุมัติการยืม</h5> -->
                         </div>
-
-                        <div class="pull-right ">
-                            <div class="card-body">
+                        
+                        <div class="pull-right">
+                            <h5 class="ml-3">กรอกข้อมูลเพื่อไม่อนุมัติการยืม</h5>
+                            <!-- <div class="card-body"> -->
                             <form id="not_approve_form_{{ $bid }}_{{ $da_id }}" method="POST" action="{{ route('borrowing.na_update', [$bid, $da_id]) }}">
                                 <!-- <form id="not_approve_form" method="POST" action="{{ route('borrowing.na_update', [$bid, $da_id]) }}"> -->
                                     @csrf
@@ -33,7 +37,7 @@
                                         <a href="{{ route('borrowing.details', [$bid, $da_id]) }}" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
                                     </div> -->
                                     <div class="d-flex flex-row-reverse">
-                                    <button id="confirm_not_approve_{{ $bid }}_{{ $da_id }}" class="btn btn-danger" type="button">ยืนยัน</button>
+                                    <button id="confirm_not_approve_{{ $bid }}_{{ $da_id }}" class="btn btn-danger ml-3" type="button">ยืนยัน</button>
                                         <!-- <button id="confirm_not_approve" class="btn btn-danger" type="button">ยืนยัน</button> -->
                                         <!-- <button class="btn btn-danger p-2 ml-4" href='#' onclick="confirmNotApprove('{{ $bid }}', '{{ $da_id }}')">ยืนยัน</button> -->
                                             <!-- <form id='{{ $bid }}_{{$da_id}}' method="POST" action="{{ route('borrowing.na_update', [$bid, $da_id]) }}">
@@ -51,6 +55,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -4,14 +4,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="row">
+                <div class="card-header text-white" style="background-color: #FC6736; font-size: 20px;">{{ __('การอนุมัติการยืมครุภัณฑ์') }}</div>
+                <div class="card-body">
+                <!-- <div class="row"> -->
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left ">
-                            <br>
-                            <h2>การอนุมัติการยืมครุภัณฑ์</h2>
+                            <!-- <br>
+                            <h2>การอนุมัติการยืมครุภัณฑ์</h2> -->
                         </div>
 
-                        <div class="pull-right ">
+                        <div class="pull-right mt-3">
                             <a class="btn btn-warning">กำลังพิจารณา</a>
                             <a class="btn btn-secondary" href="/borrowing/considered">พิจารณาแล้ว</a><br><br>
 
@@ -50,6 +52,7 @@
                             </table>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
