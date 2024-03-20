@@ -42,9 +42,9 @@
                                 <td> {{$repair->durable->name}} </td>
                                 <td>    
                                     @foreach ($repair->durable->borrowingList as $borrowingList) 
-                                        {{ $borrowingList->borrowing->checker->name }}
+                                        {{ $borrowingList->borrowing->checker->name ?? '-' }}
                                     @endforeach     
-                                    </td>
+                                </td>
                                 <td>
                                     <span class="badge rounded-pill bg-warning">{{$repair->status}}</span>
                                 </td>

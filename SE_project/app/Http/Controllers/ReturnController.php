@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 use App\Models\Borrowing_list;
 use App\Models\Repair;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ReturnController extends Controller {
     function index(){
-        $returns = Borrowing_list::with(['borrowing','durable'])
-        ->whereHas('borrowing', function($query) {
-            $query->where('status', 'ปกติ');
-        })
-        ->whereHas('durable', function($query) {
-            $query->where('availability_status', 'ถูกยืม');
-        })
-        ->get();
+        $returns = Borrowing_list::with(['borrowing', 'durable'])
+            ->where('status_approved', 'อนุมัติแล้ว')
+            ->whereHas('durable', function($query) {
+                $query->where('availability_status', 'ไม่พร้อมใช้งาน')
+                      ->where('condition_status', 'ปกติ');
+            })
+            ->whereHas('borrowing', function($query) {
+                $query->where('status', 'พิจารณาแล้ว');
+            })
+            ->get();
+
         return view('return.index', compact('returns'));
     }
 
@@ -30,6 +34,7 @@ class ReturnController extends Controller {
 
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
         $borrowingList = Borrowing_list::findOrFail($id);
         $borrowing = $borrowingList->borrowing;
         $durable = $borrowingList->durable;
@@ -40,7 +45,7 @@ class ReturnController extends Controller {
                 $borrowing->return_date= date('Y-m-d');
                 $borrowing->save();
             }
-            $durable->availability_status = 'ว่าง';
+            $durable->availability_status = 'พร้อมใช้งาน';
             $durable->save();
             DB::table('borrowing_list')
             ->join('borrowing', 'borrowing_list.borrowing_id', '=', 'borrowing.borrowing_id')
@@ -49,26 +54,24 @@ class ReturnController extends Controller {
         } else if($status === 'ชำรุด'){
             foreach ($durable->borrowingList as $borrowingList) {
                 $borrowing = $borrowingList->borrowing;
-                $borrowing->status = $status;
                 $borrowing->return_date= date('Y-m-d');
                 $borrowing->save();
             }
-            $durable->availability_status = 'ไม่พร้อมใช้งาน';
+            $durable->condition_status = 'ชำรุด';
+            $durable->save();
             $damagedDurable = new Repair();
             $damagedDurable->durable_articles_id = $durable->durable_articles_id;
             $damagedDurable->durable_articles_name = $durable->name;
-            $damagedDurable->inspector_name = '';
+            $damagedDurable->inspector_name = $user->name;
             $damagedDurable->status = $status;
             $damagedDurable->detail = $request->input('detail');
             $damagedDurable->save();
         } else if($status === 'หาย'){
             foreach ($durable->borrowingList as $borrowingList) {
                 $borrowing = $borrowingList->borrowing;
-                $borrowing->status = $status;
                 $borrowing->return_date= date('Y-m-d');
                 $borrowing->save();
             }
-            $durable->availability_status = 'ไม่พร้อมใช้งาน';
             $durable->condition_status = 'หาย';
             $durable->save();
         }

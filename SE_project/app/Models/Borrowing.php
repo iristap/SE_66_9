@@ -21,7 +21,7 @@ class Borrowing extends Model {
         'id_sender',
         'id_approver',
         'id_checker',
-        'status',
+        'status_approved',
     ];
 
     protected $dates = [

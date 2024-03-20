@@ -31,10 +31,11 @@ class RepairController extends Controller {
         $user = Auth::user();
         $durable = $repair->durable;
         if ($status === 'ปกติ') {
-            $durable->availability_status = 'ว่าง';
+            $durable->availability_status = 'พร้อมใช้งาน';
             $durable->condition_status = 'ปกติ';
         }else if($status === 'ไม่สามารถซ่อมได้') {
             $durable->availability_status = 'ไม่พร้อมใช้งาน';
+            $durable->condition_status = 'ชำรุด';
         }
         $repair->status = $status;
         $repair->inspector_name = $user->name;

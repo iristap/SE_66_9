@@ -42,7 +42,7 @@
                              <td scope="row">{{ $index + 1 }}</td>
                             <td>{{ $return->borrowing->borrow_date }}</td>
                             <td>{{ $return->borrowing->due_date }}</td>
-                            <td>{{ $return->borrowing->return_date }}</td>
+                            <td>{{ date('Y-m-d') }}</td>
                             <td>{{ optional($return->borrowing->sender)->name }}</td>
                             <td>{{ optional($return->borrowing->approver)->name }}</td>
                             <td>

@@ -124,9 +124,12 @@ class BorrowingController extends Controller
         if (!auth()->user()->roles()->where('role_id', 3)->exists()) {
             return view('home');
         }
+        $dueDate = now()->addDays(14)->format('Y-m-d');
             $data=[
                 'id_approver'=>auth()->id(),
-                'approved_date'=>now()
+                'due_date'=>$dueDate,
+                'approved_date'=>now(),
+                'status'=>'พิจารณาแล้ว'
             ];
             $data2=[
                 'status_approved'=>'อนุมัติแล้ว'

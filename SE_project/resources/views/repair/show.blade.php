@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repair Detail</title>
 </head>
-<body style="background-color: #f9ffc2;">
+<body style="background-color: #FFFFFF;">
 
 @section('content')
 <div class="container">

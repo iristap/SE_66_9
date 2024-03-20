@@ -11,12 +11,15 @@
     document.addEventListener('DOMContentLoaded', function() {
         const statusSelect = document.getElementById('statusSelect');
         const damageReasonField = document.getElementById('damageReasonField');
+        const detailInput = document.getElementById('detailInput');
 
         statusSelect.addEventListener('change', function() {
             if (statusSelect.value === 'ชำรุด') {
                 damageReasonField.style.display = 'block';
+                detailInput.setAttribute('required', 'required');
             } else {
                 damageReasonField.style.display = 'none';
+                detailInput.removeAttribute('required');
             }
         });
     });
@@ -96,7 +99,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12" id="damageReasonField" style="display: none;">
                             <div class="form-group">
                                 <strong>เหตุผลที่ชำรุด</strong>
-                                <input type="text" class="form-control" name="detail">
+                                <input type="text" class="form-control" name="detail" id="detailInput">
                             </div>
                         </div>
 

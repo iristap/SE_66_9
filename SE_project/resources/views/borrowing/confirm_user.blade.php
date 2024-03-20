@@ -33,7 +33,7 @@
                                     {{ $durable->durable_articles_code}}
                                     {{ $durable->name }}
                                     <p>เหตุผลในการยืม:</p>
-                                    <input type="text" name="borrowing_note" class="form-control" required>
+                                    <input type="text" name="borrowing_note[]" class="form-control" required>
                                 </div>
                             </div>
                          </ul>

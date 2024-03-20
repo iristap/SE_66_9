@@ -29,22 +29,25 @@ class BorrowingUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'borrowing_note' => 'required|string|max:255',
+            'borrowing_note' => 'required|array',
+            'borrowing_note.*' => 'required|string|max:255',
         ]);
         $user = Auth::user();
-        $borrowing = new Borrowing();
-        $borrowing->borrow_date = now();
-        $borrowing->borrowing_note = $request->input('borrowing_note');
-        $borrowing->status = 'รอการพิจารณา';
-        $borrowing->id_sender = $user->id;
-        $borrowing->save();
+        $borrowingNotes = $request->input('borrowing_note');
         $selectedDurableIds = $request->input('durable_articles_id');
-        foreach ($selectedDurableIds as $durableId) {
+        foreach ($selectedDurableIds as $index => $durableId) {
+            $borrowing = new Borrowing();
+            $borrowing->borrow_date = now();
+            $borrowing->borrowing_note = $borrowingNotes[$index]; 
+            $borrowing->status = 'รอการพิจารณา';
+            $borrowing->id_sender = $user->id;
+            $borrowing->save();
+            $borrowingId = $borrowing->borrowing_id; 
             $durable = Durable::findOrFail($durableId);
             $durable->availability_status = 'ไม่พร้อมใช้งาน';
             $durable->save();
             $borrowingList = new Borrowing_list();
-            $borrowingList->borrowing_id = $borrowing->borrowing_id;
+            $borrowingList->borrowing_id = $borrowingId;
             $borrowingList->durable_articles_id = $durableId;
             $borrowingList->status_approved = 'รอการอนุมัติ';
             $borrowingList->save();

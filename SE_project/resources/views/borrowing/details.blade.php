@@ -16,16 +16,12 @@
                         <div class="pull-right ">
                             <?php
                             if ($brlItem) {
-                                // สร้างวัตถุ DateTime จาก borrow_date
-                                $borrowDate = new DateTime($br_user->borrow_date);
-                                // เพิ่ม 14 วันให้กับ borrow_date
-                                $dueDate = $borrowDate->add(new DateInterval('P14D'))->format('Y-m-d');
-
                                 echo "ID การยืม: {$brlItem->borrowing_id}<br>";
                                 echo "ID ผู้ขอยืมครุภัณฑ์: {$br_user->users_id}<br>";
                                 echo "ชื่อผู้ขอยืมครุภัณฑ์: {$br_user->users_name}<br>";
                                 echo "วันที่ทำรายการ: {$br_user->borrow_date}<br>";
-                                echo "วันกำหนดคืน: {$dueDate}<br>";
+                                 // เพิ่ม 14 วันให้กับ borrow_date
+                                echo "วันกำหนดคืน: " . (new DateTime($br_user->borrow_date))->add(new DateInterval('P14D'))->format('Y-m-d') . "<br>";
                                 echo "หมายเหตุการยืมครุภัณฑ์: {$br_user->borrowing_note}<br>";
                                 echo "สถานะการทำรายการ: {$br_user->status}<br>";
                             } else {
