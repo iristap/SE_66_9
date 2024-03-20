@@ -14,6 +14,7 @@ class Disbursement extends Model
      * @var string
      */
     protected $table = 'disbursement';
+    public $timestamps = false;
     public static function getAll(){
 
         return $dbm=DB::table('disbursement')

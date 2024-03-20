@@ -39,15 +39,24 @@
                                     <tr class="text-center">
                                         <td>{{ $maierial->material_id }}</td>
                                         <td>{{ $maierial->name }}</td>
-                                        <td>จำนวน {{ $maierial->unit }}</td>
+                                        <td><span id="selectedAmount">{{ old('amount_selected', 0) }}</span></td>
+                                        <td>{{ $maierial->unit }}</td>
                                     </tr>
+
 
                     </div>
                     @endforeach
+
+                    
                     </table>
+                    <div class="container">
+                        <p>เหตุผลในการเบิก:</p>
+                        <input type="text" name="note_disbursement" class="form-control" required>
+                    </div>
                     <div class="card-footer d-flex flex-row-reverse">
                         <a href="{{ route('withdraw.index_user') }}" class="btn btn-outline-primary p-2 ml-4">ยกเลิก</a>
-                        <button onclick="validateForm()" class="btn btn-outline-success p-2 ml-4" type="submit">ยืนยัน</button>
+                        <button onclick="validateForm()" class="btn btn-outline-success p-2 ml-4"
+                            type="submit">ยืนยัน</button>
                     </div>
                     </form>
                 </div>

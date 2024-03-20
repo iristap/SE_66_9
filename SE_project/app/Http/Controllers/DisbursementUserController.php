@@ -23,7 +23,12 @@ class DisbursementUserController extends Controller
         ],);
         $user = Auth::user();
         $selectedMaterialIds = $request->input('material_id');
+        $amount_selected = $request->input('amount_selected');
         $selectedMaterials = Material::whereIn('material_id', $selectedMaterialIds)->get();
+        $material_list = new disbursement_detail();
+        foreach ($selectedMaterials as $item) {
+            // Process each $amount here
+        }
         return view('withdraw.confirm_user', compact('selectedMaterials','user'));
     }
 
@@ -37,17 +42,23 @@ class DisbursementUserController extends Controller
         $disbursement = new Disbursement();
         $disbursement->date_disbursement = now();
         $disbursement->note_disbursement = $request->input('note_disbursement');
-        $disbursement->status = 'ปกติ';
-        $disbursement->id_sender = $user->id;
+        $disbursement->amount;
+        $disbursement->user_id = $user->id;
+        $disbursement->status='รออนุมัติ';
+
         $disbursement->save();
         $selectedMaterialIds = $request->input('material_id');
         foreach ($selectedMaterialIds as $material_id) {
-            $material = Material::findOrFail($material_id);
-            $material->availability_status = 'ไม่ว่าง';
+            //$material = Material::findOrFail($material_id);
+            $material = Material::where('material_id', $material_id)->firstOrFail();
+            $amount_selected = $request->input('amount_selected');
+            $material->amount -= $amount_selected;
+            //$material->amount = 'amount';
             $material->save();
             $disbursementlist = new Disbursement_detail();
             $disbursementlist->disbursement_id = $disbursement->id;
             $disbursementlist->material_id = $material_id;
+            $disbursementlist->amount = $amount_selected;
             $disbursementlist->save();
         }
         return redirect()->route('withdraw.index_user')->with('success', 'withdraw successful!');
