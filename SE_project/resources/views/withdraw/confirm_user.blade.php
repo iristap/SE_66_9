@@ -39,15 +39,40 @@
                                     <tr class="text-center">
                                         <td>{{ $maierial->material_id }}</td>
                                         <td>{{ $maierial->name }}</td>
-                                        <td>จำนวน {{ $maierial->unit }}</td>
+                                        <!-- <td>
+                                            @if(isset($amount_selected[$loop->index])) 
+                                                {{ $amount_selected[$loop->index] }}
+                                            @else
+                                                0 
+                                            @endif
+                                        </td> -->
+                                        <td>
+                                            @php
+                                                $index = $loop->index;
+                                                $selectedAmount = isset($amount_selected[$index]) ? $amount_selected[$index] : 0;
+                                            @endphp
+                                            {{ $selectedAmount }}
+                                            <input type="hidden" name="amount_selected[]" value="{{ $selectedAmount }}">
+                                        </td>
+                                        <!-- <td>{{ $amount_selected[$loop->index] }}</td> -->
+                                        <!-- <td><span id="selectedAmount">{{ old('amount_selected', 0) }}</span></td> -->
+                                        <td>{{ $maierial->unit }}</td>
                                     </tr>
+
 
                     </div>
                     @endforeach
+
+                    
                     </table>
+                    <div class="container">
+                        <p>เหตุผลในการเบิก:</p>
+                        <input type="text" name="note_disbursement" class="form-control" required>
+                    </div>
                     <div class="card-footer d-flex flex-row-reverse">
                         <a href="{{ route('withdraw.index_user') }}" class="btn btn-outline-primary p-2 ml-4">ยกเลิก</a>
-                        <button onclick="validateForm()" class="btn btn-outline-success p-2 ml-4" type="submit">ยืนยัน</button>
+                        <button onclick="validateForm()" class="btn btn-outline-success p-2 ml-4"
+                            type="submit">ยืนยัน</button>
                     </div>
                     </form>
                 </div>
