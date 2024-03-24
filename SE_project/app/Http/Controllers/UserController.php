@@ -102,11 +102,24 @@ class UserController extends Controller
     $user = User::findOrFail($id);
 
     // อัปเดตข้อมูลที่เป็นพื้นฐานของผู้ใช้งาน
-    $user->update([
-        'name' => $request->name,
-        'surname' => $request->surname,
-        'email' => $request->email,
-    ]);
+    if ($request -> password != null){
+        $this->validate($request, [
+            'password' => 'required|string|min:8',
+            'passwordconfirm' => 'required|string|same:password',
+        ]);
+        $user->update([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+    }else{
+        $user->update([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+        ]);
+    }
 
     // อัปเดต role ของผู้ใช้งาน
     $user->roles()->sync($request->roles); // ใช้ sync เพื่อเปลี่ยนแปลง role โดยจะลบ role เดิมออกและเพิ่ม role ใหม่ตามที่ส่งมาจากแบบฟอร์ม

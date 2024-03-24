@@ -51,6 +51,18 @@
                             <input type="text" name="email" value="{{ $user->email }}" class="form-control" placeholder="Email">
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                        <strong>Password: <span class="text-danger">*กรณีเปลื่ยนรหัสผ่าน</span></strong> 
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                        <strong>Confirm Password:</strong>
+                        <input type="password" name="passwordconfirm" class="form-control" placeholder="Confirm Password">
+                    </div>
+        
                     <div class="form-group">
                         <label>Roles:</label><br>
                         @foreach($roles as $role)
