@@ -63,6 +63,10 @@
                             <input type="password" name="password" class="form-control" placeholder="Enter password">
                         </div>
                         <div class="form-group">
+                            <label for="password">Password Confirm:</label>
+                            <input type="password" name="passwordconfirm" class="form-control" placeholder="Enter password">
+                        </div>
+                        <div class="form-group">
                             <label for="roles">Roles:</label><br>
                             @foreach($roles as $role)
                                 <div class="form-check">

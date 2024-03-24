@@ -49,6 +49,7 @@ class UserController extends Controller
         'surname' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|string|min:8',
+        'passwordconfirm' => 'required|string|same:password',
         'roles' => 'required|array', // ตรวจสอบว่ามีการเลือก role ในแบบฟอร์มหรือไม่
         'roles.*' => 'exists:roles,id', // ตรวจสอบว่า role ที่เลือกมามีในฐานข้อมูลหรือไม่
     ]);
