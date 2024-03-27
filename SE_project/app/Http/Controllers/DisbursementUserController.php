@@ -35,7 +35,7 @@ class DisbursementUserController extends Controller
         foreach ($selectedMaterials as $item) {
             // Process each $amount here
         }
-        return view('withdraw.confirm_user', compact('selectedMaterials', 'user', 'nonZeroAmounts'));
+        return view('withdraw.confirm_user', compact('selectedMaterials', 'user', 'amount_selected' ,'nonZeroAmounts'));
     }
 
     //v1

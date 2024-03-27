@@ -44,6 +44,7 @@
                                                 $selectedAmount = isset($nonZeroAmounts[$index]) ? $nonZeroAmounts[$index] : 0;
                                             @endphp
                                             {{ $selectedAmount }}
+                                            <input type="hidden" name="amount_selected[]" value="{{ $selectedAmount }}">
                                         </td>
                                         <td>{{ $material->unit }}</td>
                                     </tr>
