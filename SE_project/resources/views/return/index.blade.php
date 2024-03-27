@@ -27,7 +27,6 @@
                             <th scope="col">วันที่คืน</th>
                             <th scope="col">ผู้ทำการยืม</th>
                             <th scope="col">ผู้อนุมัติ</th>
-                            <th scope="col">สถานะ</th>
                             <th scope="col">รายละเอียด</th>
                             </tr>
                         </thead>
@@ -40,17 +39,15 @@
                         @foreach($returns as $index => $return)
                         <tr class="text-center">
                              <td scope="row">{{ $index + 1 }}</td>
-                            <td>{{ $return->borrowing->borrow_date }}</td>
-                            <td>{{ $return->borrowing->due_date }}</td>
+                            <td>{{ $return->borrow_date }}</td>
+                            <td>{{ $return->due_date }}</td>
                             <td>{{ date('Y-m-d') }}</td>
-                            <td>{{ optional($return->borrowing->sender)->name }}</td>
-                            <td>{{ optional($return->borrowing->approver)->name }}</td>
+                            <td>{{ optional($return->sender)->name }}</td>
+                            <td>{{ optional($return->approver)->name }}</td>
                             <td>
-                                <span class="badge badge-danger">{{ $return->durable->availability_status }}</span>
+                                <a class="btn btn-info" href="{{ route('return.show', ['id' => $return->borrowing_id]) }}">ดูรายละเอียด</a>
                             </td>
-                            <td>
-                                <a class="btn btn-info" href="{{ route('return.show', ['id' => $return->borrowing_list_id]) }}">คืน</a>
-                            </td>
+
                         </tr>
                         @endforeach
                         @endif
