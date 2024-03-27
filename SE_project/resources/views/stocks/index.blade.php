@@ -42,7 +42,7 @@
                                     @endphp
                                     
                                     <td>{{ $stock->stocker->name }}</td>
-                                    <td>
+                                    <td style="display: flex; gap: 5px;">
                                         <a class="btn btn-info" href="{{ route('stocks.show',$stock->id) }}">Show</a>
                                         <a class="btn btn-primary" href="{{ route('stocks.edit',$stock->id) }}">Edit</a>
                                             <form action="{{ route('stocks.destroy', $stock->id) }}" method="POST" id="delete-form">
