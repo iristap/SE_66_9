@@ -29,7 +29,7 @@
 @section('content')
 <div class ="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{__('การยืมครุภัณฑ์') }}</div>
                 <div class="card-body">
@@ -41,11 +41,11 @@
                         @method('POST')
                         <table class="table table-striped">
                             <thead>
-                                <tr class="text-center">
+                                <tr class="text">
                                     <th scope="col">ลำดับ</th>
                                     <th scope="col">รหัสครุภัณฑ์</th>
                                     <th scope="col">ครุภัณฑ์</th>
-                                    <th scope="col">เลือก</th>
+                                    <th scope="col" >เลือก</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,13 +54,13 @@
                                     <td scope="row">{{ $index + 1 }}</td>
                                     <td>{{ $durable->durable_articles_code }}</td>
                                     <td>{{ $durable->name }}</td>
-                                    <td><input type="checkbox" class="form-check-input checkbox-center" name="durable_articles_id[]" value="{{ $durable->durable_articles_id }}"></td>
+                                    <td style="padding-left: 40px;"><input type="checkbox" class="form-check-input checkbox" name="durable_articles_id[]" value="{{ $durable->durable_articles_id }}"></td>
                                 </tr>           
                                 @endforeach
                             </tbody>
                         </table>
                         <div class="card-footer d-flex flex-row-reverse">
-                            <button onclick="validateForm()" type="submit" class="btn btn-outline-success p-2 ml-4">ยืนยัน</button>
+                            <button onclick="validateForm()" type="submit" class="btn btn-success p-2 ml-4">ยืนยัน</button>
                         </div>
                     </form>
                     @endif
