@@ -61,7 +61,7 @@
 
                             @userRole
                             <li>
-                                <a class="nav-link" href="#">userRole</a>
+                                <!-- <a class="nav-link" href="#">userRole</a> -->
                             </li>
                             <li>
                                 <a class="nav-link" href="{{ route('borrowing.index_user') }}">{{ __('ยืมครุภัณฑ์') }}</a>
@@ -110,7 +110,7 @@
 
                             @technicianRole
                             <li>
-                                <a class="nav-link" href="#">technicianRole</a>
+                                <!-- <a class="nav-link" href="#">technicianRole</a> -->
                                 {{-- ทำแล้วมาเพิ่มในนี้นะ --}}
                             <li class="nav-item">
                                     <a class="nav-link" href="{{ route('repair.index') }}">{{ __('รายการซ่อม') }}</a>
