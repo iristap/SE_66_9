@@ -171,6 +171,7 @@ class BorrowingController extends Controller
         $data=[
             'id_approver'=>auth()->id(),
             'approved_date'=>now(),
+            'status'=>'พิจารณาแล้ว'
         ];
         $data2=[
             'status_approved'=>'ไม่อนุมัติ',
