@@ -104,9 +104,11 @@
                                                   </button>
                                                 </div>
                                             </td>
-
-                                            <td><input type="checkbox" class="form-check-input checkbox-center"
-                                                    name="material_id[]" value="{{ $material->material_id }}"></td>
+                                            @if ($material->amount == 0)
+                                                <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" disabled></td>
+                                            @else
+                                                <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}"></td>
+                                            @endif
                                         </tr>
                                     @endforeach
     
