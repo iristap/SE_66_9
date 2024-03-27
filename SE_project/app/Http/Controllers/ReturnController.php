@@ -76,7 +76,6 @@ class ReturnController extends Controller {
             $durable->condition_status = 'หาย';
             $durable->save();
         }
-        $borrowing->id_checker = Auth::id();
         $borrowing->save();
         
         return redirect()->route('return.show', ['id' => $borrowing->borrowing_id]);

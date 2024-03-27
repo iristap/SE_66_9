@@ -8,22 +8,20 @@
 </head>
 <body style="background-color: #FFFFFF;">
 <script>
-    // JavaScript function to show/hide box based on dropdown selection
     function toggleReasonBox(index) {
         var status = document.getElementById("status-" + index).value;
         var reasonBox = document.getElementById("reasonBox-" + index);
-        
+        var detailInput = reasonBox.querySelector('input[name="detail"]');
         if (status === "ชำรุด") {
             reasonBox.style.display = "block";
+            detailInput.setAttribute("required", "required");
         } else {
             reasonBox.style.display = "none";
+            detailInput.removeAttribute("required");
         }
     }
     function confirmAction() {
-        // Display a confirmation dialog to the user
         var confirmation = confirm("คุณแน่ใจหรือไม่ที่ต้องการดำเนินการนี้?");
-
-        // Return true if the user clicks "OK" to confirm, otherwise return false
         return confirmation;
     }
 </script>
