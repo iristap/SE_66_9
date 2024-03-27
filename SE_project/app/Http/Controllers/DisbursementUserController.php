@@ -375,7 +375,7 @@ class DisbursementUserController extends Controller
     {
         $user = Auth::user();
         // $disbursement = Disbursement::where('user_id', $user->id)->where('status', 'รอการอนุมัติ')->get();
-        $disbursement = Disbursement::withCount('disbursementLists')
+        $disbursement = Disbursement::withCount('DisbursementLists')
             ->where('user_id', $user->id)
             ->where('status', 'รอการอนุมัติ')
             ->get();
@@ -386,19 +386,15 @@ class DisbursementUserController extends Controller
     {
         $user = Auth::user();
         // $disbursement = Disbursement::where('user_id', $user->id)->where('status', ['อนุมัติแล้ว', 'ไม่อนุมัติ'])->get();
-        $disbursement = Disbursement::withCount('disbursementLists')
-            ->join('users as approver', 'disbursement.approver_id', '=', 'approver.id')
-            ->select(
-                'disbursement.*',
-                'approver.name as approver_name'
-            )
-            ->where('user_id', $user->id)
-            ->whereIn('status', ['อนุมัติแล้ว', 'ไม่อนุมัติ'])
-
-
-
-            ->get();
-
+        $disbursement = Disbursement::select(
+            'disbursement.*',
+            'approver.name as approver_name',
+            DB::raw('(SELECT COUNT(*) FROM disbursement_detail WHERE disbursement_detail.disbursement_id = disbursement.disbursement_id) AS disbursement_lists_count')
+        )
+        ->join('users as approver', 'disbursement.approver_id', '=', 'approver.id')
+        ->where('disbursement.user_id', $user->id)
+        ->whereIn('disbursement.status', ['อนุมัติแล้ว', 'ไม่อนุมัติ'])
+        ->get();
         return view('withdraw.history_considered', compact('user', 'disbursement'));
     }
 
