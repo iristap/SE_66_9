@@ -25,4 +25,11 @@ class Material extends Model
     {
         return $this->hasMany(Borrowing_list::class, 'durable_articles_id', 'durable_articles_id');
     }
+
+
+    public function materials()
+{
+    return $this->hasMany(Material::class);
+}
+
 }

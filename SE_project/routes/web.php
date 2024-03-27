@@ -51,6 +51,8 @@ Route::post('/withdraw/store', [App\Http\Controllers\DisbursementUserController:
 Route::get('/withdraw/history', [App\Http\Controllers\DisbursementUserController::class, 'index_history'])->name('withdraw.index_history');
 Route::get('/withdraw/history/considering', [App\Http\Controllers\DisbursementUserController::class, 'considering'])->name('withdraw.history.considering');
 Route::get('/withdraw/history/considered', [App\Http\Controllers\DisbursementUserController::class, 'considered'])->name('withdraw.history.considered');
+Route::get('/withdraw/history/considering/detail/{id}', [App\Http\Controllers\DisbursementUserController::class, 'detail_considering'])->name('withdraw.considering.detail');
+Route::get('/withdraw/history/considered/detail/{id}', [App\Http\Controllers\DisbursementUserController::class, 'detail_considered'])->name('withdraw.considered.detail');
 
 
 ## parcel Routes

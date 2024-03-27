@@ -4,14 +4,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('ประวัติการยืมครุภัณฑ์') }}</div>
+                    <div class="card-header">{{ __('ประวัติการเบิกวัสดุ') }}</div>
                     <div class="card-body">
                         <div>
                             <a class="btn btn-dark" href="{{ route('withdraw.history.considering') }}">รอการอนุมัติ</a>
                             <a class="btn btn-secondary"
                                 href="{{ route('withdraw.history.considered') }}">พิจารณาแล้ว</a><br><br>
                         </div>
-                        @if ($borrowings->isEmpty())
+                        @if ($disbursement->isEmpty())
                             ไม่มีประวัติการเบิกวัสดุ
                         @else
                             <table class="table table-bordered">
@@ -28,26 +28,21 @@
                             </thead>
                             <tbody>
                                 @foreach ($disbursement as $item)
+                                @php
+                                $disbursementId = $item->disbursement_id;
+                                    if (!isset($idCounts[$disbursementId])) {
+                                        $idCounts[$disbursementId] = 1;
+                                    } else {
+                                        $idCounts[$disbursementId]++;
+                                    }
+                            @endphp
                                 <tr>
                                     <td>{{ $item->disbursement_id }}</td>
                                     <td>
-                                        @if ($item->due_date == null)
-                                            -
-                                        @else
-                                            {{ $item->due_date }}
-                                        @endif
+                                            {{ $item->date_disbursement }}
                                     </td>
-
+                                    <td>{{ $idCounts[$disbursementId] }}</td>
                                     <td></td>
-
-                                    <td>
-                                        @if ($item->id_approver == null)
-                                            -
-                                        @else
-                                            {{ $item->approver_name }}
-                                        @endif
-                                    </td>
-
                                     <td>
                                         @if ($item->id_checker == null)
                                             -
@@ -57,7 +52,8 @@
                                     </td>
 
                                     <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
-                                    <td><span class="btn btn-secondary">ดูรายละเอียด</span></td>
+                                    <td><a href="{{ route('withdraw.considering.detail', $item->disbursement_id) }}" 
+                                        class="btn btn-secondary">ดูรายละเอียด</a></td>
 
                                 </tr>
                             @endforeach
