@@ -28,11 +28,14 @@ class DisbursementUserController extends Controller
         $selectedMaterialIds = $request->input('material_id');
         $amount_selected = $request->input('amount_selected');
         $selectedMaterials = Material::whereIn('material_id', $selectedMaterialIds)->get();
+        $nonZeroAmounts = array_values(array_filter($amount_selected, function ($amount) {
+            return $amount > 0;
+        }));
         $material_list = new disbursement_detail();
         foreach ($selectedMaterials as $item) {
             // Process each $amount here
         }
-        return view('withdraw.confirm_user', compact('selectedMaterials', 'user', 'amount_selected'));
+        return view('withdraw.confirm_user', compact('selectedMaterials', 'user', 'amount_selected' ,'nonZeroAmounts'));
     }
 
     //v1

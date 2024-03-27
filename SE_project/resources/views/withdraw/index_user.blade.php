@@ -11,6 +11,22 @@
 
 <body>
     <script>
+        function decreaseValue(button) {
+        var input = button.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > parseInt(input.min, 10)) {
+            input.value = value - 1;
+        }
+    }
+
+    function increaseValue(button) {
+        var input = button.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value < parseInt(input.max, 10)) {
+            input.value = value + 1;
+        }
+    }
+
         function validateForm() {
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             var isChecked = false;
@@ -21,28 +37,27 @@
                 }
             });
 
+            if (!isChecked) {
+                alert('เลือกอย่างน้อย 1 ชิ้น');
+                return;
+            }
+
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    var amountInput = checkbox.parentNode.previousElementSibling.querySelector('input[type="number"]');
+                    if (parseInt(amountInput.value) > 0) {
+                        isChecked = true;
+                    } else {
+                        alert('ไม่สามารถเลือกรายการที่มีจำนวนเป็น 0');
+                        isChecked = false;
+                    }
+                }
+            });
+
             if (isChecked) {
-                document.getElementById('disbursementForm').submit();
-            } else {
-                alert('กรุณาเลือกอย่างน้อยหนึ่งรายการ');
+                document.getElementById('withdrawForm').submit();
             }
         }
-        // function validateForm() {
-        //     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        //     var isChecked = false;
-
-        //     checkboxes.forEach(function(checkbox) {
-        //         if (checkbox.checked) {
-        //             isChecked = true;
-        //         }
-        //     });
-
-        //     if (isChecked) {
-        //         document.getElementById('withdrawForm').submit();
-        //     } else {
-        //         alert('กรุณาเลือกอย่างน้อยหนึ่งรายการ');
-        //     }
-        // }
     </script>
 
 </html>
@@ -67,55 +82,45 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($material as $index => $material)
-                                        <tr class="text-center">
-                                            <td scope="row">{{ $index + 1 }}</td>
-                                            <td>{{ $material->material_id }}</td>
-                                            <td>{{ $material->name }}</td>
-                                            <td>{{ $material->amount }} {{ $material->unit }}</td>
+                                @foreach ($material as $index => $material)
+                                    <tr class="text-center">
+                                        <td scope="row">{{ $index + 1 }}</td>
+                                        <td>{{ $material->material_id }}</td>
+                                        <td>{{ $material->name }}</td>
+                                        <td>{{ $material->amount }} {{ $material->unit }}</td>
 
-                                            <td>
-                                                <style>input {
-                                                    text-align:center;
-                                                  }
-                                                  
-                                                  input::-webkit-outer-spin-button,
-                                                  input::-webkit-inner-spin-button {
-                                                    -webkit-appearance: none;
-                                                    -moz-appearance: none;
-                                                    appearance: none;
-                                                    margin: 0;
-                                                  }</style>
+                                        <td>
+                                            <style>input {
+                                                text-align:center;
+                                            }
+                                            
+                                            input::-webkit-outer-spin-button,
+                                            input::-webkit-inner-spin-button {
+                                                -webkit-appearance: none;
+                                                -moz-appearance: none;
+                                                appearance: none;
+                                                margin: 0;
+                                            }</style>
 
-                                                <link media="all" rel="stylesheet" href="./style.css">
+                                            <link media="all" rel="stylesheet" href="./style.css">
 
-                                                <div>
-                                                  <button type="button" onclick="this.parentNode.querySelector('[type=number]').stepDown();">
-                                                    -
-                                                  </button>
-                                                  
-                                                  <!-- <input type="number" name="amount_selected" min="0" max="{{ $material->amount }}" value="0"> -->
-                                                  <input type="number" name="amount_selected[]" min="0" max="{{ $material->amount }}" value="0">
-
-                                                  
-                                                
-                                                  <button type="button" onclick="this.parentNode.querySelector('[type=number]').stepUp();">
-                                                    +
-                                                  </button>
-                                                </div>
-                                            </td>
-                                            @if ($material->amount == 0)
-                                                <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" disabled></td>
-                                            @else
-                                                <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}"></td>
-                                            @endif
-                                        </tr>
-                                    @endforeach
-    
-                                </tbody>
+                                            <div>
+                                                <button type="button" onclick="decreaseValue(this)">-</button>
+                                                <input type="number" name="amount_selected[]" min="0" max="{{ $material->amount }}" value="0">
+                                                <button type="button" onclick="increaseValue(this)">+</button>
+                                            </div>
+                                        </td>
+                                        @if ($material->amount == 0)
+                                            <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" disabled></td>
+                                        @else
+                                            <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" onchange="updateAmount(this.parentNode.previousElementSibling.querySelector('input[type=number]'), this.checked)"></td>
+                                        @endif
+                                    </tr>
+                            @endforeach
+                                    </tbody>
                             </table>
                             <div class="card-footer d-flex flex-row-reverse">
-                                <button onclick="validateForm()" type="submit"
+                                <button onclick="validateForm()" type="button"
                                     class="btn btn-outline-success p-2 ml-4">ยืนยัน</button>
                             </div>
                         </form>

@@ -41,22 +41,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-white " style="background-color: #007F73; font-size: 20px; ">{{ __('วัสดุ') }}</div>
+                <div class="card-header text-white " style="background-color: #007F73; font-size: 20px; ">{{ __('รายการวัสดุ') }}</div>
 
                 <div class="card-body">
                     <!-- <a class="button button1 rounded" > เติมสต๊อก </a> -->
                     <a class="btn btn-primary" href="{{ route('stocks.create') }}">Stock</a>
-                    <a class="btn btn-primary" href="{{ route('stocks.index') }}"> ประวัติการ Stock </a>
+                    <a class="btn btn-secondary" href="{{ route('stocks.index') }}"> ประวัติการ Stock </a>
                     <br>
                     <br>
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                         <thead>
-                            <tr>
+                            <tr >
                             <th scope="col">ลำดับ</th>
                             <th scope="col">ชื่อ</th>
                             <th scope="col">จำนวน</th>
                             <th scope="col">หน่วยนับ</th>
-                            <th width="280px">Action</th>
+                            <th  width="200px" style=" padding-left: 35px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>

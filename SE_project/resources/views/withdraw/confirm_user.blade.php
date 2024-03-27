@@ -33,38 +33,23 @@
                                         <th scope="col">จำนวน</th>
                                     </tr>
                                 </thead>
-                                @foreach ($selectedMaterials as $maierial)
-                                    <input type="hidden" name="material_id[]" value="{{ $maierial->material_id }}">
-                                    <input type="hidden" name="status[]" value="{{ $maierial->status }}">
+                                @foreach ($selectedMaterials as $index => $material)
+                                    <input type="hidden" name="material_id[]" value="{{ $material->material_id }}">
+                                    <input type="hidden" name="status[]" value="{{ $material->status }}">
                                     <tr class="text-center">
-                                        <td>{{ $maierial->material_id }}</td>
-                                        <td>{{ $maierial->name }}</td>
-                                        <!-- <td>
-                                            @if(isset($amount_selected[$loop->index])) 
-                                                {{ $amount_selected[$loop->index] }}
-                                            @else
-                                                0 
-                                            @endif
-                                        </td> -->
+                                        <td>{{ $material->material_id }}</td>
+                                        <td>{{ $material->name }}</td>
                                         <td>
                                             @php
-                                                $index = $loop->index;
-                                                $selectedAmount = isset($amount_selected[$index]) ? $amount_selected[$index] : 0;
+                                                $selectedAmount = isset($nonZeroAmounts[$index]) ? $nonZeroAmounts[$index] : 0;
                                             @endphp
                                             {{ $selectedAmount }}
                                             <input type="hidden" name="amount_selected[]" value="{{ $selectedAmount }}">
                                         </td>
-                                        <!-- <td>{{ $amount_selected[$loop->index] }}</td> -->
-                                        <!-- <td><span id="selectedAmount">{{ old('amount_selected', 0) }}</span></td> -->
-                                        <td>{{ $maierial->unit }}</td>
+                                        <td>{{ $material->unit }}</td>
                                     </tr>
-
-
-                    </div>
-                    @endforeach
-
-                    
-                    </table>
+                                @endforeach
+                            </table>
                     <div class="container">
                         <p>เหตุผลในการเบิก:</p>
                         <input type="text" name="note_disbursement" class="form-control" required>
