@@ -138,7 +138,8 @@ class BorrowingUserController extends Controller
                                 'da.durable_articles_code as da_code',
                                 'da.name as da_name',
                                 'borrowing_list.borrowing_note as br_note',
-                                'borrowing_list.status_approved as br_status'
+                                'borrowing_list.status_approved as br_status',
+                                'borrowing_list.not_approved_note as br_not_note'
                             )
                             ->where('borrowing_list.borrowing_id', $borrowingId)
                             ->get();
