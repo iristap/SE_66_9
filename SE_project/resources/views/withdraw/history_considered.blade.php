@@ -40,7 +40,8 @@
                                         <td>
                                                 {{ $item->date_disbursement }}
                                         </td>
-                                        <td>{{ $idCounts[$disbursementId] }}</td>
+                                        {{-- <td>{{ $idCounts[$disbursementId] }}</td> --}}
+                                        <td></td>
                                         <td></td>
                                         <td>
                                             @if ($item->id_checker == null)
