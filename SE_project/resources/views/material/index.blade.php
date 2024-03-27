@@ -56,7 +56,7 @@
                             <th scope="col">ชื่อ</th>
                             <th scope="col">จำนวน</th>
                             <th scope="col">หน่วยนับ</th>
-                            <th  width="200px" style=" padding-left: 35px;">Action</th>
+                            <th width="200px" style=" padding-left: 35px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,12 +64,12 @@
                         
                         <?php foreach ($material as $materialItem): ?>
                             <tr>
-                                <td><?php echo $materialItem->material_id ?></td>
-                                <td><?php echo $materialItem->name ?></td>
-                                <td><?php echo $materialItem->amount ?></td>
-                                <td><?php echo $materialItem->unit ?></td>
+                                <td><?php    echo $materialItem->material_id ?></td>
+                                <td><?php    echo $materialItem->name ?></td>
+                                <td><?php    echo $materialItem->amount ?></td>
+                                <td><?php    echo $materialItem->unit ?></td>
                                 <td>
-                                <a href="{{ route('material.edit',$materialItem->material_id) }}" class='btn btn-warning ml-4'>Edit</a>
+                                <a href="{{ route('material.edit', $materialItem->material_id) }}" class='btn btn-warning ml-4'>Edit</a>
                                 <a class="btn btn-danger ml-4" href="#" onclick="confirmDelete('{{ $materialItem->name}}', '{{ $materialItem->material_id }}')">Delete</a>
                                     <form id="{{ $materialItem->material_id}}" method="POST" action="{{ route('material.destroy', $materialItem->material_id) }}" style="display: none;">
                                         @csrf
@@ -77,10 +77,10 @@
                                     </form>
                                 </td>
                                 <!-- <td>
-                                    <form id="deleteForm_<?php echo $materialItem->material_id; ?>" method="POST" action="<?php echo route('material.destroy', $materialItem->material_id) ?>" style="display:inline">
-                                        <?php echo csrf_field(); ?>
-                                        <?php echo method_field('DELETE'); ?>
-                                        <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?php echo $materialItem->material_id; ?>)">Delete</button>
+                                    <form id="deleteForm_<?php    echo $materialItem->material_id; ?>" method="POST" action="<?php    echo route('material.destroy', $materialItem->material_id) ?>" style="display:inline">
+                                        <?php    echo csrf_field(); ?>
+                                        <?php    echo method_field('DELETE'); ?>
+                                        <button type="button" class="btn btn-outline-danger" onclick="confirmDelete(<?php    echo $materialItem->material_id; ?>)">Delete</button>
                                     </form>
                                 </td> -->
                             </tr>

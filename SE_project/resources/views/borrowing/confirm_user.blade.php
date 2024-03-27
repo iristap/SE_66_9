@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">การยืมครุภัณฑ์</div>
+                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">ยืนยันการยืมครุภัณฑ์</div>
                 <div>
                 <form method="POST" action="{{ route('borrowing.store_user') }}">
                 @csrf
@@ -39,8 +39,8 @@
                          </ul>
                     @endforeach
                     <div class="card-footer d-flex flex-row-reverse">
-                        <a href="{{ route('borrowing.index_user') }}" class="btn btn-outline-primary p-2 ml-4">ยกเลิก</a>
-                        <button class="btn btn-outline-success p-2 ml-4" type="submit">ยืนยัน</button>
+                        <a href="{{ route('borrowing.index_user') }}" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
+                        <button class="btn btn-primary p-2 ml-4" type="submit">ยืนยัน</button>
                     </div>
                 </form>
             </div>
