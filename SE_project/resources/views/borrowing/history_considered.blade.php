@@ -19,7 +19,6 @@
                                         <td>ID</td>
                                         <td>กำหนดการคืน</td>
                                         <td>ผู้อนุมัติ</td>
-                                        <td>ผู้ตรวจคืน</td>
                                         <td>วันที่ทำรายการ</td>
                                         <td>สถานะ</td>
                                         <td>รายละเอียด</td>
@@ -41,13 +40,6 @@
                                                     -
                                                 @else
                                                     {{ $item->approver_name }}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($item->id_checker == null)
-                                                    -
-                                                @else
-                                                    {{ $item->checker_name }}
                                                 @endif
                                             </td>
                                             <td>{{ $item->borrow_date }}</td>
