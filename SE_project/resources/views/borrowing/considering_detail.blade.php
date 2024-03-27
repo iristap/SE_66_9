@@ -14,8 +14,6 @@
                             <p>ID การยืม : {{$borrowings->borrowing_id}}<br></p>
                             <p>ผู้ขอเบิก : {{$borrowings->sender_name}}<br></p>
                             <p>วันที่ยืม : {{$borrowings->borrow_date}}<br></p>
-                            <p>กำหนดการคืน : {{$borrowings->due_date}}<br></p>   
-                            <p>เหตุผลการยืม : {{$borrowings->borrowing_note}}<br></p>   
 
                             <br>
                             <h4>รายการยืมครุภัณฑ์</h4>
@@ -24,12 +22,14 @@
                                     <tr>
                                         <td>ID</td>
                                         <td>name</td>
+                                        <td>เหตุผลการยืม</td>
                                     </tr>
                                 </thead>
                                 @foreach ($borrowing_list as $item)
                                     <tr>
                                         <td>{{ $item->da_code }}</td>
                                         <td>{{ $item->da_name }}</td>
+                                        <td>{{ $item->bl_reason }}</td>
                                     </tr>
                                 @endforeach
                             </table>
