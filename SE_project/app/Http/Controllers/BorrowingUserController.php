@@ -35,20 +35,21 @@ class BorrowingUserController extends Controller
         $user = Auth::user();
         $borrowingNotes = $request->input('borrowing_note');
         $selectedDurableIds = $request->input('durable_articles_id');
+        $borrowing = new Borrowing();
+        $borrowing->borrow_date = now();
+        $borrowing->status = 'รอการพิจารณา';
+        $borrowing->id_sender = $user->id;
+        $borrowing->save();
+        $borrowingId = $borrowing->borrowing_id; 
         foreach ($selectedDurableIds as $index => $durableId) {
-            $borrowing = new Borrowing();
-            $borrowing->borrow_date = now();
-            $borrowing->borrowing_note = $borrowingNotes[$index]; 
-            $borrowing->status = 'รอการพิจารณา';
-            $borrowing->id_sender = $user->id;
-            $borrowing->save();
-            $borrowingId = $borrowing->borrowing_id; 
+            
             $durable = Durable::findOrFail($durableId);
             $durable->availability_status = 'ไม่พร้อมใช้งาน';
             $durable->save();
             $borrowingList = new Borrowing_list();
             $borrowingList->borrowing_id = $borrowingId;
             $borrowingList->durable_articles_id = $durableId;
+            $borrowingList->borrowing_note = $borrowingNotes[$index]; 
             $borrowingList->status_approved = 'รอการอนุมัติ';
             $borrowingList->save();
         }
@@ -73,15 +74,15 @@ class BorrowingUserController extends Controller
         $borrowings = DB::table('borrowing')
                         ->join('users as sender', 'borrowing.id_sender', '=', 'sender.id')
                         ->join('users as approver', 'borrowing.id_approver', '=', 'approver.id')
-                        ->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
+                        //->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
                         ->select(
                             'borrowing.*', 
                             'sender.name as sender_name',
-                            'approver.name as approver_name',
-                            'checker.name as checker_name'
+                            'approver.name as approver_name'
+                            //'checker.name as checker_name'
                         )
                         ->where('borrowing.id_sender', $user->id)
-                        ->where('borrowing.status', 'อนุมัติแล้ว')
+                        ->where('borrowing.status', 'พิจารณาแล้ว')
                         ->get();
 
         return view('borrowing.history_considered',compact('user','borrowings'));
@@ -105,7 +106,8 @@ class BorrowingUserController extends Controller
                             ->select(
                                 'borrowing_list.*', 
                                 'da.durable_articles_code as da_code',
-                                'da.name as da_name'
+                                'da.name as da_name',
+                                'borrowing_list.borrowing_note as bl_reason'
                             )
                             ->where('borrowing_list.borrowing_id', $borrowingId)
                             ->get();
@@ -118,14 +120,14 @@ class BorrowingUserController extends Controller
         $borrowings = DB::table('borrowing')
                         ->join('users as sender', 'borrowing.id_sender', '=', 'sender.id')
                         ->join('users as approver', 'borrowing.id_approver', '=', 'approver.id')
-                        ->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
+                        //->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
                         ->join('borrowing_list', 'borrowing.borrowing_id', '=', 'borrowing_list.borrowing_id')
                         ->join('durable_articles as da', 'borrowing_list.durable_articles_id', '=', 'da.durable_articles_id')
                         ->select(
                             'borrowing.*', 
                             'sender.name as sender_name',
-                            'approver.name as approver_name',
-                            'checker.name as checker_name'
+                            'approver.name as approver_name'
+                            //'checker.name as checker_name'
                         )
                         ->where('borrowing.borrowing_id', $borrowingId)
                         ->first();
@@ -136,7 +138,8 @@ class BorrowingUserController extends Controller
                                 'da.durable_articles_code as da_code',
                                 'da.name as da_name',
                                 'borrowing_list.borrowing_note as br_note',
-                                'borrowing_list.status_approved as br_status'
+                                'borrowing_list.status_approved as br_status',
+                                'borrowing_list.not_approved_note as br_not_note'
                             )
                             ->where('borrowing_list.borrowing_id', $borrowingId)
                             ->get();

@@ -15,7 +15,6 @@
                             <p>ผู้ขอเบิก : {{$borrowings->sender_name}}<br></p>
                             <p>วันที่ยืม : {{$borrowings->borrow_date}}<br></p>
                             <p>กำหนดการคืน : {{$borrowings->due_date}}<br></p>   
-                            <p>เหตุผลการยืม : {{$borrowings->borrowing_note}}<br></p>   
 
                             <br>
                             <h4>รายการยืมครุภัณฑ์</h4>
@@ -25,6 +24,7 @@
                                         <td>ID</td>
                                         <td>name</td>
                                         <td>เหตุผลการยืม</td>
+                                        <td>เหตุผลที่ไม่อนุมัติ</td>
                                         <td>สถานะ</td>
                                     </tr>
                                 </thead>
@@ -33,6 +33,7 @@
                                         <td>{{ $item->da_code }}</td>
                                         <td>{{ $item->da_name }}</td>
                                         <td>{{ $item->br_note }}</td>
+                                        <td>{{ $item->br_not_note }}</td>
                                         <td>{{ $item->br_status }}</td>
                                     </tr>
                                 @endforeach
@@ -40,8 +41,8 @@
                             <br>
                             <h4><p>หมายเหตุ : {{$borrowings->not_approved_note}}<br></p></h4>   
                             <p>ผู้อนุมัติ : {{ $borrowings->approver_name }}<br></p>
-                            <p>ผู้ตรวจคืน : {{ $borrowings->checker_name }}<br></p>
-                                
+                            
+                            <!-- <p>ผู้ตรวจคืน :  $borrowings->checker_name }}<br></p> -->    
                             <a href={{ route('borrowing.history.considered') }}><button class='btn btn-secondary m-2'>ย้อนกลับ</button></a>
                         </div>
                     </div>
