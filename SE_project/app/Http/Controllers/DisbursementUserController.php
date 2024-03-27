@@ -374,7 +374,11 @@ class DisbursementUserController extends Controller
     public function considering()
     {
         $user = Auth::user();
-        $disbursement = Disbursement::where('user_id', $user->id)->where('status', 'รอการอนุมัติ')->get();
+        // $disbursement = Disbursement::where('user_id', $user->id)->where('status', 'รอการอนุมัติ')->get();
+        $disbursement = Disbursement::withCount('disbursementLists')
+        ->where('user_id', $user->id)
+        ->where('status', 'รอการอนุมัติ')
+        ->get();
         return view('withdraw.history_considering', compact('user', 'disbursement'));
     }
 

@@ -8,13 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <!-- <title>{{ config('app.name', 'SEG9') }}</title>  -->
+    <title>SEG9</title>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="icon" href=
+    <!-- <link rel="icon" href=
     "https://www.getautismactive.com/wp-content/uploads/2021/01/Test-Logo-Circle-black-transparent.png"
+              type="image/x-icon"> -->
+    <link rel="icon" href=
+    "https://raw.githubusercontent.com/vaeum/react-material-icon-svg/HEAD/cover.png?raw=true"
               type="image/x-icon">
 
     <!-- Scripts -->

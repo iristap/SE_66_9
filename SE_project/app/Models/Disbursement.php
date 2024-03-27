@@ -110,5 +110,10 @@ class Disbursement extends Model
         ->get();
     }
 
+    
+    public function DisbursementLists()
+    {
+        return $this->hasMany(disbursement_detail::class, 'disbursement_id', 'disbursement_id');
+    }
 
 }

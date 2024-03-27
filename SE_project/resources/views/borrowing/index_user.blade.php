@@ -31,7 +31,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('รายการครุภัณฑ์') }}</div>
+                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{__('การยืมครุภัณฑ์') }}</div>
                 <div class="card-body">
                     @if ($durables->isEmpty())
                         ไม่มีครุภัณฑ์ให้ยืม
@@ -39,7 +39,7 @@
                     <form id="borrowingForm" method="POST" action="{{ route('borrowing.confirm_user') }}">
                         @csrf
                         @method('POST')
-                        <table class="table table-hover">
+                        <table class="table table-striped">
                             <thead>
                                 <tr class="text-center">
                                     <th scope="col">ลำดับ</th>
@@ -50,7 +50,7 @@
                             </thead>
                             <tbody>
                                 @foreach($durables as $index => $durable)
-                                <tr class="text-center">
+                                <tr class="text">
                                     <td scope="row">{{ $index + 1 }}</td>
                                     <td>{{ $durable->durable_articles_code }}</td>
                                     <td>{{ $durable->name }}</td>

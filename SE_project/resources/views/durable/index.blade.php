@@ -15,10 +15,10 @@
     <div class="row justify-content-center">
         <div class="col-md-9">
             <div class="card">
-                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('ครุภัณฑ์') }}</div>
+                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('รายการครุภัณฑ์') }}</div>
 
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                             <th scope="col">ลำดับ</th>
@@ -26,7 +26,7 @@
                             <th scope="col">ชื่อ</th>
                             <th scope="col">สถานะความพร้อมใช้งาน</th>
                             <th scope="col">สถานะสภาพ</th>
-                            <th width="280px">Action</th>
+                            <th width="200px" style=" padding-left: 35px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,11 +37,6 @@
                                 <td><?php echo $durableItem->durable_articles_id ?></td>
                                 <td><?php echo $durableItem->durable_articles_code ?></td>
                                 <td><?php echo $durableItem->name ?></td>
-                                
-                                <!-- <td><span class="badge badge-success">{{$durableItem->availability_status}}</span></td>
-                                <td><span class="badge badge-success">{{$durableItem->condition_status}}</span></td> -->
-                                <!-- <td><span style= "font-size: 13px;" class="badge {{$durableItem->availability_status == 'ว่าง' ? 'badge-success' : 'badge-danger'}}">{{$durableItem->availability_status}}</span></td>
-                                <td><span style= "font-size: 13px;" class="badge {{$durableItem->condition_status == 'ปกติ' ? 'badge-info' : 'badge-warning'}}">{{$durableItem->condition_status}}</span></td> -->
                                 <td><span style="font-size: 13px;" class="badge {{$durableItem->availability_status == 'ไม่พร้อมใช้งาน' ? 'btn btn-danger' : ($durableItem->availability_status == 'ถูกยืม' ? 'btn btn-secondary' : 'btn btn-success')}}">{{$durableItem->availability_status}}</span></td>
                                 <td><span style="font-size: 13px;" class="badge {{$durableItem->condition_status == 'ปกติ' ? 'btn btn-primary' : ($durableItem->condition_status == 'ชำรุด' ? 'btn btn-warning' : 'btn btn-secondary')}}">{{$durableItem->condition_status}}</span></td>
 
