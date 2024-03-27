@@ -2,32 +2,14 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <div class="row justify-content-center">
-  <div class="col-md-8">
-    <div class="card">
-      <div class="row">
-          <div class="col-lg-12 margin-tb">
-              <div class="pull-left ">
-                  <h2>Users Management</h2>
-              </div>
-              
-              <div class="pull-right ">
-                  <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
-              </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="row justify-content-center">
-  <div class="col-md-8">
+  <div class="col-md-9">
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
       <p>{{ $message }}</p>
     </div>
     @endif
-    <div class="card">
+    <div class="card" >
       <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Users Management') }}</div>
               <!-- <div class="pull-left ">
                   <h2>Users Management</h2>
@@ -39,8 +21,8 @@
             <br>
             <table class="table table-bordered">
               <tr>
-                <th>No</th>
-                <th>Name</th>
+                <th>ลำดับ</th>
+                <th>ชื่อ</th>
                 <th>Email</th>
                 <th>Roles</th>
                 <th width="280px">Action</th>
