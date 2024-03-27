@@ -8,7 +8,7 @@
                 <div class="card-header" style="background-color: #86A7FC; font-size: 20px;">Stock Details</div>
 
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table ">
                         <tbody>
                             <tr>
                                 <td>ID Stock</td>
@@ -32,8 +32,8 @@
                             <tr>
                                 <td>Stock Lists</td>
                                 <td>
-                                    <table class="table">
-                                        <thead>
+                                    <table class="table table-hover">
+                                        <thead class="thead-light">
                                             <tr>
                                                 <th>วัสดุ</th>
                                                 <th>จำนวน</th>

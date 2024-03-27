@@ -26,14 +26,14 @@
                             <p>ID การเบิก : {{ $disbursement->disbursement_id }}<br></p>
                             <p>รายการ :</p>
                             <div class="container">
-                            <table class="table">
-                                <thead>
+                            <table class="table table-striped table-hover">
+                                <thead class="">
                                     <tr>
                                         <th>ชื่อวัสดุ</th>
                                         <th>จำนวน</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="table-striped">
                                     @foreach ($disbursement_detail as $item)
                                         <tr>
                                             <td>{{ $item->material_name }}</td>
