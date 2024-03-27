@@ -19,7 +19,6 @@
                                         <td>ID</td>
                                         <td>วันที่เบิก</td>
                                         <td>รายการ</td>
-                                        <td>จำนวน</td>
                                         <td>ผู้อนุมัติ</td>
                                         <td>สถานะ</td>
                                         <td>รายละเอียด</td>
@@ -39,15 +38,13 @@
                                         <td>{{ $item->disbursement_id }}</td>
                                         <td>
                                                 {{ $item->date_disbursement }}
-                                        </td>
-                                        {{-- <td>{{ $idCounts[$disbursementId] }}</td> --}}
-                                        <td></td>
-                                        <td></td>
+
+                                        <td>{{ $item->disbursement_lists_count }}</td>
                                         <td>
-                                            @if ($item->id_checker == null)
+                                            @if ($item->approver_id == null)
                                                 -
                                             @else
-                                                {{ $item->checker_name }}
+                                                {{ $item->approver_name }}
                                             @endif
                                         </td>
     

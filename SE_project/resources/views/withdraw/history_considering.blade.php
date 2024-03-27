@@ -20,8 +20,6 @@
                                     <td>ID</td>
                                     <td>วันที่เบิก</td>
                                     <td>รายการ</td>
-                                    <td>จำนวน</td>
-                                    <td>ผู้อนุมัติ</td>
                                     <td>สถานะ</td>
                                     <td>รายละเอียด</td>
                                 </tr>
@@ -41,16 +39,7 @@
                                     <td>
                                             {{ $item->date_disbursement }}
                                     </td>
-                                    {{-- <td>{{ $idCounts[$disbursementId] }}</td> --}}
                                     <td>{{ $item->disbursement_lists_count }}</td>
-                                    <td></td>
-                                    <td>
-                                        @if ($item->id_checker == null)
-                                            -
-                                        @else
-                                            {{ $item->checker_name }}
-                                        @endif
-                                    </td>
 
                                     <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
                                     <td><a href="{{ route('withdraw.considering.detail', $item->disbursement_id) }}" 

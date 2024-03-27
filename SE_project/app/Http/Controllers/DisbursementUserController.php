@@ -373,16 +373,29 @@ class DisbursementUserController extends Controller
         $user = Auth::user();
         // $disbursement = Disbursement::where('user_id', $user->id)->where('status', 'รอการอนุมัติ')->get();
         $disbursement = Disbursement::withCount('disbursementLists')
-        ->where('user_id', $user->id)
-        ->where('status', 'รอการอนุมัติ')
-        ->get();
+            ->where('user_id', $user->id)
+            ->where('status', 'รอการอนุมัติ')
+            ->get();
         return view('withdraw.history_considering', compact('user', 'disbursement'));
     }
 
     public function considered()
     {
         $user = Auth::user();
-        $disbursement = Disbursement::where('user_id', $user->id)->whereIn('status', ['อนุมัติแล้ว', 'ไม่อนุมัติ'])->get();
+        // $disbursement = Disbursement::where('user_id', $user->id)->where('status', ['อนุมัติแล้ว', 'ไม่อนุมัติ'])->get();
+        $disbursement = Disbursement::withCount('disbursementLists')
+            ->join('users as approver', 'disbursement.approver_id', '=', 'approver.id')
+            ->select(
+                'disbursement.*',
+                'approver.name as approver_name'
+            )
+            ->where('user_id', $user->id)
+            ->whereIn('status', ['อนุมัติแล้ว', 'ไม่อนุมัติ'])
+
+
+
+            ->get();
+
         return view('withdraw.history_considered', compact('user', 'disbursement'));
     }
 
@@ -390,53 +403,56 @@ class DisbursementUserController extends Controller
     {
         $disbursementId = $request->id;
         $disbursement = DB::table('disbursement')
-                        ->join('users as sender', 'disbursement.user_id', '=', 'sender.id')
-                        ->join('disbursement_detail', 'disbursement.disbursement_id', '=', 'disbursement_detail.disbursement_id')
-                        ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
-                        ->select(
-                            'disbursement.*', 
-                            'sender.name as sender_name'
-                        )
-                        ->where('disbursement.disbursement_id', $disbursementId)
-                        ->first();
+            ->join('users as sender', 'disbursement.user_id', '=', 'sender.id')
+            ->join('disbursement_detail', 'disbursement.disbursement_id', '=', 'disbursement_detail.disbursement_id')
+            ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
+            ->select(
+                'disbursement.*',
+                'sender.name as sender_name'
+            )
+            ->where('disbursement.disbursement_id', $disbursementId)
+            ->first();
         $disbursement_detail = DB::table('disbursement_detail')
-                            ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
-                            ->select(
-                                'disbursement_detail.*', 
-                                'material.material_id as material_id',
-                                'material.name as material_name'
-                            )
-                            ->where('disbursement_detail.disbursement_id', $disbursementId)
-                            ->get();
+            ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
+            ->select(
+                'disbursement_detail.*',
+                'material.material_id as material_id',
+                'material.name as material_name'
+            )
+            ->where('disbursement_detail.disbursement_id', $disbursementId)
+            ->get();
 
-        return view('withdraw.considering_detail', compact('disbursement','disbursement_detail'));
+
+        return view('withdraw.considering_detail', compact('disbursement', 'disbursement_detail'));
     }
 
     public function detail_considered(Request $request)
     {
         $disbursementId = $request->id;
         $disbursement = DB::table('disbursement')
-                        ->join('users as sender', 'disbursement.user_id', '=', 'sender.id')
-                        ->join('disbursement_detail', 'disbursement.disbursement_id', '=', 'disbursement_detail.disbursement_id')
-                        ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
-                        ->select(
-                            'disbursement.*', 
-                            'sender.name as sender_name'
-                        )
-                        ->where('disbursement.disbursement_id', $disbursementId)
-                        ->first();
+            ->join('users as sender', 'disbursement.user_id', '=', 'sender.id')
+            ->join('disbursement_detail', 'disbursement.disbursement_id', '=', 'disbursement_detail.disbursement_id')
+            ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
+            ->join('users as approver', 'disbursement.approver_id', '=', 'approver.id')
+            ->select(
+                'disbursement.*',
+                'sender.name as sender_name',
+                'approver.name as approver_name'
+            )
+            ->where('disbursement.disbursement_id', $disbursementId)
+            ->first();
 
         $disbursement_detail = DB::table('disbursement_detail')
-                            ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
-                            ->select(
-                                'disbursement_detail.*', 
-                                'material.material_id as material_id',
-                                'material.name as material_name'
-                            )
-                            ->where('disbursement_detail.disbursement_id', $disbursementId)
-                            ->get();
-             
+            ->join('material', 'disbursement_detail.material_id', '=', 'material.material_id')
+            ->select(
+                'disbursement_detail.*',
+                'material.material_id as material_id',
+                'material.name as material_name'
+            )
+            ->where('disbursement_detail.disbursement_id', $disbursementId)
+            ->get();
 
-        return view('withdraw.considered_detail', compact('disbursement','disbursement_detail'));
+
+        return view('withdraw.considered_detail', compact('disbursement', 'disbursement_detail'));
     }
 }

@@ -24,20 +24,31 @@
                     <div>
                         <div class="pull-right ">
                             <p>ID การเบิก : {{ $disbursement->disbursement_id }}<br></p>
-                            <p>รายการ :                                 
-                                @foreach ($disbursement_detail as $item)
-                                {{ $item->material_name }}<br> 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                @endforeach<br></p>
-                            <p>ผู้ขอเบิก : {{ $disbursement->sender_name }}<br></p>
-                            <p>วันที่เบิก : {{ $disbursement->date_disbursement }}<br></p>
-                            <p>หมายเหตุการเบิก : {{ $disbursement->note_disbursement }}<br></p>
-                                @if ($disbursement->status== 'ไม่อนุมัติ')
+                            <p>รายการ :</p>
+                            <div class="container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>ชื่อวัสดุ</th>
+                                            <th>จำนวน</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($disbursement_detail as $item)
+                                            <tr>
+                                                <td>{{ $item->material_name }}</td>
+                                                <td>{{ $item->amount }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <p>ผู้ขอเบิก : {{ $disbursement->sender_name }}<br></p>
+                                <p>วันที่เบิก : {{ $disbursement->date_disbursement }}<br></p>
+                                <p>หมายเหตุการเบิก : {{ $disbursement->note_disbursement }}<br></p>
+                                @if ($disbursement->status == 'ไม่อนุมัติ')
                                     <p>หมายเหตุไม่อนุมัติการเบิก : {{ $disbursement->note_approved }}<br></p>
                                 @endif
-                            
-                            <br>
+                            </div>
 
                             <a href={{ route('withdraw.history.considered') }}><button
                                     class='btn btn-secondary m-2'>ย้อนกลับ</button></a>
