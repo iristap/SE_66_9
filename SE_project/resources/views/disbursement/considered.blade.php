@@ -16,7 +16,7 @@
                         <div class="pull-right ">
                             <a class="btn btn-secondary" href="/disbursement/considering">กำลังพิจารณา</a>
                             <a class="btn btn-success" href="/disbursement/considered">พิจารณาแล้ว</a><br><br>
-                            <table class="table table-bordered">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <td>ID</td>

@@ -47,7 +47,7 @@
                             <div class="pull-right ">
                                 <br>
                                 <h4>รายการเบิกอุปกรณ์</h4>
-                                <table class="table table-bordered">
+                                <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <td>ID</td>
