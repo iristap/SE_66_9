@@ -39,7 +39,7 @@
                 
                   </td>
                   <td>
-                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">ดู</a>
+                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">ดูข้อมูล</a>
                     <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">แก้ไข</a>
                     <a class="btn btn-danger" href="#" onclick="confirmDelete('{{ $user->name }} {{ $user->surname }}', '{{ $user->id }}')">ลบ</a>
                     <form id="delete-user-{{ $user->id }}" method="POST" action="{{ route('users.destroy', $user->id) }}" style="display: none;">

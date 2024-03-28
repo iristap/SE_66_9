@@ -35,13 +35,13 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>ชื่อ:</strong>
                             <input type="text" name="name" value="{{ $user->name }}" class="form-control" placeholder="Name">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <label for="surname">Surname:</label>
+                            <label for="surname">นามสกุล:</label>
                             <input type="text" name="surname" value="{{ $user->surname }}" class="form-control" placeholder="Surname">
                         </div>
                     </div>
@@ -53,13 +53,13 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                        <strong>Password: <span class="text-danger">*กรณีเปลื่ยนรหัสผ่าน</span></strong> 
+                        <strong>รหัสผ่าน: <span class="text-danger">*กรณีเปลื่ยนรหัสผ่าน</span></strong> 
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                        <strong>Confirm Password:</strong>
+                        <strong>ยืนยันรหัสผ่าน:</strong>
                         <input type="password" name="passwordconfirm" class="form-control" placeholder="Confirm Password">
                     </div>
         

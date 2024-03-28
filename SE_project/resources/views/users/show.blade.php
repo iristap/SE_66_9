@@ -6,7 +6,7 @@
     <div class="col-md-5">
         <div class="card">
             <!-- <div class="row"> -->
-                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Show User') }}</div>
+                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('รายละเอียดผู้ใช้งาน') }}</div>
                     <div class="card-body">
                         <div class="col-lg-12 margin-tb">
                             <!-- <div class="pull-left">
