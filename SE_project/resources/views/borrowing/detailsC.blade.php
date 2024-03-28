@@ -35,7 +35,7 @@
 
                             <br>
                             <h4>รายการยืมครุภัณฑ์</h4>
-                            <table class="table table-bordered">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <td>ID</td>

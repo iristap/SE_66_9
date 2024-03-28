@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Return Detail</title>
+    <!-- <title>Return Detail</title> -->
 </head>
 <body style="background-color: #FFFFFF;">
 <script>
@@ -32,8 +32,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #99FFCC;">รายละเอียดการคืนครุภัณฑ์</div>
-                <div>
+                <div class="card-header text-white " style="background-color: #37B5B6; font-size: 20px; ">รายละเอียดการคืนครุภัณฑ์</div>
+                <div><div class="card-body">
                 @if($borrowingLists->isEmpty())
                         <p class="col-xs-12 col-sm-12 col-md-12">ไม่มีข้อมูล</p>
                     @else
@@ -79,14 +79,15 @@
                             </div>
                         </div>
 
-                        <div class="card-footer d-flex flex-row-reverse">
-                            <button class="btn btn-outline-success p-2 ml-4" type="submit" onclick="return confirmAction()">ยืนยัน</button>
+                        <div class=" d-flex flex-row-reverse" style="margin-right: 35px;">
+                            <button class="btn btn-success p-2 mr-8" type="submit" onclick="return confirmAction()">ยืนยัน</button>
                         </div>
+                        
                     </form>
                         @endforeach
                     @endif
-                    <div class="card-footer d-flex flex-row-reverse">
-                        <a href="{{ route('return.index') }}" class="btn btn-outline-primary p-2 ml-4">ย้อนกลับ</a>
+                    <div class="card-footer d-flex flex-row-reverse mt-4">
+                        <a href="{{ route('return.index') }}" class="btn btn-primary p-2 ml-4">ย้อนกลับ</a>
                     </div>
                 </div>
             </div>
