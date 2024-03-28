@@ -58,7 +58,10 @@ class BorrowingUserController extends Controller
 
     public function index_history()
     {
-        return view('borrowing.history');
+        $waitingCount = Borrowing_list::where('status_approved', 'รอการอนุมัติ')->count();
+        $approvedCount = Borrowing_list::where('status_approved', 'อนุมัติแล้ว')->count();
+        $rejectedCount = Borrowing_list::where('status_approved', 'ไม่อนุมัติ')->count();
+        return view('borrowing.history', compact('waitingCount','approvedCount','rejectedCount'));
     }
 
     public function considering()
