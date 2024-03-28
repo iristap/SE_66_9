@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FB88B4; font-size: 20px; ">{{ __('แก้ไขครุภัณฑ์') }}</div>
+                <div class="card-header text-white " style="background-color: #378CE7; font-size: 20px; ">{{ __('แก้ไขครุภัณฑ์') }}</div>
 
                 <div class="card-body">
                     <!-- <div class="my-2">
@@ -46,11 +46,12 @@
                         </div>
                         @enderror
                             <!-- เพิ่มฟิลด์อื่น ๆ ตามต้องการ -->
+                        <div class="card-footer d-flex flex-row-reverse">
                         <div class="d-flex flex-row-reverse">
                             <a href="/durable" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
                             <!-- <button class="btn btn-danger p-2 ml-4" type="submit">ยกเลิก</button> -->
                             <button class="btn btn-primary p-2 ml-4" type="submit">อัปเดต</button>
-                            
+                        </div>
                         </div>
                     </form>
 

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เบิกวัสดุ</title>
+    <!-- <title>เบิกวัสดุ</title> -->
 </head>
 
 <body>
@@ -66,24 +66,25 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('รายการวัสดุ') }}</div>
+                    <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('รายการวัสดุ') }}</div>
                     <div class="card-body">
                         <form id="withdrawForm" method="POST" action="{{ route('withdraw.confirm_user') }}">
                             @csrf
                             @method('POST')
-                            <table class="table table-hover">
+                            <table class="table table-striped">
                                 <thead>
-                                    <tr class="text-center">
+                                    <tr class="text ">
                                         <th scope="col">ลำดับ</th>
                                         <th scope="col">รหัสวัสดุ</th>
                                         <th scope="col">ชื่อวัสดุ</th>
                                         <th scope="col">จำนวนที่มี</th>
-                                        <th scope="col">จำนวน</th>
+                                        <th scope="col" style="padding-left: 30px;">จำนวน</th>
+                                        <th scope="col">เลือก</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($material as $index => $material)
-                                    <tr class="text-center">
+                                    <tr class="text">
                                         <td scope="row">{{ $index + 1 }}</td>
                                         <td>{{ $material->material_id }}</td>
                                         <td>{{ $material->name }}</td>
@@ -111,9 +112,9 @@
                                             </div>
                                         </td>
                                         @if ($material->amount == 0)
-                                            <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" disabled></td>
+                                            <td style="padding-left: 40px;"><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" disabled></td>
                                         @else
-                                            <td><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" onchange="updateAmount(this.parentNode.previousElementSibling.querySelector('input[type=number]'), this.checked)"></td>
+                                            <td style="padding-left: 40px;"><input type="checkbox" class="form-check-input checkbox-center" name="material_id[]" value="{{ $material->material_id }}" onchange="updateAmount(this.parentNode.previousElementSibling.querySelector('input[type=number]'), this.checked)"></td>
                                         @endif
                                     </tr>
                             @endforeach
@@ -121,7 +122,7 @@
                             </table>
                             <div class="card-footer d-flex flex-row-reverse">
                                 <button onclick="validateForm()" type="button"
-                                    class="btn btn-outline-success p-2 ml-4">ยืนยัน</button>
+                                    class="btn btn-success p-2 ml-4">ยืนยัน</button>
                             </div>
                         </form>
                     </div>

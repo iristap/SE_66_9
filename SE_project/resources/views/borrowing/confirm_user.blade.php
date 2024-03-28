@@ -46,7 +46,7 @@
                     @endforeach
                     <div class="card-footer d-flex flex-row-reverse">
                         <a href="{{ route('borrowing.index_user') }}" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
-                        <button class="btn btn-primary p-2 ml-4" type="submit">ยืนยัน</button>
+                        <button class="btn btn-success p-2 ml-4" type="submit">ยืนยัน</button>
                     </div>
                 </form>
             </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Material</title>
+    <!-- <title>Material</title> -->
 </head>
 <!-- <body style="background-color: #f9ffc2;"> -->
 <body>
@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FB88B4; font-size: 20px;">{{ __('แก้ไขวัสดุ') }}</div>
+                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('แก้ไขวัสดุ') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('material.edit',$material->material_id) }}">
@@ -54,11 +54,11 @@
                             <span class="text-danger  d-flex justify-content-center ">{{$message}}</span>
                         </div>
                         @enderror
-                            
+                        <div class="card-footer d-flex flex-row-reverse">
                         <div class="d-flex flex-row-reverse">
                             <a href="/material" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
                             <button class="btn btn-primary p-2 ml-4" type="submit">อัปเดต</button>
-                            
+                        </div>
                         </div>
                     </form>
 

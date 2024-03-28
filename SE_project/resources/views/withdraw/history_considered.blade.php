@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <div>
                             <a class="btn btn-secondary" href="{{ route('withdraw.history.considering') }}">รอการอนุมัติ</a>
-                            <a class="btn btn-dark" href="{{ route('withdraw.history.considered') }}">พิจารณาแล้ว</a><br><br>
+                            <a class="btn btn-success" href="{{ route('withdraw.history.considered') }}">พิจารณาแล้ว</a><br><br>
                         </div>
                         @if ($disbursement->isEmpty())
                             ไม่มีประวัติการเบิกวัสดุที่พิจารณาแล้ว

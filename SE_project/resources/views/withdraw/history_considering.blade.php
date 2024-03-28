@@ -7,7 +7,7 @@
                     <div class="card-header">{{ __('ประวัติการเบิกวัสดุ') }}</div>
                     <div class="card-body">
                         <div>
-                            <a class="btn btn-dark" href="{{ route('withdraw.history.considering') }}">รอการอนุมัติ</a>
+                            <a class="btn btn-warning" href="{{ route('withdraw.history.considering') }}">รอการอนุมัติ</a>
                             <a class="btn btn-secondary"
                                 href="{{ route('withdraw.history.considered') }}">พิจารณาแล้ว</a><br><br>
                         </div>

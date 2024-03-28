@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Material</title>
+    <!-- <title>Material</title> -->
     <style>
     .button {
     background-color: #37B5B6; /* Green */
@@ -41,7 +41,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-white " style="background-color: #007F73; font-size: 20px; ">{{ __('รายการวัสดุ') }}</div>
+                <div class="card-header text-white " style="background-color: #378CE7; font-size: 20px; ">{{ __('รายการวัสดุ') }}</div>
 
                 <div class="card-body">
                     <!-- <a class="button button1 rounded" > เติมสต๊อก </a> -->

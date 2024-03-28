@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('ประวัติการเบิกวัสดุ') }}</div>
+                    <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('ประวัติการเบิกวัสดุ') }}</div>
                     <div class="card-body">
                         <div>
                             <a class="btn btn-secondary" href="{{ route('withdraw.history.considering') }}">รอการอนุมัติ</a>
