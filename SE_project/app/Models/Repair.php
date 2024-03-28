@@ -24,5 +24,10 @@ class Repair extends Model{
     {
         return $this->belongsTo(Durable::class, 'durable_articles_id', 'durable_articles_id');
     }
+    
+    public function borrowingList()
+    {
+        return $this->belongsTo(Borrowing_list::class, 'borrowing_list_id', 'borrowing_list_id');
+    }
 
 }

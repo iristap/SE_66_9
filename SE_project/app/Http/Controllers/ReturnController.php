@@ -11,14 +11,17 @@ use Illuminate\Support\Facades\Auth;
 class ReturnController extends Controller {
     function index(){
         $returns = Borrowing::with(['borrowingLists.durable'])
-        ->where('status', 'พิจารณาแล้ว')
-        ->whereHas('borrowingLists.durable', function($query) {
-            $query->where('condition_status', 'ปกติ');
-        })
-        ->get();
+            ->where('status', 'พิจารณาแล้ว')
+            ->whereHas('borrowingLists', function($query) {
+                $query->where('status_approved', 'อนุมัติแล้ว');
+            })
+            ->whereHas('borrowingLists.durable', function($query) {
+                $query->where('availability_status', 'ไม่พร้อมใช้งาน')
+                      ->where('condition_status', 'ปกติ');
+            })
+            ->get();
         return view('return.index', compact('returns'));
     }
-    
 
     public function show($id)
     {
@@ -68,6 +71,7 @@ class ReturnController extends Controller {
             $damagedDurable->inspector_name = 'technician';
             $damagedDurable->status = $status;
             $damagedDurable->detail = $request->input('detail');
+            $damagedDurable->borrowing_list_id = $borrowingList->borrowing_list_id;
             $damagedDurable->save();
         } else if($status === 'หาย'){
             foreach ($durable->borrowingList as $borrowingList) {

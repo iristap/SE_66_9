@@ -8,20 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class RepairController extends Controller {
     function index(){
-        $repairs = Repair::with('durable.borrowingList.borrowing.sender')
-                    ->where('status', 'ชำรุด')
-                    ->get();
+        $repairs = Repair::where('status', 'ชำรุด')->get();
         return view('repair.index', compact('repairs'));
     }
 
     public function show($no)
     {
-        $repair = Repair::with('durable.borrowingList.borrowing.sender')
-                    ->where('no', $no)
-                    ->first();
-                    $durable = $repair->durable;
-                    $borrowingLists = $durable->borrowingList;
-        return view('repair.show', compact('repair'));
+        $repair = Repair::where('no', $no)->first();
+        $durable = $repair->durable;
+        $borrowingList = $repair->borrowingList;
+        $borrowing = $borrowingList->borrowing;
+        $sender = $borrowing->sender;
+        return view('repair.show', compact('repair','sender'));
     }
 
     public function update(Request $request, $no)
@@ -41,13 +39,13 @@ class RepairController extends Controller {
         $repair->inspector_name = $user->name;
         $durable->save();
         $repair->save();
-        foreach ($durable->borrowingList as $borrowingList) {
-            $borrowing = $borrowingList->borrowing;
-            $borrowing->delete();
-        }
-        foreach ($durable->borrowingList as $borrowingList) {
-            $borrowingList->delete();
-        }
+        // foreach ($durable->borrowingList as $borrowingList) {
+        //     $borrowing = $borrowingList->borrowing;
+        //     $borrowing->delete();
+        // }
+        // foreach ($durable->borrowingList as $borrowingList) {
+        //     $borrowingList->delete();
+        // }
         return redirect()->route('repair.index');
     }
 
