@@ -25,10 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $borrowings = Borrowing::selectRaw('MONTH(due_date) as month, COUNT(*) as total')
+        $borrowings = Borrowing::selectRaw('MONTH(approved_date) as month, COUNT(*) as total')
                             ->groupBy('month')
                             ->orderBy('month')
-                            ->whereNotNull('due_date')
+                            ->whereNotNull('approved_date')
                             ->get();
 
         $disbursements = Disbursement::selectRaw('MONTH(date_approved) as month, COUNT(*) as total')
