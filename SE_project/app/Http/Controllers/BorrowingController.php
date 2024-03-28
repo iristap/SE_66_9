@@ -132,7 +132,8 @@ class BorrowingController extends Controller
                 'status'=>'พิจารณาแล้ว'
             ];
             $data2=[
-                'status_approved'=>'อนุมัติแล้ว'
+                'status_approved'=>'อนุมัติแล้ว',
+                'isBorrowing' => 'ได้ทำการยืมแล้ว'
             ];
             DB::table('borrowing')
             ->where('borrowing_id', $id)
@@ -175,7 +176,8 @@ class BorrowingController extends Controller
         ];
         $data2=[
             'status_approved'=>'ไม่อนุมัติ',
-            'not_approved_note'=>$request->not_approved_note
+            'not_approved_note'=>$request->not_approved_note,
+            'isBorrowing'=>'ไม่ได้ทำการยืม'
         ];
         DB::table('borrowing')
         ->where('borrowing_id', $bid)

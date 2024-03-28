@@ -71,6 +71,13 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
+                                <strong>เหตุผลในการพัง</strong>
+                                {{ $repair->detail }}
+                            </div>                
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
                                 <strong>สถานะ</strong>
                                 <select class="form-select" style="width: 200px;" name="status">
                                     <option value="ปกติ">ปกติ</option>

@@ -13,7 +13,8 @@ class ReturnController extends Controller {
         $returns = Borrowing::with(['borrowingLists.durable'])
             ->where('status', 'พิจารณาแล้ว')
             ->whereHas('borrowingLists', function($query) {
-                $query->where('status_approved', 'อนุมัติแล้ว');
+                $query->where('status_approved', 'อนุมัติแล้ว')
+                      ->where('isBorrowing', 'ได้ทำการยืมแล้ว');
             })
             ->whereHas('borrowingLists.durable', function($query) {
                 $query->where('availability_status', 'ไม่พร้อมใช้งาน')
@@ -41,7 +42,7 @@ class ReturnController extends Controller {
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-        $borrowingList = Borrowing_list::findOrFail($id);
+        $borrowingList = Borrowing_list::findOrFail($id); 
         $borrowing = $borrowingList->borrowing;
         $durable = $borrowingList->durable;
         $status = $request->input('status');
@@ -82,9 +83,10 @@ class ReturnController extends Controller {
             $durable->condition_status = 'หาย';
             $durable->save();
         }
+        $borrowingList->isBorrowing = 'ได้ทำการคืนแล้ว';
+        $borrowingList->save();
         $borrowing->id_checker = Auth::id();
         $borrowing->save();
-        
         return redirect()->route('return.show', ['id' => $borrowing->borrowing_id]);
     }
 }
