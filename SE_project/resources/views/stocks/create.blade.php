@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <div class="card-header text-white " style="background-color: #492E87; font-size: 20px;">Add Stock</div>
+                <div class="card-header text-white " style="background-color: #492E87; font-size: 20px;">Stock</div>
                 @if(session('error'))
                 <div class="alert alert-danger" role="alert">
                     {{ session('error') }}
@@ -34,7 +34,7 @@
                             
                         </table>
                         
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">ยืนยัน</button>
                     </form>
                 </div>
                 <div class="card-footer">
