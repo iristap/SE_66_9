@@ -47,8 +47,15 @@
                                                 {{ $item->approver_name }}
                                             @endif
                                         </td>
-    
-                                        <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
+                                        <td>
+                                            @if($item->status == 'อนุมัติแล้ว')
+                                                <span class="badge btn btn-success">{{ $item->status }}</span>
+                                            @elseif($item->status == 'ไม่อนุมัติ')
+                                                <span class="badge btn btn-danger">{{ $item->status }}</span>
+                                            @endif
+                                        </td>
+
+                                        <!-- <td><span class="badge btn btn-success">{{ $item->status }}</span></td> -->
                                         <td><a href="{{ route('withdraw.considered.detail', $item->disbursement_id) }}" 
                                             class="btn btn-secondary">ดูรายละเอียด</a></td>
     
