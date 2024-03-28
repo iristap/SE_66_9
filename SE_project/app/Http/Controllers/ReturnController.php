@@ -6,6 +6,7 @@ use App\Models\Borrowing;
 use App\Models\Repair;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReturnController extends Controller {
     function index(){
@@ -36,6 +37,7 @@ class ReturnController extends Controller {
 
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
         $borrowingList = Borrowing_list::findOrFail($id);
         $borrowing = $borrowingList->borrowing;
         $durable = $borrowingList->durable;
@@ -48,10 +50,10 @@ class ReturnController extends Controller {
             }
             $durable->availability_status = 'พร้อมใช้งาน';
             $durable->save();
-            DB::table('borrowing_list')
-            ->join('borrowing', 'borrowing_list.borrowing_id', '=', 'borrowing.borrowing_id')
-            ->where('borrowing_list.borrowing_list_id', $id)
-            ->delete();
+            // DB::table('borrowing_list')
+            // ->join('borrowing', 'borrowing_list.borrowing_id', '=', 'borrowing.borrowing_id')
+            // ->where('borrowing_list.borrowing_list_id', $id)
+            // ->delete();
         } else if($status === 'ชำรุด'){
             foreach ($durable->borrowingList as $borrowingList) {
                 $borrowing = $borrowingList->borrowing;
@@ -76,6 +78,7 @@ class ReturnController extends Controller {
             $durable->condition_status = 'หาย';
             $durable->save();
         }
+        $borrowing->id_checker = Auth::id();
         $borrowing->save();
         
         return redirect()->route('return.show', ['id' => $borrowing->borrowing_id]);
