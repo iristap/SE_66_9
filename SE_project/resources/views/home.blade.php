@@ -2,21 +2,37 @@
 
 @section('content')
 <div class="container">
+
+    
+
+    
+
+@if(!Auth::user()->roles()->whereIn('role_id', [1, 3])->exists())
+    <div class="card mt-2">
+        <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Dashboard') }}</div>
+
+                    
+                    
+                    <div class="card-body" style="font-size: 18px;">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                    <p>Welcome to the home page, {{ Auth::user()->name }}</p>
+        </div>        
+    </div>
+    @else
+
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card mt-2">
                 <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Dashboard') }}</div>
 
                 
+                
                 <div class="card-body" style="font-size: 18px;">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    <p>Welcome to the home page, {{ Auth::user()->name }}</p>
-                    
                     <div id="chart1">
                         <script>
                             // ข้อมูลจำนวนการยืมทั้งปี
@@ -63,14 +79,6 @@
                 <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Dashboard') }}</div>
 
                 <div class="card-body" style="font-size: 18px;">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <p>Welcome to the home page, {{ Auth::user()->name }}</p>
-                    
                     <div id="chart2">
                         <script>
                             // ข้อมูลจำนวนการเบิกทั้งปี
@@ -113,6 +121,7 @@
         </div>
     </div>
 </div>
+@endif
 
 
 @endsection
