@@ -41,8 +41,8 @@
                                 <td><span style="font-size: 13px;" class="badge {{$durableItem->condition_status == 'ปกติ' ? 'btn btn-primary' : ($durableItem->condition_status == 'ชำรุด' ? 'btn btn-warning' : 'btn btn-secondary')}}">{{$durableItem->condition_status}}</span></td>
 
                                 <td>
-                                <a href="{{ route('durable.edit', $durableItem->durable_articles_id) }}" class='btn btn-warning ml-4'>Edit</a>
-                                <a class="btn btn-danger ml-4" href="#" onclick="confirmDelete('{{ $durableItem->name }}', '{{ $durableItem->durable_articles_id }}')">Delete</a>
+                                <a href="{{ route('durable.edit', $durableItem->durable_articles_id) }}" class='btn btn-warning ml-4'>แก้ไข</a>
+                                <a class="btn btn-danger ml-4" href="#" onclick="confirmDelete('{{ $durableItem->name }}', '{{ $durableItem->durable_articles_id }}')">ลบ</a>
                                     <form id="{{ $durableItem->durable_articles_id}}" method="POST" action="{{ route('durable.destroy', $durableItem->durable_articles_id) }}" style="display: none;">
                                         @csrf
                                         @method('DELETE')

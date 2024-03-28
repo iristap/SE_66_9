@@ -33,24 +33,24 @@
     <div class="col-md-5">
     
         <div class="card">
-            <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Create New User') }}</div>
+            <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('สร้างผู้ใช้งานใหม่') }}</div>
                     <!-- <div class="pull-left">
                         <h2>Create New User</h2>
                     </div> -->
                 <div class="card-body">
                     <div class="pull-right">
-                        <a class="btn btn-secondary" href="{{ route('users.index') }}"> Back</a>
+                        <a class="btn btn-secondary" href="{{ route('users.index') }}">กลับ</a>
                     </div>
                     <br>
                     <form action="{{ route('users.store') }}" method="POST">
                         @csrf
 
                         <div class="form-group">
-                            <label for="name">Name:</label>
+                            <label for="name">ชื่อ:</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter name">
                         </div>
                         <div>
-                            <label for="surname">Surname:</label>
+                            <label for="surname">นามสกุล:</label>
                             <input type="text" name="surname" class="form-control" placeholder="Enter surname">
                         </div>
                         <div class="form-group">
@@ -59,12 +59,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Password:</label>
+                            <label for="password">รหัสผ่าน:</label>
                             <input type="password" name="password" class="form-control" placeholder="Enter password">
                         </div>
                         <div class="form-group">
-                            <label for="password">Password Confirm:</label>
-                            <input type="password" name="passwordconfirm" class="form-control" placeholder="Enter password">
+                            <label for="password">ยืนยันรหัสผ่าน:</label>
+                            <input type="password" name="passwordconfirm" class="form-control" placeholder="Confirm Password">
                         </div>
                         <div class="form-group">
                             <label for="roles">Roles:</label><br>
@@ -78,7 +78,7 @@
                             @endforeach
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">ยืนยัน</button>
                         </div>
                     </form>
                 </div>

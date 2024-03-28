@@ -39,8 +39,8 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('material.index') }}" class="btn btn-secondary">Back to Material Management</a>
-                    <a href="{{ route('stocks.index') }}" class="btn btn-secondary">Back to Stock History</a>
+                    <a href="{{ route('material.index') }}" class="btn btn-secondary">กลับหน้าจัดการวัสดุ</a>
+                    <a href="{{ route('stocks.index') }}" class="btn btn-secondary">กลับหน้าประวัติการStock</a>
                 </div>
             </div>
         </div>

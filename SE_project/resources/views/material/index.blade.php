@@ -69,8 +69,8 @@
                                 <td><?php    echo $materialItem->amount ?></td>
                                 <td><?php    echo $materialItem->unit ?></td>
                                 <td>
-                                <a href="{{ route('material.edit', $materialItem->material_id) }}" class='btn btn-warning ml-4'>Edit</a>
-                                <a class="btn btn-danger ml-4" href="#" onclick="confirmDelete('{{ $materialItem->name}}', '{{ $materialItem->material_id }}')">Delete</a>
+                                <a href="{{ route('material.edit', $materialItem->material_id) }}" class='btn btn-warning ml-4'>แก้ไข</a>
+                                <a class="btn btn-danger ml-4" href="#" onclick="confirmDelete('{{ $materialItem->name}}', '{{ $materialItem->material_id }}')">ลบ</a>
                                     <form id="{{ $materialItem->material_id}}" method="POST" action="{{ route('material.destroy', $materialItem->material_id) }}" style="display: none;">
                                         @csrf
                                         @method('DELETE')
