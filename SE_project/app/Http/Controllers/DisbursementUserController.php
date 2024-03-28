@@ -368,7 +368,10 @@ class DisbursementUserController extends Controller
 
     public function index_history()
     {
-        return view('withdraw.history');
+        $waitingCount = Disbursement::where('status', 'รอการอนุมัติ')->count();
+        $approvedCount = Disbursement::where('status', 'อนุมัติแล้ว')->count();
+        $rejectedCount = Disbursement::where('status', 'ไม่อนุมัติ')->count();
+        return view('withdraw.history', compact('waitingCount', 'approvedCount', 'rejectedCount'));
     }
 
     public function considering()
