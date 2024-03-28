@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #86A7FC; font-size: 20px;">Stock Details</div>
+                <div class="card-header text-white " style="background-color: #492E87; font-size: 20px;">Stock Details</div>
 
                 <div class="card-body">
-                    <table class="table ">
+                    <table class="table table-striped">
                         <tbody>
                             <tr>
                                 <td>ID Stock</td>

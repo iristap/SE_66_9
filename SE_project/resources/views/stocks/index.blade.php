@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    <table class="table">
+                    <table class="table table-striped">
                         <div class="card-header">
                             <a class="btn btn-primary" href="{{ route('stocks.create') }}">Add</a>
                         </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repair Detail</title>
+    <!-- <title>Repair Detail</title> -->
 </head>
 <body style="background-color: #FFFFFF;">
 
@@ -13,8 +13,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FB88B4;">Repair Detail</div>
+                <div class="card-header  text-white " style="background-color: #7360DF; font-size: 20px; ">Repair Detail</div>
                 <div>
+                <div class="card-body">
                     <form method="POST" action="{{ route('repair.update', $repair->no) }}">
                         @csrf
                         @method('PUT')
@@ -87,8 +88,8 @@
                         </div>
 
                         <div class="card-footer d-flex flex-row-reverse">
-                            <a href="{{ route('repair.index') }}" class="btn btn-outline-primary p-2 ml-4">ยกเลิก</a>
-                            <button class="btn btn-outline-success p-2 ml-4" type="submit">ยืนยัน</button>
+                            <a href="{{ route('repair.index') }}" class="btn btn-secondary p-2 ml-4">ยกเลิก</a>
+                            <button class="btn btn-success p-2 ml-4" type="submit">ยืนยัน</button>
                         </div>
                     </form>
                 </div>

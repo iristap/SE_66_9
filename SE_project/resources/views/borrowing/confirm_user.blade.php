@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card">
-                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">ยืนยันการยืมครุภัณฑ์</div>
+                <div class="card-header text-white" style="background-color: #FC6736; font-size: 20px;">ยืนยันการยืมครุภัณฑ์</div>
                 <div>
                 <form method="POST" action="{{ route('borrowing.store_user') }}">
                 @csrf

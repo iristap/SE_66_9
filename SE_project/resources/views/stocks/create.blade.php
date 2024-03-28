@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <div class="card-header" style="background-color: #74E291; font-size: 20px;">Add Stock</div>
+                <div class="card-header text-white " style="background-color: #492E87; font-size: 20px;">Add Stock</div>
                 @if(session('error'))
                 <div class="alert alert-danger" role="alert">
                     {{ session('error') }}
@@ -15,7 +15,7 @@
                     <form action="{{ route('stocks.store') }}" method="POST">
                         @csrf
 
-                        <table class="table">
+                        <table class="table table-striped">
                             
                                 <tr>
                                     <th>Name</th>

@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('ประวัติการยืมครุภัณฑ์') }}</div>
+                    <div class="card-header text-white" style="background-color: #FC6736; font-size: 20px;">{{ __('ประวัติการยืมครุภัณฑ์') }}</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">

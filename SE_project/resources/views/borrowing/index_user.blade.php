@@ -31,7 +31,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card">
-                <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{__('การยืมครุภัณฑ์') }}</div>
+                <div class="card-header text-white" style="background-color: #FC6736; font-size: 20px;">{{__('การยืมครุภัณฑ์') }}</div>
                 <div class="card-body">
                     @if ($durables->isEmpty())
                         ไม่มีครุภัณฑ์ให้ยืม
