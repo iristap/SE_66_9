@@ -19,13 +19,13 @@
               <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
             </div>
             <br>
-            <table class="table table-bordered">
+            <table class="table table-striped">
               <tr>
                 <th>ลำดับ</th>
                 <th>ชื่อ</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th width="280px">Action</th>
+                <th width="220px">Action</th>
               </tr>
               @foreach ($data as $key => $user)
                 <tr>

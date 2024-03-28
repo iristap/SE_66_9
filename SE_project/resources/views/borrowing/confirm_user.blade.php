@@ -13,7 +13,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">ยืนยันการยืมครุภัณฑ์</div>
                 <div>
@@ -29,11 +29,17 @@
                         <ul>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    {{ $durable->durable_articles_id }}
-                                    {{ $durable->durable_articles_code}}
-                                    {{ $durable->name }}
-                                    <p>เหตุผลในการยืม:</p>
-                                    <input type="text" name="borrowing_note[]" class="form-control" required>
+                                    
+                                    <div class="card">
+                                        <div class="card-body">
+                                                {{ $durable->durable_articles_id }}
+                                                {{ $durable->durable_articles_code }}
+                                                {{ $durable->name }}
+                                            <br><br>
+                                            <p>เหตุผลในการยืม:</p>
+                                            <input type="text" name="borrowing_note[]" class="form-control" required>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                          </ul>
