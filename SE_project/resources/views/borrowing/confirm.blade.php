@@ -2,7 +2,7 @@
 <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #FB88B4;">Borrowing Detail</div>
+                <div class="card-header" style="background-color: #FC6736;">Borrowing Detail</div>
                 <div>
 
                 <form method="POST" action="{{ route('borrowing.store') }}">

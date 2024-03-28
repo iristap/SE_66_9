@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รายละเอียด</title>
+    <!-- <title>รายละเอียด</title> -->
 </head>
 
 <body>
@@ -18,15 +18,18 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">รายการรออนุมัติการเบิกวัสดุ</div>
+                    <div class="card-header text-white" style="background-color: #FF5BAE; font-size: 20px;">รายการรออนุมัติการเบิกวัสดุ</div>
+                    <div class="card-body">
                     {{-- <span class="badge btn btn-success">{{$disbursement->status }}</span> --}}
                     {{-- <p>ID การเบิก : {{ $disbursement->status }}<br></p> --}}
                     <div>
+                        
                         <div class="pull-right ">
+                            
+                            <div class="container">
                             <p>ID การเบิก : {{ $disbursement->disbursement_id }}<br></p>
                             <p>รายการ :</p>
-                            <div class="container">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-striped">
                                 <thead class="">
                                     <tr>
                                         <th>ชื่อวัสดุ</th>

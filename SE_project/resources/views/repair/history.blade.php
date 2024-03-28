@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repair</title>
+    <!-- <title>Repair</title> -->
 </head>
 <body style="background-color: #FFFFFF;">
 
@@ -15,10 +15,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #EEE8AA;">{{ __('ประวัติการซ่อม') }}</div>
+                <div class="card-header text-white " style="background-color: #7360DF; font-size: 20px; ">{{ __('ประวัติการซ่อม') }}</div>
 
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-striped">
                         <thead>
                             <tr class="text-center">
                                 <th scope="col">ลำดับ</th>

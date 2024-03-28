@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('ประวัติการเบิกวัสดุ') }}</div>
+                    <div class="card-header text-white" style="background-color: #FF5BAE; font-size: 20px;">{{ __('ประวัติการเบิกวัสดุ') }}</div>
                     <div class="card-body">
                         <div>
                             <a class="btn btn-secondary" href="{{ route('withdraw.history.considering') }}">รอการอนุมัติ</a>
@@ -13,7 +13,7 @@
                         @if ($disbursement->isEmpty())
                             ไม่มีประวัติการเบิกวัสดุที่พิจารณาแล้ว
                         @else
-                            <table class="table table-bordered">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <td>ID</td>
@@ -47,8 +47,15 @@
                                                 {{ $item->approver_name }}
                                             @endif
                                         </td>
-    
-                                        <td><span class="badge btn btn-success">{{ $item->status }}</span></td>
+                                        <td>
+                                            @if($item->status == 'อนุมัติแล้ว')
+                                                <span class="badge btn btn-success">{{ $item->status }}</span>
+                                            @elseif($item->status == 'ไม่อนุมัติ')
+                                                <span class="badge btn btn-danger">{{ $item->status }}</span>
+                                            @endif
+                                        </td>
+
+                                        <!-- <td><span class="badge btn btn-success">{{ $item->status }}</span></td> -->
                                         <td><a href="{{ route('withdraw.considered.detail', $item->disbursement_id) }}" 
                                             class="btn btn-secondary">ดูรายละเอียด</a></td>
     
