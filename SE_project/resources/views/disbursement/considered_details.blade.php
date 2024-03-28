@@ -34,7 +34,8 @@
                                 echo "วันที่ทำรายการ: {$dbmUser->date_disbursement}<br>";
                                 echo "หมายเหตุการยืมครุภัณฑ์: {$dbmUser->note_disbursement}<br>";
                                 echo "สถานะการทำรายการ: {$dbmUser->status}<br>";
-                                echo "วันที่พิจารณารายการ: {$dbmUser->date_approved}<br><br>";
+                                echo "วันที่พิจารณารายการ: {$dbmUser->date_approved}<br>";
+                                echo "ผู้พิจารณารายการ: {$app->name}<br><br>";
                                 if ($dbmUser->status == 'ไม่อนุมัติ') {
                                     echo "เหตุผลการไม่อนุมัติ: {$dbmUser->note_approved}<br>";
                                 }

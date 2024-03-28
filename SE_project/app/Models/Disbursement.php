@@ -100,17 +100,17 @@ class Disbursement extends Model
     public static function getApprover($dbmId){
 
         return $dbm=DB::table('disbursement')
-        ->join('users', 'disbursement.checker_id', '=', 'users.id')
-        ->select('disbursement.*', 'users.*')
+        ->join('users', 'disbursement.approver_id', '=', 'users.id')
+        ->select('disbursement.approver_id', 'users.name')
         ->where(function ($query) {
             $query->where('disbursement.status', 'ไม่อนุมัติ')
                 ->orWhere('disbursement.status', 'อนุมัติแล้ว');
         })
-        ->where('disbursement.disbursement_id', 3)
-        ->get();
+        ->where('disbursement.disbursement_id', $dbmId)
+        ->first();
     }
 
-    
+
     public function DisbursementLists()
     {
         return $this->hasMany(disbursement_detail::class, 'disbursement_id', 'disbursement_id');

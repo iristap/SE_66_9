@@ -93,7 +93,8 @@ class DisbursementController extends Controller
         }
         $data=[
             'date_approved'=>now(),
-            'status'=>'อนุมัติแล้ว'
+            'status'=>'อนุมัติแล้ว',
+            'approver_id'=>auth()->id()
         ];
         DB::table('disbursement')
         ->where('disbursement_id', $id)
@@ -129,6 +130,7 @@ class DisbursementController extends Controller
         $data=[
             'date_approved'=>now(),
             'status'=>'ไม่อนุมัติ',
+            'approver_id'=>auth()->id(),
             'note_approved'=>$request->note_approved
         ];
         DB::table('disbursement')->where('disbursement_id', $id)->update($data);
@@ -145,8 +147,9 @@ class DisbursementController extends Controller
         $dbmMat = Disbursement::getMat($dbmId);
         $dbmUser = Disbursement::getUserName($dbmId);
         $mat = Disbursement::getMatID($dbmId);
+        $app = Disbursement::getApprover($dbmId);
 
-        return view('disbursement.considered_details', compact('dbmMat', 'dbmUser', 'mat'));
+        return view('disbursement.considered_details', compact('dbmMat', 'dbmUser', 'mat', 'app'));
 
     }
 
