@@ -30,7 +30,7 @@
     @endif
     
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-5">
     
         <div class="card">
             <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Create New User') }}</div>

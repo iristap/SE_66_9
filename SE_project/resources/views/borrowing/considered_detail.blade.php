@@ -2,13 +2,11 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
-                <div class="row">
+            <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">รายละเอียดการยืมครุภัณฑ์</div>
                     <div class="col-lg-12 margin-tb">
-                        <div class="pull-left ">
-                            <br><h2>รายละเอียดการยืมครุภัณฑ์</h2>
-                        </div>
+                        <div class="card-body">
 
                         <div class="pull-right ">
                             <p>ID การยืม : {{$borrowings->borrowing_id}}<br></p>
@@ -18,7 +16,7 @@
 
                             <br>
                             <h4>รายการยืมครุภัณฑ์</h4>
-                            <table class="table table-bordered">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <td>ID</td>
@@ -43,7 +41,7 @@
                             <p>ผู้อนุมัติ : {{ $borrowings->approver_name }}<br></p>
                             
                             <!-- <p>ผู้ตรวจคืน :  $borrowings->checker_name }}<br></p> -->    
-                            <a href={{ route('borrowing.history.considered') }}><button class='btn btn-secondary m-2'>ย้อนกลับ</button></a>
+                            <a href={{ route('borrowing.history.considered') }}><button class='btn btn-secondary'>ย้อนกลับ</button></a>
                         </div>
                     </div>
                 </div>
