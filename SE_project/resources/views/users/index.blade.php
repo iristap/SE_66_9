@@ -10,13 +10,13 @@
     </div>
     @endif
     <div class="card" >
-      <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('Users Management') }}</div>
+      <div class="card-header text-white" style="background-color: #378CE7; font-size: 20px;">{{ __('จัดการผู้ใช้งาน') }}</div>
               <!-- <div class="pull-left ">
                   <h2>Users Management</h2>
               </div> -->
         <div class="card-body">
             <div class="pull-right ">
-              <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
+              <a class="btn btn-success" href="{{ route('users.create') }}">เพิ่มผู้ใช้งาน</a>
             </div>
             <br>
             <table class="table table-striped">
@@ -39,9 +39,9 @@
                 
                   </td>
                   <td>
-                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-                    <a class="btn btn-danger" href="#" onclick="confirmDelete('{{ $user->name }} {{ $user->surname }}', '{{ $user->id }}')">Delete</a>
+                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">ดู</a>
+                    <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">แก้ไข</a>
+                    <a class="btn btn-danger" href="#" onclick="confirmDelete('{{ $user->name }} {{ $user->surname }}', '{{ $user->id }}')">ลบ</a>
                     <form id="delete-user-{{ $user->id }}" method="POST" action="{{ route('users.destroy', $user->id) }}" style="display: none;">
                         @csrf
                         @method('DELETE')

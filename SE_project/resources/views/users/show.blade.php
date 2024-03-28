@@ -13,7 +13,7 @@
                                 <h2> Show User</h2>
                             </div> -->
                             <div class="pull-right">
-                                <a class="btn btn-secondary" href="{{ route('users.index') }}"> Back</a>
+                                <a class="btn btn-secondary" href="{{ route('users.index') }}">ย้อนกลับ</a>
                             </div>
                             <br>
                         </div>
