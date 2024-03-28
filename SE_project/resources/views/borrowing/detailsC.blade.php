@@ -16,6 +16,7 @@
                         <div class="pull-right ">
                             <?php
                             if ($brlItem) {
+
                                 // สร้างวัตถุ DateTime จาก borrow_date
                                 $borrowDate = new DateTime($br_user->borrow_date);
                                 // เพิ่ม 14 วันให้กับ borrow_date
@@ -26,7 +27,6 @@
                                 echo "ชื่อผู้ขอยืมครุภัณฑ์: {$br_user->users_name}<br>";
                                 echo "วันที่ทำรายการ: {$br_user->borrow_date}<br>";
                                 echo "วันกำหนดคืน: {$dueDate}<br>";
-                                echo "หมายเหตุการยืมครุภัณฑ์: {$br_user->borrowing_note}<br>";
                                 echo "สถานะการทำรายการ: {$br_user->status}<br>";
                             } else {
                                 echo 'ไม่พบข้อมูลการยืมที่มี ID นี้';
@@ -41,8 +41,8 @@
                                         <td>ID</td>
                                         <td>code</td>
                                         <td>name</td>
+                                        <td>เหตุผลการยืม</td>
                                         <td>สถานะ</td>
-                                        <td>พิจารณา</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,6 +52,7 @@
                                     echo "<td>{$b->da_id}</td>";
                                     echo "<td>{$b->da_code}</td>";
                                     echo "<td>{$b->da_name}</td>";
+                                    echo "<td>{$b->note}</td>";
                                     echo "<td>{$b->status}</td>";
                                     if($b->status=='ไม่อนุมัติ'){
                                         echo "<td>หมายเหตุ: {$b->not_approved_note}</td>";
