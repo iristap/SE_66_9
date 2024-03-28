@@ -19,7 +19,8 @@
     <link rel="icon" href=
     "https://raw.githubusercontent.com/vaeum/react-material-icon-svg/HEAD/cover.png?raw=true"
               type="image/x-icon">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>

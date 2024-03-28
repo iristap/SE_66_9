@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Borrowing;
+use App\Models\Disbursement;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $borrowings = Borrowing::selectRaw('MONTH(due_date) as month, COUNT(*) as total')
+                            ->groupBy('month')
+                            ->orderBy('month')
+                            ->whereNotNull('due_date')
+                            ->get();
+
+        $disbursements = Disbursement::selectRaw('MONTH(date_approved) as month, COUNT(*) as total')
+                            ->groupBy('month')
+                            ->orderBy('month')
+                            ->whereNotNull('date_approved')
+                            ->get();
+        return view('home', compact('borrowings', 'disbursements'));
     }
 }
