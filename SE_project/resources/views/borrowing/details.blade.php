@@ -22,7 +22,7 @@
                                 echo "วันที่ทำรายการ: {$br_user->borrow_date}<br>";
                                  // เพิ่ม 14 วันให้กับ borrow_date
                                 echo "วันกำหนดคืน: " . (new DateTime($br_user->borrow_date))->add(new DateInterval('P14D'))->format('Y-m-d') . "<br>";
-                                echo "หมายเหตุการยืมครุภัณฑ์: {$br_user->borrowing_note}<br>";
+                                //echo "หมายเหตุการยืมครุภัณฑ์: {$br_user->borrowing_note}<br>";
                                 echo "สถานะการทำรายการ: {$br_user->status}<br>";
                             } else {
                                 echo 'ไม่พบข้อมูลการยืมที่มี ID นี้';
@@ -37,6 +37,7 @@
                                         <td>ID</td>
                                         <td>code</td>
                                         <td>name</td>
+                                        <td>เหตุผลการยืม</td>
                                         <td>สถานะ</td>
                                         <td>พิจารณา</td>
                                     </tr>
@@ -48,6 +49,7 @@
                                     echo "<td>{$b->da_id}</td>";
                                     echo "<td>{$b->da_code}</td>";
                                     echo "<td>{$b->da_name}</td>";
+                                    echo "<td>{$b->note}</td>";
                                     echo "<td>{$b->status}</td>";
                                     if($b->status=='รอการอนุมัติ'){
                                         echo "<td>

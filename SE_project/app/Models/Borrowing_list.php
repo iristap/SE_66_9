@@ -65,7 +65,8 @@ class Borrowing_list extends Model
         , 'durable_articles.name as da_name'
         , 'durable_articles.durable_articles_code as da_code'
         , 'borrowing_list.status_approved as status'
-        , 'borrowing_list.not_approved_note')
+        , 'borrowing_list.not_approved_note'
+        , 'borrowing_list.borrowing_note as note')
         ->where('borrowing.borrowing_id', $borrowing_id)
         ->get();
     }
