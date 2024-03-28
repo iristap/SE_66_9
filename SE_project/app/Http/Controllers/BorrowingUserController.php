@@ -74,12 +74,12 @@ class BorrowingUserController extends Controller
         $borrowings = DB::table('borrowing')
                         ->join('users as sender', 'borrowing.id_sender', '=', 'sender.id')
                         ->join('users as approver', 'borrowing.id_approver', '=', 'approver.id')
-                        //->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
+                        ->leftJoin('users as checker', 'borrowing.id_checker', '=', 'checker.id') // ใช้ Left Join แทน Inner Join
                         ->select(
                             'borrowing.*', 
                             'sender.name as sender_name',
-                            'approver.name as approver_name'
-                            //'checker.name as checker_name'
+                            'approver.name as approver_name',
+                            'checker.name as checker_name'
                         )
                         ->where('borrowing.id_sender', $user->id)
                         ->where('borrowing.status', 'พิจารณาแล้ว')
@@ -120,17 +120,18 @@ class BorrowingUserController extends Controller
         $borrowings = DB::table('borrowing')
                         ->join('users as sender', 'borrowing.id_sender', '=', 'sender.id')
                         ->join('users as approver', 'borrowing.id_approver', '=', 'approver.id')
-                        //->join('users as checker', 'borrowing.id_checker', '=', 'checker.id')
+                        ->leftJoin('users as checker', 'borrowing.id_checker', '=', 'checker.id') // ใช้ Left Join แทน Inner Join
                         ->join('borrowing_list', 'borrowing.borrowing_id', '=', 'borrowing_list.borrowing_id')
                         ->join('durable_articles as da', 'borrowing_list.durable_articles_id', '=', 'da.durable_articles_id')
                         ->select(
                             'borrowing.*', 
                             'sender.name as sender_name',
-                            'approver.name as approver_name'
-                            //'checker.name as checker_name'
+                            'approver.name as approver_name',
+                            'checker.name as checker_name'
                         )
                         ->where('borrowing.borrowing_id', $borrowingId)
                         ->first();
+        
         $borrowing_list = DB::table('borrowing_list')
                             ->join('durable_articles as da', 'borrowing_list.durable_articles_id', '=', 'da.durable_articles_id')
                             ->select(

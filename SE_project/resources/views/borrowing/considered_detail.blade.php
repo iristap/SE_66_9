@@ -40,7 +40,7 @@
                             <h4><p>หมายเหตุ : {{$borrowings->not_approved_note}}<br></p></h4>   
                             <p>ผู้อนุมัติ : {{ $borrowings->approver_name }}<br></p>
                             
-                            <!-- <p>ผู้ตรวจคืน :  $borrowings->checker_name }}<br></p> -->    
+                            <p>ผู้ตรวจคืน :  {{$borrowings->checker_name }}<br></p>    
                             <a href={{ route('borrowing.history.considered') }}><button class='btn btn-secondary'>ย้อนกลับ</button></a>
                         </div>
                     </div>
