@@ -34,6 +34,13 @@
                                     <td>{$d->uname}</td>
                                     <td>{$d->date_disbursement}</td>
                                     <td>{$d->status}</td>
+                                    <td>";
+                                    if($d->status == 'อนุมัติแล้ว') {
+                                        echo "<span class='badge btn btn-success'> $d->status </span>";
+                                    } elseif($d->status == 'ไม่อนุมัติ') {
+                                        echo "<span class='badge btn btn-danger'> $d->status </span>";
+                                    }
+                                    echo "</td>
                                     <td><a href='".route('disbursement.considered_details', ['id' => $d->disbursement_id])."' class='btn btn-secondary'>ดูรายละเอียด</a></td>
                                 </tr>";
                                 }
