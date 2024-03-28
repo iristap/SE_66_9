@@ -40,7 +40,7 @@
 
                             // แปลงข้อมูลให้อยู่ในรูปแบบที่ Highcharts เข้าใจ
                             var data1 = borrowings.map(function(item) {
-                                return [item.month, item.total];
+                                return [getMonthNameThai(item.month), item.total];
                             });
 
                             // สร้างแผนภูมิ
@@ -68,6 +68,13 @@
                                     color: '#FFA500' // กำหนดสีส้ม
                                 }]
                             });
+
+                            function getMonthNameThai(month) {
+                                var monthNamesThai = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                                ];
+                                return monthNamesThai[month - 1];
+                            }
                         </script>
                     </div>
                 </div>
@@ -86,7 +93,7 @@
 
                             // แปลงข้อมูลให้อยู่ในรูปแบบที่ Highcharts เข้าใจ
                             var data2 = disbursements.map(function(item) {
-                                return [item.month, item.total];
+                                return [getMonthNameThai(item.month), item.total];
                             });
 
                             // สร้างแผนภูมิ
@@ -114,6 +121,13 @@
                                     color: '#008000' // กำหนดสีเขียว
                                 }]
                             });
+
+                            function getMonthNameThai(month) {
+                                var monthNamesThai = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                                ];
+                                return monthNamesThai[month - 1];
+                            }
                         </script>
                     </div>
                 </div>
