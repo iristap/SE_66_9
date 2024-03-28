@@ -29,7 +29,7 @@
                             <div class="container">
                             <p>ID การเบิก : {{ $disbursement->disbursement_id }}<br></p>
                             <p>รายการ :</p>
-                            <table class="table table-striped table-hover">
+                            <table class="table table-striped">
                                 <thead class="">
                                     <tr>
                                         <th>ชื่อวัสดุ</th>

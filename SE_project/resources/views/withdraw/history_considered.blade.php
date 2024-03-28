@@ -13,7 +13,7 @@
                         @if ($disbursement->isEmpty())
                             ไม่มีประวัติการเบิกวัสดุที่พิจารณาแล้ว
                         @else
-                            <table class="table table-bordered">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <td>ID</td>
